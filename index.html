@@ -6,237 +6,259 @@
 <title>Katie Shimmin — Design Director Portfolio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Sedgwick+Ave&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
-  /* Surfaces */
+  --accent: #ec5d5e;
+  --accent-text: #b91c1c;
+  --accent-dark: #991b1b;
+  --accent-secondary: #ff9592;
+  --accent-tertiary: #ffd1d9;
+  --tag-bg: #fef2f2;
+  --tag-color: #991b1b;
   --bg: #ffffff;
   --layer-01: #f4f4f4;
   --layer-02: #f9f0f0;
   --border-subtle: #e0e0e0;
-  --border-strong: #8d8d8d;
-
-  /* Text — all pass WCAG AA on white */
-  --text-primary: #161616;      /* 16.1:1 */
-  --text-secondary: #525252;    /* 7.0:1  */
-  --text-muted: #6f6f6f;        /* 4.6:1  */
-
-  /* Accent palette */
-  --accent: #ec5d5e;            /* decorative / large display only */
-  --accent-text: #b91c1c;       /* 5.9:1 on white — AA for all text sizes */
-  --accent-secondary: #ff9592;  /* decorative only */
-  --accent-tertiary: #ffd1d9;   /* light tint backgrounds */
-  --accent-on-dark: #ffffff;    /* text on --accent bg: #ec5d5e bg = 3.2:1 — use --accent-dark instead */
-  --accent-dark: #991b1b;       /* 7.5:1 on white — AAA */
-
-  /* Tag */
-  --tag-bg: #fef2f2;
-  --tag-color: #991b1b;         /* 7.5:1 on --tag-bg */
-
+  --text-primary: #161616;
+  --text-secondary: #525252;
+  --text-muted: #6f6f6f;
   --font: 'IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif;
-  --s-02:.25rem;--s-03:.5rem;--s-04:.75rem;--s-05:1rem;
-  --s-06:1.5rem;--s-07:2rem;--s-08:2.5rem;--s-09:3rem;--s-10:4rem;--s-12:6rem;
-  --radius: 2px;
 }
-
-/* ─── Reset / Base ─────────────────────────────────────── */
 html { font-family: var(--font); font-size: 16px; scroll-behavior: smooth; }
 body { background: var(--bg); color: var(--text-primary); line-height: 1.6; }
-p { font-size: .875rem; color: var(--text-secondary); margin-bottom: var(--s-05); line-height: 1.7; }
+p { font-size: .875rem; color: var(--text-secondary); margin-bottom: 1rem; line-height: 1.7; }
 p:last-child { margin-bottom: 0; }
-em { font-style: italic; }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
 
-/* ─── Nav ───────────────────────────────────────────────── */
-.nav-bar { background: var(--bg); border-bottom: 1px solid var(--border-subtle); padding: var(--s-04) var(--s-07); display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; }
-.nav-wordmark { font-size: .75rem; font-weight: 600; letter-spacing: .08em; color: var(--text-secondary); text-decoration: none; display: flex; flex-direction: column; gap: .1em; }
-.nav-wordmark:hover { color: var(--accent-text); }
-.nav-wordmark em { font-style: italic; font-weight: 400; letter-spacing: 0; text-transform: none; color: inherit; font-size: .7rem; }
-.nav-links { display: flex; flex-wrap: wrap; gap: var(--s-02); }
-.nav-links a { font-size: .75rem; color: var(--text-secondary); text-decoration: none; padding: var(--s-02) var(--s-04); border-bottom: 2px solid transparent; transition: color .15s, border-color .15s; }
-.nav-links a:hover, .nav-links a.active { color: var(--accent-text); border-bottom-color: var(--accent); }
-
-/* ─── Hero sidebar layout ───────────────────────────────── */
-.index-layout { display: grid; grid-template-columns: 300px 1fr; min-height: calc(100vh - 49px); align-items: start; }
-
-/* Left sidebar */
-.index-sidebar {
-  background: var(--accent-tertiary);
-  display: flex; flex-direction: column;
-  position: sticky; top: 49px;
-  height: calc(100vh - 49px);
-  overflow-y: auto;
+/* ─── Nav (transparent over gradient) ──────────────────── */
+.nav-bar {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: .75rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(255,255,255,.15);
 }
-.index-sidebar-photo { width: 70%; flex-shrink: 0; align-self: center; }
-.index-sidebar-photo img { width: 100%; height: auto; display: block; }
-.index-sidebar-bio { padding: var(--s-06); border-top: 3px solid var(--accent); }
-.index-sidebar-bio strong { display: block; font-size: 1.5rem; font-weight: 700; color: var(--text-primary); line-height: 1.1; letter-spacing: -.02em; margin-bottom: var(--s-03); }
-.index-sidebar-bio .tagline { font-size: .8125rem; font-weight: 400; color: var(--text-secondary); line-height: 1.55; display: block; margin-bottom: var(--s-05); }
-.index-sidebar-bio .bio-body { font-size: .8125rem; color: var(--text-secondary); line-height: 1.7; }
+.nav-wordmark {
+  font-size: .75rem;
+  font-weight: 600;
+  letter-spacing: .08em;
+  color: rgba(255,255,255,.9);
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  gap: .1em;
+}
+.nav-wordmark em {
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: 0;
+  text-transform: none;
+  font-size: .7rem;
+  color: rgba(255,255,255,.6);
+}
+.nav-wordmark:hover { color: #ffffff; }
+.nav-links { display: flex; flex-wrap: wrap; gap: .25rem; }
+.nav-links a {
+  font-size: .75rem;
+  color: rgba(255,255,255,.75);
+  text-decoration: none;
+  padding: .25rem .75rem;
+  border-bottom: 2px solid transparent;
+  transition: color .15s, border-color .15s;
+}
+.nav-links a:hover, .nav-links a.active {
+  color: #ffffff;
+  border-bottom-color: rgba(255,255,255,.6);
+}
 
-/* Right content */
-.index-content { padding: var(--s-09) var(--s-08); }
-.index-section-label { display: flex; align-items: center; gap: var(--s-03); font-size: .65rem; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; color: var(--accent-text); margin-bottom: var(--s-05); }
-.index-section-label::before { content: ''; width: 20px; height: 2px; background: var(--accent); display: inline-block; flex-shrink: 0; }
-.index-section-title { font-size: clamp(1.25rem, 2.5vw, 1.75rem); font-weight: 300; color: var(--text-primary); margin-bottom: var(--s-07); line-height: 1.2; }
-.index-section-title strong { font-weight: 700; }
+/* ─── Hero ──────────────────────────────────────────────── */
+.hero-section {
+  position: relative;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #1a0505 0%, #3b0a1a 30%, #7a1f2e 58%, #ec5d5e 80%, #ff3cac 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 200px 2rem 4rem 3rem;
+  text-align: left;
+}
 
-/* ─── Case study grid ───────────────────────────────────── */
-.case-index { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--border-subtle); border: 1px solid var(--border-subtle); margin-bottom: var(--s-09); }
-.case-card { background: var(--bg); padding: var(--s-06); display: flex; flex-direction: column; gap: var(--s-03); text-decoration: none; color: inherit; border-top: 3px solid transparent; transition: border-color .15s, background .15s; }
-.case-card:hover { border-top-color: var(--accent); background: var(--layer-02); }
-.case-card:focus-visible { outline: 2px solid var(--accent-dark); outline-offset: -2px; }
-.case-tag { display: inline-flex; align-items: center; align-self: flex-start; font-size: .6875rem; font-weight: 500; letter-spacing: .02em; padding: .125rem .625rem; background: var(--tag-bg); color: var(--tag-color); border-radius: 9999px; line-height: 1.5; white-space: nowrap; }
-.case-num { font-size: .6rem; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; color: var(--accent-text); }
-.case-card h3 { font-size: .9375rem; font-weight: 600; line-height: 1.35; color: var(--text-primary); }
-.case-card p { font-size: .8125rem; color: var(--text-secondary); line-height: 1.6; margin: 0; }
-.case-meta { font-size: .7rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: .06em; margin-top: var(--s-02); padding-top: var(--s-03); border-top: 1px solid var(--border-subtle); }
-.case-empty { background: var(--bg); }
+.hero-inner {
+  max-width: 860px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 3.5rem;
+  align-items: flex-start;
+}
 
-/* ─── Divider between sections ──────────────────────────── */
-.section-divider { height: 1px; background: var(--border-subtle); margin: 0 0 var(--s-09); }
+.hero-photo {
+  flex-shrink: 0;
+  padding-top: 1.75rem;
+}
+.hero-photo img {
+  width: 100%;
+  border-radius: 50%;
+  display: block;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border: 3px solid rgba(255,255,255,.25);
+}
 
-/* ─── Vision / Provocations ─────────────────────────────── */
-.prov-header { margin-bottom: var(--s-07); }
-.prov-header h2 { font-size: clamp(1.25rem, 2.5vw, 1.75rem); font-weight: 300; color: var(--text-primary); line-height: 1.2; }
-.prov-header h2 strong { font-weight: 700; }
-.prov-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: var(--s-05); }
-.prov-card { display: flex; flex-direction: column; border: 1px solid var(--border-subtle); overflow: hidden; transition: box-shadow .15s; }
-.prov-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,.08); }
-.prov-image-area { position: relative; aspect-ratio: 16/9; background: var(--accent-tertiary); overflow: hidden; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: var(--s-03); }
-.prov-image-area img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.prov-image-area-placeholder { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: var(--s-03); width: 100%; height: 100%; }
-.prov-image-area-placeholder svg { width: 32px; height: 32px; stroke: var(--accent); fill: none; stroke-width: 1.2; opacity: .5; }
-.prov-image-area-placeholder span { font-size: .6rem; text-transform: uppercase; letter-spacing: .08em; color: var(--accent-text); opacity: .6; }
-.prov-type-badge { position: absolute; top: var(--s-04); left: var(--s-04); font-size: .6rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; padding: .2rem .6rem; border-radius: 9999px; }
-.badge-whatif { background: var(--accent-dark); color: #fff; }   /* #991b1b on white child text irrelevant — white on dark bg: 7.5:1 ✓ */
-.badge-hmw { background: var(--text-primary); color: #fff; }      /* #161616: 16:1 ✓ */
-.prov-body { padding: var(--s-05); display: flex; flex-direction: column; gap: var(--s-03); flex: 1; }
-.prov-brand { font-size: .65rem; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--accent-text); }
-.prov-statement { font-size: .875rem; font-weight: 300; color: var(--text-primary); line-height: 1.6; }
-.prov-statement em { font-style: normal; font-weight: 600; color: var(--accent-text); }
-.prov-impact { font-size: .775rem; color: var(--text-secondary); line-height: 1.6; padding-top: var(--s-04); border-top: 1px solid var(--border-subtle); margin-top: auto; }
-.prov-impact strong { font-weight: 600; color: var(--text-primary); }
+.hero-copy { display: flex; flex-direction: column; }
 
-/* ─── Recognition strip ─────────────────────────────────── */
-.recog-section { padding: var(--s-09) 0 0; }
-.recog-eyebrow { font-size: .65rem; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; color: var(--accent-text); display: flex; align-items: center; gap: var(--s-03); margin-bottom: var(--s-05); }
-.recog-eyebrow::before { content: ''; width: 16px; height: 2px; background: var(--accent); display: inline-block; }
-.recog-section h2 { font-size: 1.5rem; font-weight: 300; line-height: 1.25; margin-bottom: var(--s-07); color: var(--text-primary); }
+.hero-eyebrow {
+  font-size: .6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .14em;
+  color: rgba(255,255,255,.55);
+  margin-bottom: 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: .625rem;
+}
+.hero-eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 20px;
+  height: 1.5px;
+  background: rgba(255,255,255,.4);
+  flex-shrink: 0;
+}
+
+.hero-name {
+  font-size: .6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .14em;
+  color: rgba(255,255,255,.55);
+  margin-bottom: .75rem;
+}
+
+.hero-tagline {
+  font-size: clamp(2.75rem, 7vw, 4.5rem);
+  font-weight: 300;
+  line-height: 1.1;
+  color: rgba(255,255,255,.8);
+  margin-bottom: 1.75rem;
+}
+
+.hero-divider {
+  width: 36px;
+  height: 1.5px;
+  background: rgba(255,255,255,.35);
+  margin-bottom: 1.75rem;
+}
+
+.hero-bio {
+  font-size: .9375rem;
+  font-weight: 300;
+  color: rgba(255,255,255,.7);
+  line-height: 1.8;
+  margin-bottom: 2.5rem;
+}
+
+/* ─── Recognition ───────────────────────────────────────── */
+.recog-section {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 5rem 2rem 6rem;
+}
+
+.recog-eyebrow {
+  font-size: .65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  color: var(--accent-text);
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  margin-bottom: 1rem;
+}
+.recog-eyebrow::before {
+  content: '';
+  width: 16px;
+  height: 2px;
+  background: var(--accent);
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.recog-section h2 {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 300;
+  line-height: 1.25;
+  margin-bottom: 2.5rem;
+  color: var(--text-primary);
+}
 .recog-section h2 strong { font-weight: 600; }
-.recognition-strip { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap: 1px; background: var(--border-subtle); border: 1px solid var(--border-subtle); }
-.recognition-item { background: var(--bg); padding: var(--s-06); display: flex; flex-direction: column; gap: var(--s-03); }
+
+.recognition-strip {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1px;
+  background: var(--border-subtle);
+  border: 1px solid var(--border-subtle);
+}
+
+.recognition-item {
+  background: var(--bg);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: .75rem;
+  transition: background .15s;
+}
 .recognition-item:hover { background: var(--layer-01); }
-.recog-title { font-size: .9375rem; font-weight: 600; line-height: 1.35; color: var(--text-primary); }
-.recog-body { font-size: .8125rem; color: var(--text-secondary); line-height: 1.6; margin: 0; }
-.recog-meta { font-size: .7rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: .06em; margin-top: var(--s-02); }
 
-/* ─── Impact strip ──────────────────────────────────────── */
+.recog-title {
+  font-size: .9375rem;
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--text-primary);
+}
+.recog-body {
+  font-size: .8125rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin: 0;
+}
+.recog-meta {
+  font-size: .7rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  margin-top: .25rem;
+}
 
-/* ─── Shared / carried-over component styles ────────────── */
-.tag { display: inline-block; padding: var(--s-02) var(--s-04); background: var(--tag-bg); color: var(--tag-color); font-size: .75rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; }
-.tag-accent { background: var(--accent-dark); color: #ffffff; }
-.hero { padding: var(--s-10) 0 var(--s-09); border-bottom: 1px solid var(--border-subtle); }
-.hero-meta { display: flex; align-items: center; gap: var(--s-05); flex-wrap: wrap; margin-bottom: var(--s-06); }
-.hero-eyebrow { font-size: .75rem; color: var(--text-secondary); letter-spacing: .08em; text-transform: uppercase; }
-.hero h1 { font-size: clamp(1.75rem,4vw,2.625rem); font-weight: 300; line-height: 1.2; max-width: 800px; margin-bottom: var(--s-06); }
-.hero h1 strong { font-weight: 600; color: var(--accent-text); }
-.hero-summary { font-size: 1.125rem; color: var(--text-secondary); max-width: 680px; line-height: 1.7; margin-bottom: var(--s-08); }
-.stat-row { display: grid; grid-template-columns: repeat(auto-fit,minmax(140px,1fr)); gap: 1px; background: var(--border-subtle); border: 1px solid var(--border-subtle); margin-top: var(--s-07); }
-.stat { background: var(--bg); padding: var(--s-07) var(--s-06); display: flex; flex-direction: column; gap: var(--s-02); }
-.stat-number { font-size: clamp(1.5rem,3vw,2.25rem); font-weight: 300; line-height: 1; color: var(--accent); }
-.stat-number strong { font-weight: 600; }
-.stat-label { font-size: .75rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: .06em; }
-.toc { display: flex; flex-wrap: wrap; border-bottom: 1px solid var(--border-subtle); margin-bottom: var(--s-09); background: var(--bg); }
-.toc a { padding: var(--s-04) var(--s-06); font-size: .75rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--text-secondary); text-decoration: none; border-bottom: 2px solid transparent; white-space: nowrap; }
-.toc a:hover { color: var(--accent-text); border-bottom-color: var(--accent); }
-.content { padding-bottom: var(--s-12); }
-.section { display: grid; grid-template-columns: 220px 1fr; gap: 0 var(--s-09); padding: var(--s-09) 0; border-bottom: 1px solid var(--border-subtle); }
-.section:last-child { border-bottom: none; }
-.section-number { font-size: .75rem; font-weight: 600; color: var(--accent-text); text-transform: uppercase; letter-spacing: .1em; margin-bottom: var(--s-03); display: flex; align-items: center; gap: var(--s-03); }
-.section-number::before { content: ''; display: inline-block; width: 16px; height: 2px; background: var(--accent); }
-.section-title { font-size: 1.25rem; font-weight: 600; line-height: 1.3; }
-h2.bh { font-size: 1.25rem; font-weight: 600; margin-top: var(--s-07); margin-bottom: var(--s-04); }
-h2.bh:first-child { margin-top: 0; }
-.callout { background: var(--layer-01); padding: var(--s-06) var(--s-07); margin: var(--s-06) 0; }
-.callout-label { font-size: .75rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--accent-text); margin-bottom: var(--s-04); }
-.callout p { font-family: 'Sedgwick Ave', cursive; font-size: 1.46rem; font-weight: 400; color: var(--text-primary); line-height: 1.6; margin: 0; }
-.callout p strong { font-weight: 600; }
-.callout ul { list-style: none; padding: 0; margin: var(--s-04) 0 0; }
-.callout ul li { font-size: 1rem; font-weight: 300; color: var(--text-primary); line-height: 1.7; padding: var(--s-02) 0 var(--s-02) var(--s-06); position: relative; }
-.callout ul li::before { content: ''; position: absolute; left: 0; top: .7em; width: 4px; height: 4px; background: var(--accent); }
-.card-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(180px,1fr)); gap: 1px; background: var(--border-subtle); border: 1px solid var(--border-subtle); margin: var(--s-06) 0; }
-.card { background: var(--bg); padding: var(--s-06); display: flex; flex-direction: column; gap: var(--s-03); border-top: 3px solid transparent; }
-.card:hover { border-top-color: var(--accent-secondary); }
-.card-title { font-size: 1rem; font-weight: 600; }
-.card p { font-size: .875rem; color: var(--text-secondary); margin: 0; }
-ul.cl { list-style: none; padding: 0; margin: var(--s-03) 0 var(--s-05); }
-ul.cl li { font-size: .875rem; color: var(--text-secondary); line-height: 1.7; padding: var(--s-03) 0 var(--s-03) var(--s-06); position: relative; }
-ul.cl li::before { content: ''; position: absolute; left: 0; top: .75em; width: 4px; height: 4px; background: var(--accent); }
-.phases { display: flex; flex-direction: column; margin: var(--s-06) 0; }
-.phase { display: grid; grid-template-columns: 90px 1fr; gap: 0 var(--s-06); padding: var(--s-06) 0; border-bottom: 1px solid var(--border-subtle); }
-.phase:last-child { border-bottom: none; }
-.phase-num { font-size: .75rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--accent-text); padding-top: var(--s-02); }
-.phase h3 { font-size: 1rem; font-weight: 600; margin-bottom: var(--s-03); }
-.phase p { margin-bottom: var(--s-03); }
-.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-07); margin: var(--s-06) 0; }
-.two-col h3 { font-size: 1rem; font-weight: 600; margin-bottom: var(--s-03); }
-.year-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-06); margin: var(--s-06) 0; }
-.year-block { padding: var(--s-06); background: var(--layer-01); }
-.year-block h3 { font-size: .75rem; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--accent-text); margin-bottom: var(--s-04); display: flex; align-items: center; gap: var(--s-03); }
-.year-block h3::before { content: ''; width: 16px; height: 2px; background: var(--accent); display: inline-block; }
-.compare { width: 100%; border-collapse: collapse; margin: var(--s-06) 0; }
-.compare th, .compare td { padding: var(--s-04) var(--s-05); text-align: left; font-size: .875rem; border-bottom: 1px solid var(--border-subtle); vertical-align: top; }
-.compare th { font-weight: 600; background: var(--layer-01); font-size: .75rem; text-transform: uppercase; letter-spacing: .06em; color: var(--accent-text); }
-.compare td { color: var(--text-secondary); }
-.compare td:first-child { font-weight: 600; color: var(--text-primary); width: 35%; }
-.ownership-table { width: 100%; border-collapse: collapse; margin: var(--s-06) 0; }
-.ownership-table th, .ownership-table td { padding: var(--s-04) var(--s-05); text-align: left; font-size: .875rem; border-bottom: 1px solid var(--border-subtle); }
-.ownership-table th { font-weight: 600; background: var(--layer-01); font-size: .75rem; text-transform: uppercase; letter-spacing: .06em; color: var(--accent-text); }
-.ownership-table td { color: var(--text-secondary); }
-.dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: var(--s-03); vertical-align: middle; }
-.dot-full { background: var(--accent); } .dot-shared { background: var(--accent-secondary); }
-.tag-cluster { display: flex; flex-wrap: wrap; gap: var(--s-03); margin: var(--s-04) 0; }
-.theme-tag { font-size: .75rem; font-weight: 600; padding: var(--s-02) var(--s-05); border: 1px solid var(--border-strong); color: var(--text-primary); background: var(--bg); letter-spacing: .04em; }
-.outcome-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(160px,1fr)); gap: var(--s-05); margin: var(--s-06) 0; }
-.metric { padding: var(--s-06); background: var(--accent-dark); color: #ffffff; display: flex; flex-direction: column; gap: var(--s-02); }
-.metric-value { font-size: clamp(1.25rem,3vw,1.75rem); font-weight: 300; line-height: 1; }
-.metric-value strong { font-weight: 600; }
-.metric-label { font-size: .75rem; text-transform: uppercase; letter-spacing: .06em; opacity: .9; }
-.metric-desc { font-size: .8125rem; opacity: .85; margin-top: var(--s-03); line-height: 1.5; }
-.metric-secondary { background: var(--text-primary); color: #ffffff; }
-.metric-light { background: var(--layer-01); color: var(--text-primary); border: 1px solid var(--border-subtle); }
-.metric-light .metric-value { color: var(--accent-text); }
-.metric-light .metric-label { color: var(--accent-text); opacity: 1; }
-.metric-light .metric-desc { color: var(--text-secondary); opacity: 1; }
-.quote-block { margin: var(--s-07) 0; padding: var(--s-07) var(--s-07) var(--s-07) var(--s-08); background: var(--layer-01); border-left: 3px solid var(--accent); position: relative; }
-.quote-mark { position: absolute; left: var(--s-06); top: var(--s-05); font-size: 3rem; font-weight: 300; line-height: 1; color: var(--accent); opacity: .4; }
-.quote-block blockquote { font-size: 1rem; font-style: italic; font-weight: 300; color: var(--text-primary); line-height: 1.7; margin: 0 0 var(--s-04); }
-.quote-attr { font-size: .75rem; color: var(--accent-text); font-weight: 600; text-transform: uppercase; letter-spacing: .06em; }
-.back-btn { display: inline-flex; align-items: center; gap: var(--s-03); font-size: .75rem; font-weight: 600; text-transform: uppercase; letter-spacing: .08em; color: var(--text-secondary); cursor: pointer; background: none; border: none; padding: var(--s-05) 0; text-decoration: none; }
-.back-btn:hover { color: var(--accent-text); }
-.back-btn svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2; }
-footer { border-top: 1px solid var(--border-subtle); padding: var(--s-07) 0; text-align: center; font-size: .75rem; color: var(--text-muted); }
+/* ─── Footer ────────────────────────────────────────────── */
+footer {
+  border-top: 1px solid var(--border-subtle);
+  padding: 2rem 0;
+  text-align: center;
+  font-size: .75rem;
+  color: var(--text-muted);
+}
 footer a { color: var(--text-muted); text-decoration: none; }
 footer a:hover { color: var(--accent-text); }
 
 /* ─── Responsive ────────────────────────────────────────── */
-@media (max-width: 1024px) {
-  .index-layout { grid-template-columns: 1fr; }
-  .index-sidebar { position: relative; top: auto; height: auto; flex-direction: row; flex-wrap: wrap; }
-  .index-sidebar-photo { width: 160px; aspect-ratio: 3/4; flex-shrink: 0; }
-  .index-sidebar-bio { flex: 1; min-width: 200px; padding: var(--s-06); border-top: none; border-left: 3px solid var(--accent); }
-  .index-content { padding: var(--s-07) var(--s-05); }
-  .case-index { grid-template-columns: 1fr; }
-  .prov-grid { grid-template-columns: 1fr; }
-}
-@media (max-width: 600px) {
-  .nav-bar { padding: var(--s-04) var(--s-05); flex-wrap: wrap; gap: var(--s-03); }
-  .index-sidebar { flex-direction: column; }
-  .index-sidebar-photo { width: 100%; aspect-ratio: 4/3; }
-  .index-sidebar-bio { border-left: none; border-top: 3px solid var(--accent); }
-  .section, .two-col, .year-grid { grid-template-columns: 1fr; }
+@media (max-width: 700px) {
+  .hero-inner { grid-template-columns: 1fr; gap: 2rem; text-align: center; }
+  .hero-eyebrow { justify-content: center; }
+  .hero-divider { margin-left: auto; margin-right: auto; }
+  .hero-photo img { width: 140px; margin: 0 auto; }
+  .hero-section { padding: 5rem 1.25rem 3rem; }
+  .recog-section { padding: 3rem 1.25rem 4rem; }
+  .recognition-strip { grid-template-columns: 1fr; }
 }
 </style>
 </head>
@@ -249,7 +271,7 @@ footer a:hover { color: var(--accent-text); }
     <em>Connecting vision to value through design, AI, &amp; human-centered innovation</em>
   </a>
   <div class="nav-links" role="list">
-    <a href="index.html" id="nav-index" role="listitem">Portfolio</a>
+    <a href="index.html" id="nav-index" class="active" role="listitem">Portfolio</a>
     <a href="cs1.html" role="listitem">CS 01</a>
     <a href="cs2.html" role="listitem">CS 02</a>
     <a href="cs3.html" role="listitem">CS 03</a>
@@ -261,103 +283,55 @@ footer a:hover { color: var(--accent-text); }
   </div>
 </nav>
 
-<div class="index-layout">
-
-  <!-- ── Left sidebar ── -->
-  <aside class="index-sidebar" aria-label="About Katie Shimmin">
-    <div class="index-sidebar-photo">
+<!-- ── Hero ── -->
+<section class="hero-section">
+  <div class="hero-inner">
+    <div class="hero-photo">
       <img src="links/headshot_Circle.png" alt="Katie Shimmin, Design Director">
     </div>
-    <div class="index-sidebar-bio">
-      <strong>Katie Shimmin</strong>
-      <span class="tagline">Connecting vision to value through design, AI, &amp; human-centered innovation</span>
-      <p class="bio-body">I turn big ideas into experiences people don't forget. Whether it's an executive briefing or an innovation showcase, I bring creative vision, strategic clarity, and the energy to make it land. I'm fluent in AI and emerging tech, and I know how to make complex ideas feel exciting and accessible to C-suite audiences.</p>
+    <div class="hero-copy">
+      <p class="hero-name">Katie Shimmin</p>
+      <h2 class="hero-tagline">I connect vision to value through design, AI, &amp; human-centered innovation</h2>
+      <div class="hero-divider"></div>
+      <p class="hero-bio">I turn big ideas into experiences people don't forget. Whether it's an executive briefing or an innovation showcase, I bring creative vision, strategic clarity, and the energy to make it land. I'm fluent in AI and emerging tech, and I know how to make complex ideas feel exciting and accessible to C-suite audiences.</p>
     </div>
-  </aside>
+  </div>
+</section>
 
-  <!-- ── Right content ── -->
-  <main class="index-content" id="main-content">
+<!-- ── Recognition ── -->
+<section class="recog-section">
+  <div class="recog-eyebrow">Recognition</div>
+  <h2>Work that <strong>got noticed.</strong></h2>
 
-    <!-- Case Studies -->
-    <div class="index-section-label">Work</div>
-    <h1 class="index-section-title"><strong>Case Studies</strong></h1>
+  <div class="recognition-strip">
 
-    <div class="case-index" role="list" aria-label="Case studies">
-      <a class="case-card" href="cs1.html" role="listitem">
-        <span class="case-tag">Strategy &amp; Operations</span>
-        <div class="case-num">Case Study 01</div>
-        <h2>Scaling Technical Account Planning Across IBM Financial Services</h2>
-        <p>Built a repeatable strategic planning operating model across 63 accounts, generating 1,000+ opportunities and $50.6M in won revenue.</p>
-        <div class="case-meta">IBM FSM · 2024–2025</div>
-      </a>
-      <a class="case-card" href="cs3.html" role="listitem">
-        <span class="case-tag">AI Enablement</span>
-        <div class="case-num">Case Study 03</div>
-        <h2>Upskilling &amp; Reskilling 80 IBMers for the Agentic AI Era</h2>
-        <p>Designed a role-based enablement model that drove a 111.73% increase in AI-generated code usage and 93.8% post-event confidence.</p>
-        <div class="case-meta">IBM Internal · 2024</div>
-      </a>
-      <a class="case-card" href="cs4.html" role="listitem">
-        <span class="case-tag">AI Enablement</span>
-        <div class="case-num">Case Study 04</div>
-        <h2>From Pilot to Platform: AI Innovation for Social Impact</h2>
-        <p>Designed and scaled a two-year AI adoption framework for nonprofits, generating $750K+ in opportunity value across multiple markets.</p>
-        <div class="case-meta">IBM Social Impact · 2022–2024</div>
-      </a>
-      <a class="case-card" href="cs2.html" role="listitem">
-        <span class="case-tag">Client Experience Design</span>
-        <div class="case-num">Case Study 02</div>
-        <h2>Scaling Innovation Through Experience Design</h2>
-        <p>Transformed a single client hackathon into a repeatable growth model adopted across 7 IBM markets, generating 9 qualified AI opportunities.</p>
-        <div class="case-meta">State Street · Oct 2023</div>
-      </a>
-      <a class="case-card" href="cs5.html" role="listitem">
-        <span class="case-tag">Client Experience Design</span>
-        <div class="case-num">Case Study 05</div>
-        <h2>Candle Power: Retail Pop-Up &amp; Home Fragrance Brand Design</h2>
-        <p>Designed a retail pop-up concept and full brand system for a home fragrance line — from naming and identity to packaging and in-store experience.</p>
-        <div class="case-meta">Newell Brands · 2018</div>
-      </a>
-      <div class="case-empty" aria-hidden="true"></div>
+    <div class="recognition-item">
+      <img src="links/presence/awards/Artemis.svg" alt="IBM Artemis Program" style="width:100%;height:120px;object-fit:cover;margin-bottom:.5rem;">
+      <div class="recog-title">IBM Artemis Program — Top 7 of 2,000</div>
+      <p class="recog-body">Selected by IBM's worldwide CE VP from 2,000 practitioners worldwide. A handpicked cohort charged with transforming how pre-sales operates as a business. This isn't a participation award. It's a recognition that the way I work sets a standard worth scaling.</p>
+      <div class="recog-meta">Top Global Performer · 2024</div>
     </div>
 
-    <!-- ══ RECOGNITION & ACCOLADES ══ -->
-    <section class="recog-section">
-      <div class="recog-eyebrow">Recognition</div>
-      <h2>Work that <strong>got noticed.</strong></h2>
+    <div class="recognition-item">
+      <img src="links/presence/awards/pr-award.png" alt="PR Platinum Award" style="width:100%;height:120px;object-fit:contain;background:var(--layer-01);margin-bottom:.5rem;">
+      <div class="recog-title">The Candle Power — Yankee Candle Pop-Up</div>
+      <p class="recog-body">Recognized for innovative storytelling, creativity, and measurable results at the Yankee Candle pop-up experience.</p>
+      <div class="recog-meta">PR Platinum Award · 2018</div>
+    </div>
 
-      <div class="recognition-strip">
+    <div class="recognition-item">
+      <img src="links/presence/awards/AIGA.png" alt="AIGA Archives" style="width:100%;height:120px;object-fit:cover;margin-bottom:.5rem;">
+      <div class="recog-title">Accepted into the AIGA Archives</div>
+      <p class="recog-body">Storytelling and experience design work exploring the impact of color, material, and finish on business outcomes for CPG company Newell Brands.</p>
+      <div class="recog-meta">AIGA Archives · West Michigan · 2018</div>
+    </div>
 
-        <div class="recognition-item">
-          <img src="links/presence/awards/Artemis.svg" alt="IBM Artemis Program" style="width:100%;height:120px;object-fit:cover;margin-bottom:var(--s-04);">
-          <div class="recog-title">IBM Artemis Program — Top 7 of 2,000</div>
-          <p class="recog-body">Selected by IBM's worldwide CE VP from 2,000 practitioners worldwide. A handpicked cohort charged with transforming how pre-sales operates as a business. This isn't a participation award. It's a recognition that the way I work sets a standard worth scaling.</p>
-          <div class="recog-meta">Top Global Performer · 2024</div>
-        </div>
+  </div>
+</section>
 
-        <div class="recognition-item">
-          <img src="links/presence/awards/pr-award.png" alt="PR Platinum Award" style="width:100%;height:120px;object-fit:contain;background:var(--layer-01);margin-bottom:var(--s-04);">
-          <div class="recog-title">The Candle Power — Yankee Candle Pop-Up</div>
-          <p class="recog-body">Recognized for innovative storytelling, creativity, and measurable results at the Yankee Candle pop-up experience.</p>
-          <div class="recog-meta">PR Platinum Award · 2018</div>
-        </div>
+<footer>
+  <span>&copy; 2026 Katie Shimmin</span>
+</footer>
 
-        <div class="recognition-item">
-          <img src="links/presence/awards/AIGA.png" alt="AIGA Archives" style="width:100%;height:120px;object-fit:cover;margin-bottom:var(--s-04);">
-          <div class="recog-title">Accepted into the AIGA Archives</div>
-          <p class="recog-body">Storytelling and experience design work exploring the impact of color, material, and finish on business outcomes for CPG company Newell Brands.</p>
-          <div class="recog-meta">AIGA Archives · West Michigan · 2018</div>
-        </div>
-
-      </div>
-    </section>
-
-  </main><!-- /index-content -->
-
-</div><!-- /index-layout -->
-
-<script>
-  document.getElementById('nav-index').classList.add('active');
-</script>
 </body>
 </html>
