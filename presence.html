@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Thought Leadership &amp; Presence · Design Director Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sedgwick+Ave&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #ffffff; --layer-01: #f4f4f4; --border-subtle: #e0e0e0;
+  --border-strong: #8d8d8d; --text-primary: #161616; --text-secondary: #525252;
+  --accent: #ec5d5e; --accent-secondary: #ff9592; --accent-tertiary: #ffd1d9; --accent-text: #ffffff;
+  --accent-on-light: #b91c1c; /* darkened accent for text on white — 5.9:1 contrast */
+  --meta-text: #6b6b6b; /* replaces #8d8d8d for text — 4.6:1 contrast */
+  --tag-bg: #ffe8e8; --tag-color: #c22828;
+  --font: 'IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif;
+  --s-02:.25rem;--s-03:.5rem;--s-04:.75rem;--s-05:1rem;
+  --s-06:1.5rem;--s-07:2rem;--s-08:2.5rem;--s-09:3rem;--s-10:4rem;--s-12:6rem;
+}
+html { font-family: var(--font); font-size: 16px; scroll-behavior: smooth; }
+body { background: var(--bg); color: var(--text-primary); line-height: 1.6; }
+.page { max-width: 1056px; margin: 0 auto; padding: 0 var(--s-07); }
+
+/* NAV */
+.nav-bar { background: var(--bg); border-bottom: 1px solid var(--border-subtle); padding: var(--s-04) var(--s-07); display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; }
+.nav-wordmark { font-size: .75rem; font-weight: 600; letter-spacing: .1em; color: var(--text-secondary); text-decoration: none; display:flex; flex-direction:column; gap:.1em; }
+.nav-wordmark:hover { color: var(--accent); }
+.nav-links { display: flex; flex-wrap: wrap; gap: var(--s-02); }
+.nav-links a { font-size: .75rem; color: var(--text-secondary); text-decoration: none; padding: var(--s-02) var(--s-04); border-bottom: 2px solid transparent; }
+.nav-links a:hover, .nav-links a.active { color: var(--accent); border-bottom-color: var(--accent); }
+
+/* HERO */
+.hero { padding: var(--s-10) 0 var(--s-09); border-bottom: 1px solid var(--border-subtle); }
+.hero-eyebrow { font-size: .65rem; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; color: var(--accent-on-light); display: flex; align-items: center; gap: var(--s-03); margin-bottom: var(--s-05); }
+.hero-eyebrow::before { content: ''; width: 16px; height: 2px; background: var(--accent-on-light); display: inline-block; }
+.hero h1 { font-size: clamp(1.75rem,4vw,2.625rem); font-weight: 300; line-height: 1.2; max-width: 800px; margin-bottom: var(--s-06); }
+.hero h1 strong { font-weight: 600; color: var(--accent-on-light); }
+.hero-summary { font-size: 1.125rem; color: var(--text-secondary); max-width: 640px; line-height: 1.7; }
+
+/* ACCOLADE BANNER */
+.accolade-banner { background: var(--accent); color: var(--accent-text); padding: var(--s-08) var(--s-07); margin: 0; }
+.accolade-banner-inner { max-width: 1056px; margin: 0 auto; display: grid; grid-template-columns: 1fr 340px; gap: var(--s-09); align-items: center; }
+.accolade-eyebrow { font-size: .65rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: rgba(255,255,255,.85); margin-bottom: var(--s-04); }
+.accolade-banner h2 { font-size: clamp(1.25rem,2.5vw,1.75rem); font-weight: 300; line-height: 1.3; margin-bottom: var(--s-04); }
+.accolade-banner h2 strong { font-weight: 600; }
+.accolade-banner p { font-size: .875rem; line-height: 1.7; margin: 0; }
+.accolade-stat { display: flex; flex-direction: column; gap: var(--s-03); padding: var(--s-06); background: rgba(255,255,255,.12); }
+.accolade-stat-num { font-size: 3rem; font-weight: 300; line-height: 1; }
+.accolade-stat-num strong { font-weight: 600; }
+.accolade-stat-label { font-size: .75rem; text-transform: uppercase; letter-spacing: .08em; color: rgba(255,255,255,.9); }
+.accolade-stat-desc { font-size: .8125rem; line-height: 1.5; margin-top: var(--s-02); }
+
+/* SECTION LAYOUT */
+.tl-section { padding: var(--s-10) 0; border-bottom: 1px solid var(--border-subtle); }
+.tl-section:last-of-type { border-bottom: none; }
+.section-eyebrow { font-size: .65rem; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; color: var(--accent-on-light); display: flex; align-items: center; gap: var(--s-03); margin-bottom: var(--s-05); }
+.section-eyebrow::before { content: ''; width: 16px; height: 2px; background: var(--accent-on-light); display: inline-block; }
+.tl-section h2 { font-size: 1.5rem; font-weight: 300; line-height: 1.25; margin-bottom: var(--s-07); }
+.tl-section h2 strong { font-weight: 600; }
+
+/* PANEL CARDS — for speaking engagements */
+.panel-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); gap: var(--s-06); margin-top: var(--s-06); }
+.panel-card { background: var(--bg); border: 1px solid var(--border-subtle); padding: var(--s-07) var(--s-06); display: flex; flex-direction: column; gap: var(--s-04); position: relative; }
+.panel-card:hover { background: var(--layer-01); }
+.panel-logo-placeholder { width: 72px; height: 72px; background: var(--accent-tertiary); display: flex; align-items: center; justify-content: center; margin-bottom: var(--s-02); flex-shrink: 0; overflow: hidden; }
+.panel-logo-placeholder svg { width: 24px; height: 24px; stroke: var(--accent); fill: none; stroke-width: 1.5; }
+.panel-org { font-size: .65rem; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; color: var(--accent-on-light); }
+.panel-title { font-size: 1rem; font-weight: 600; line-height: 1.3; }
+.panel-body { font-size: .875rem; color: var(--text-secondary); line-height: 1.7; margin: 0; }
+.panel-task { background: var(--layer-01); padding: var(--s-04) var(--s-05); margin-top: var(--s-02); }
+.panel-task-label { font-size: .6rem; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; color: var(--accent-on-light); margin-bottom: var(--s-02); }
+.panel-task p { font-size: 1.056rem; color: var(--text-primary); line-height: 1.6; margin: 0; font-weight: 300; font-family: 'Sedgwick Ave', cursive; }
+.panel-meta { font-size: .75rem; color: var(--meta-text); text-transform: uppercase; letter-spacing: .06em; margin-top: auto; padding-top: var(--s-03); }
+
+/* COMMUNITY + EDITORIAL — wide two-column items */
+.feature-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-06); margin-top: var(--s-06); }
+.feature-card { padding: var(--s-07) var(--s-06); border: 1px solid var(--border-subtle); display: flex; flex-direction: column; gap: var(--s-04); }
+.feature-card.accent-card { background: var(--accent-tertiary); border-color: var(--accent-secondary); }
+.feature-icon { width: 40px; height: 40px; background: var(--accent); display: flex; align-items: center; justify-content: center; margin-bottom: var(--s-02); }
+.feature-icon svg { width: 20px; height: 20px; stroke: #fff; fill: none; stroke-width: 1.5; }
+.feature-eyebrow { font-size: .65rem; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; color: var(--accent-on-light); }
+.feature-title { font-size: 1.125rem; font-weight: 600; line-height: 1.3; }
+.feature-body { font-size: .875rem; color: var(--text-secondary); line-height: 1.7; margin: 0; }
+.feature-meta { font-size: .75rem; color: var(--meta-text); text-transform: uppercase; letter-spacing: .06em; margin-top: auto; }
+
+/* RECOGNITION STRIP */
+.recognition-strip { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap: 1px; background: var(--border-subtle); border: 1px solid var(--border-subtle); margin-top: var(--s-06); }
+.recognition-item { background: var(--bg); padding: var(--s-06); display: flex; flex-direction: column; gap: var(--s-03); }
+.recognition-item:hover { background: var(--layer-01); }
+.recog-icon { font-size: 1.5rem; line-height: 1; margin-bottom: var(--s-02); }
+.recog-label { font-size: .65rem; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; color: var(--accent-on-light); }
+.recog-title { font-size: .9375rem; font-weight: 600; line-height: 1.35; }
+.recog-body { font-size: .8125rem; color: var(--text-secondary); line-height: 1.6; margin: 0; }
+.recog-meta { font-size: .7rem; color: var(--meta-text); text-transform: uppercase; letter-spacing: .06em; margin-top: var(--s-02); }
+
+/* CALLOUT */
+.callout { background: var(--layer-01); padding: var(--s-06) var(--s-07); margin: var(--s-07) 0; }
+.callout-label { font-size: .75rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--accent-on-light); margin-bottom: var(--s-04); }
+.callout p { font-family: 'Sedgwick Ave', cursive; font-size: 1.46rem; font-weight: 400; color: var(--text-primary); line-height: 1.6; margin: 0; }
+.callout p strong { font-weight: 600; }
+
+/* MEMBERSHIP ROW */
+.membership-row { display: flex; align-items: center; gap: var(--s-07); padding: var(--s-06) 0; border-bottom: 1px solid var(--border-subtle); }
+.membership-row:last-child { border-bottom: none; }
+.membership-badge { width: 56px; height: 56px; background: var(--accent-tertiary); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.membership-badge svg { width: 28px; height: 28px; stroke: var(--accent); fill: none; stroke-width: 1.5; }
+.membership-content { flex: 1; }
+.membership-title { font-size: 1rem; font-weight: 600; margin-bottom: var(--s-02); }
+.membership-body { font-size: .875rem; color: var(--text-secondary); line-height: 1.6; margin: 0; }
+.membership-since { font-size: .7rem; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--accent-on-light); margin-top: var(--s-02); }
+
+/* PHOTO PLACEHOLDER */
+.photo-placeholder { background: var(--layer-01); border: 1px dashed var(--border-strong); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: var(--s-03); color: var(--border-strong); font-size: .75rem; text-transform: uppercase; letter-spacing: .06em; }
+.photo-placeholder svg { width: 32px; height: 32px; stroke: var(--border-strong); fill: none; stroke-width: 1.5; }
+
+/* WOMEN IN DESIGN — impact banner + cards */
+.women-band { background: var(--accent-tertiary); padding: var(--s-08) var(--s-07); border-bottom: 4px solid var(--accent-secondary); }
+.women-band-inner { max-width: 1056px; margin: 0 auto; }
+.women-band-header { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-09); align-items: start; margin-bottom: var(--s-07); }
+.women-band-eyebrow { font-size: .65rem; font-weight: 700; text-transform: uppercase; letter-spacing: .14em; color: var(--accent-on-light); display: flex; align-items: center; gap: var(--s-03); margin-bottom: var(--s-04); }
+.women-band-eyebrow::before { content: ''; width: 16px; height: 2px; background: var(--accent-on-light); display: inline-block; }
+.women-band h2 { font-size: clamp(1.25rem,2.5vw,1.875rem); font-weight: 300; line-height: 1.25; color: var(--text-primary); }
+.women-band h2 strong { font-weight: 600; }
+.women-band-intro { font-size: 1rem; color: var(--text-secondary); line-height: 1.7; margin: 0; }
+.women-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--s-05); }
+.women-card { background: var(--bg); padding: var(--s-07) var(--s-06); display: flex; flex-direction: column; gap: var(--s-04); border-top: 3px solid var(--accent); }
+.women-card-eyebrow { font-size: .6rem; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; color: var(--accent-on-light); }
+.women-card-title { font-size: 1rem; font-weight: 600; line-height: 1.3; color: var(--text-primary); }
+.women-card-body { font-size: .875rem; color: var(--text-secondary); line-height: 1.7; margin: 0; }
+.women-card-outcome { background: var(--layer-01); padding: var(--s-04) var(--s-05); margin-top: var(--s-02); }
+.women-card-outcome-label { font-size: .6rem; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; color: var(--accent-on-light); display: flex; align-items: center; gap: var(--s-03); margin-bottom: var(--s-02); }
+.women-card-outcome-label::before { content: ''; width: 12px; height: 2px; background: var(--accent-on-light); display: inline-block; }
+.women-card-outcome p { font-size: .8125rem; color: var(--text-primary); font-weight: 300; line-height: 1.6; margin: 0; }
+.women-card-meta { font-size: .7rem; color: var(--meta-text); text-transform: uppercase; letter-spacing: .06em; margin-top: auto; padding-top: var(--s-03); }
+@media (max-width: 860px) { .women-band-header { grid-template-columns: 1fr; } .women-cards { grid-template-columns: 1fr; } }
+
+/* WOMEN CE FEATURED CARD */
+.women-featured { background: var(--bg); padding: var(--s-07) var(--s-07) var(--s-06); margin-bottom: var(--s-06); display: flex; flex-direction: column; gap: var(--s-05); }
+.women-featured-header { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-07); align-items: start; }
+.women-featured-eyebrow { font-size: .6rem; font-weight: 700; text-transform: uppercase; letter-spacing: .14em; color: var(--accent-on-light); display: flex; align-items: center; gap: var(--s-03); margin-bottom: var(--s-04); }
+.women-featured-eyebrow::before { content: ''; width: 14px; height: 2px; background: var(--accent-on-light); display: inline-block; }
+.women-featured-title { font-size: 1.375rem; font-weight: 600; line-height: 1.25; color: var(--text-primary); margin-bottom: var(--s-04); }
+.women-featured-body { font-size: .875rem; color: var(--text-secondary); line-height: 1.7; margin: 0 0 var(--s-03); }
+.women-featured-outcome { background: var(--accent-tertiary); border-left: 3px solid var(--accent-secondary); padding: var(--s-04) var(--s-05); }
+.women-featured-outcome-label { font-size: .6rem; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; color: var(--accent-on-light); margin-bottom: var(--s-02); }
+.women-featured-outcome p { font-size: .8125rem; color: var(--text-primary); font-weight: 300; line-height: 1.6; margin: 0; }
+.women-featured-meta { font-size: .7rem; color: var(--meta-text); text-transform: uppercase; letter-spacing: .06em; padding-top: var(--s-03); border-top: 1px solid var(--border-subtle); }
+
+/* CE PHOTO GRID + CAROUSEL */
+.ce-photo-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 3px; }
+.ce-photo-grid img { width: 100%; height: 160px; object-fit: cover; display: block; }
+.ce-carousel { margin-top: var(--s-04); overflow: hidden; }
+.ce-track { display: flex; transition: transform .35s ease; }
+.ce-track img { width: 100%; flex-shrink: 0; height: 420px; object-fit: cover; }
+.ce-controls { display: flex; align-items: center; justify-content: center; gap: var(--s-04); margin-top: var(--s-03); }
+.ce-btn { background: none; border: 1px solid var(--border-subtle); color: var(--text-secondary); width: 32px; height: 32px; cursor: pointer; font-size: .875rem; display: flex; align-items: center; justify-content: center; }
+.ce-btn:hover { border-color: var(--accent); color: var(--accent); }
+.ce-dots { display: flex; gap: var(--s-03); flex-wrap: wrap; justify-content: center; }
+.ce-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--border-strong); cursor: pointer; flex-shrink: 0; }
+.ce-dot.active { background: var(--accent); }
+@media (max-width: 860px) { .women-featured-header { grid-template-columns: 1fr; } .ce-photo-grid { grid-template-columns: repeat(3,1fr); } .ce-track img { height: 260px; } }
+
+/* TYPOGRAPHY */
+p { font-size: .875rem; color: var(--text-secondary); margin-bottom: var(--s-05); line-height: 1.7; }
+p:last-child { margin-bottom: 0; }
+
+/* FOOTER */
+footer { border-top: 1px solid var(--border-subtle); padding: var(--s-07) 0; text-align: center; font-size: .75rem; color: var(--text-secondary); }
+footer a { color: var(--text-secondary); }
+
+/* BACK */
+.back-btn { display: inline-flex; align-items: center; gap: var(--s-03); font-size: .75rem; font-weight: 600; text-transform: uppercase; letter-spacing: .08em; color: var(--text-secondary); text-decoration: none; padding: var(--s-05) 0; }
+.back-btn:hover { color: var(--accent); }
+.back-btn svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2; }
+
+@media (max-width: 768px) {
+  .accolade-banner-inner, .feature-grid { grid-template-columns: 1fr; }
+  .page { padding: 0 var(--s-05); }
+  .nav-bar { padding: var(--s-04) var(--s-05); flex-wrap: wrap; gap: var(--s-03); }
+  .membership-row { flex-direction: column; align-items: flex-start; }
+}
+/* PRINCETON CAROUSEL */
+.princeton-carousel { margin-top: var(--s-05); overflow: hidden; }
+.princeton-track { display: flex; transition: transform .35s ease; }
+.princeton-track img { width: 100%; flex-shrink: 0; height: 200px; object-fit: cover; }
+.princeton-controls { display: flex; align-items: center; justify-content: center; gap: var(--s-04); margin-top: var(--s-03); }
+.princeton-btn { background: none; border: 1px solid var(--border-subtle); color: var(--text-secondary); width: 28px; height: 28px; cursor: pointer; font-size: .875rem; display: flex; align-items: center; justify-content: center; }
+.princeton-btn:hover { border-color: var(--accent); color: var(--accent); }
+.princeton-dots { display: flex; gap: var(--s-03); }
+.princeton-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--border-strong); cursor: pointer; }
+.princeton-dot.active { background: var(--accent); }
+/* PARALLAX QUOTE BAND */
+.parallax-hero { position: relative; overflow: hidden; background: var(--accent-tertiary); min-height: 320px; display: flex; align-items: center; }
+.parallax-hero::before { content: ''; position: absolute; inset: -60px 0; background: radial-gradient(ellipse 60% 80% at 80% 50%, var(--accent-secondary) 0%, transparent 70%), radial-gradient(ellipse 40% 60% at 10% 30%, var(--accent) 0%, transparent 60%), var(--accent-tertiary); background-attachment: fixed; opacity: .18; }
+.parallax-hero-inner { position: relative; z-index: 1; max-width: 1056px; width: 100%; margin: 0 auto; padding: var(--s-10) var(--s-07); display: grid; grid-template-columns: 1fr 360px; gap: var(--s-09); align-items: center; }
+.parallax-strip { position: relative; overflow: hidden; height: 6px; }
+.parallax-strip::before { content: ''; position: absolute; inset: -40px 0; background: linear-gradient(90deg, var(--accent) 0%, var(--accent-secondary) 50%, var(--accent-tertiary) 100%); background-attachment: fixed; background-size: 200% 100%; }
+.reveal { opacity: 0; transform: translateY(28px); transition: opacity .6s cubic-bezier(.22,1,.36,1), transform .6s cubic-bezier(.22,1,.36,1); }
+.reveal.in-view { opacity: 1; transform: translateY(0); }
+.reveal-delay-1 { transition-delay: .1s; } .reveal-delay-2 { transition-delay: .2s; }
+@media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } .parallax-hero::before { background-attachment: scroll; } .parallax-strip::before { background-attachment: scroll; } }
+.ibm-quote-mark { font-size: 4rem; font-weight: 300; line-height: .8; color: var(--accent); margin-bottom: 0; }
+.ibm-quote-inner blockquote { font-size: clamp(1.25rem,2.5vw,1.75rem); font-weight: 300; color: var(--text-primary); line-height: 1.4; margin-bottom: var(--s-05); }
+.ibm-quote-inner blockquote strong { font-weight: 600; }
+.ibm-quote-attr { font-size: .75rem; font-weight: 600; text-transform: uppercase; letter-spacing: .1em; color: var(--accent-on-light); }
+.ibm-quote-meaning-label { font-size: .65rem; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; color: var(--text-secondary); margin-bottom: var(--s-04); display: flex; align-items: center; gap: var(--s-03); }
+.ibm-quote-meaning-label::before { content: ''; width: 16px; height: 2px; background: var(--accent-on-light); display: inline-block; }
+.ibm-quote-meaning ul { list-style: none; padding: 0; margin: 0; }
+.ibm-quote-meaning ul li { font-size: .875rem; color: var(--text-primary); line-height: 1.7; padding: var(--s-02) 0 var(--s-02) var(--s-06); position: relative; }
+.ibm-quote-meaning ul li::before { content: ''; position: absolute; left: 0; top: .7em; width: 4px; height: 4px; background: var(--accent); }
+@media (max-width: 860px) { .parallax-hero-inner { grid-template-columns: 1fr; padding: var(--s-07) var(--s-05); } }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav-bar">
+  <a class="nav-wordmark" href="index.html"><span style="display:block;">Katie Shimmin</span><em style="display:block;font-style:italic;font-weight:400;letter-spacing:0;text-transform:none;color:inherit;">Connecting vision to value through design, AI, &amp; human-centered innovation</em></a>
+  <div class="nav-links">
+    <a href="index.html">Portfolio</a>
+    <a href="cs1.html">CS 01</a>
+    <a href="cs2.html">CS 02</a>
+    <a href="cs3.html">CS 03</a>
+    <a href="cs4.html">CS 04</a>
+    <a href="cs5.html">CS 05</a>
+    <a href="presence.html" id="nav-presence" class="active">Presence</a>
+    <a href="people.html">People</a>
+    <a href="vision.html">Vision</a>
+  </div>
+</nav>
+
+<div class="page">
+
+  <a class="back-btn" href="index.html">
+    <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+    Portfolio
+  </a>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-eyebrow">Thought Leadership &amp; Presence</div>
+    <h1>I show up <strong>beyond the work.</strong></h1>
+    <p class="hero-summary">Speaking, writing, mentoring, building community — this is what happens when design leadership extends past the deliverable. I invest in the field, in the next generation, and in the practitioners around me.</p>
+  </header>
+
+</div><!-- /page -->
+
+<!-- WATSON QUOTE BAND — parallax -->
+<div class="parallax-hero">
+  <div class="parallax-hero-inner ibm-quote-inner">
+    <div class="reveal">
+      <div class="ibm-quote-mark">&ldquo;</div>
+      <blockquote><strong>The first and most important choice a leader makes is the choice to serve.</strong></blockquote>
+      <div class="ibm-quote-attr">Robert K. Greenleaf</div>
+    </div>
+    <div class="ibm-quote-meaning reveal reveal-delay-2">
+      <div class="ibm-quote-meaning-label">My Leadership Philosophy</div>
+      <p>Build on earned trust. <br> I lead as though i'm always up for re-election. If my peers, direct reports, and leaders wouldn't enthusiastically vote for another term, then I haven't served them well enough.</p>
+    </div>
+  </div>
+</div>
+
+<div class="parallax-strip"></div>
+
+<div class="page">
+
+  <!-- ══ SPEAKING & PANELS ══ -->
+  <section class="tl-section">
+    <div class="section-eyebrow">Speaking Engagements</div>
+    <h2>In Service of Students</h2>
+
+    <div class="panel-grid">
+
+      <!-- NYU -->
+      <div class="panel-card">
+        <div class="panel-logo-placeholder" style="background:#fff;">
+          <img src="links/presence/logos/NYU-Logo.jpg" alt="NYU" style="width:100%;height:100%;object-fit:contain;">
+        </div>
+        
+        <div class="panel-title">Panelist &amp; Guest Lecturer — AI, Data Strategy &amp; Social Impact</div>
+        <p class="panel-body">Joined New York University Wagner graduate students as a panelist reviewing their Data &amp; AI strategies for social impact organizations. Real work, real stakes, real feedback — and an invitation to return as a guest lecturer in Fall 2026.</p>
+        <p class="panel-body">The task? Coach students on building stakeholder confidence in their proposals — and how to empower decision-makers to act on them, not just admire them.</p>
+        <img src="links/presence/NYU.png" alt="NYU event" style="width:100%;height:200px;object-fit:cover;margin-top:var(--s-05);">
+        <div class="panel-meta">New York University · Fall 2026</div>
+      </div>
+
+      <!-- IBM / Princeton -->
+      <div class="panel-card">
+        <div class="panel-logo-placeholder" style="background:#fff;width:73px;height:73px;">
+          <img src="links/presence/logos/Princeton-Emblem.png" alt="Princeton University" style="width:100%;height:100%;object-fit:contain;padding:4px;">
+        </div>
+        
+        <div class="panel-title">Panelist — Entrepreneurship &amp; Interdisciplinary Careers</div>
+        <p class="panel-body">Spoke with Princeton's top 20 entrepreneurial and creative students on the interdisciplinary paths that led us to IBM — and what it means to bring an entrepreneurial lens inside a 100-year-old company.</p>
+        <p class="panel-body">The goal? Light a spark. Help them see that their entrepreneurial spirit isn't a liability inside enterprise — it's a superpower.</p>
+        <!-- Photo carousel -->
+        <div class="princeton-carousel">
+          <div class="princeton-track" id="princeton-track">
+            <img src="links/presence/Princeton/Princeton-2.jpeg" alt="Princeton TigerTrek 1">
+            <img src="links/presence/Princeton/Princeton-3.jpeg" alt="Princeton TigerTrek 2">
+            <img src="links/presence/Princeton/Princeton-1.jpeg" alt="Princeton TigerTrek 3">
+            
+            
+          </div>
+          <div class="princeton-controls">
+            <button class="princeton-btn" onclick="princetonPrev()" aria-label="Previous">&#8592;</button>
+            <div class="princeton-dots">
+              <span class="princeton-dot active" onclick="princetonGo(0)"></span>
+              <span class="princeton-dot" onclick="princetonGo(1)"></span>
+              <span class="princeton-dot" onclick="princetonGo(2)"></span>
+            </div>
+            <button class="princeton-btn" onclick="princetonNext()" aria-label="Next">&#8594;</button>
+          </div>
+        </div>
+        <div class="panel-meta">IBM + Princeton University · 2025 </div>
+      </div>
+
+      <!-- FSU -->
+      <div class="panel-card">
+        <div class="panel-logo-placeholder" style="background:#fff;">
+          <img src="links/presence/logos/fsu.webp" alt="Ferris State University" style="width:100%;height:100%;object-fit:contain;padding:4px;">
+        </div>
+        
+        <div class="panel-title">Alumni Panelist — Design Program Graduation</div>
+        <p class="panel-body">Returned as an alumni panelist for the graduating classes of 2020 and 2023 from Ferris State University's College of Business Design program. Full circle — twice.</p>
+        <div class="panel-meta">Ferris State University · 2020 &amp; 2023</div>
+      </div>
+
+    </div>
+  </section>
+
+</div><!-- /page -->
+
+<!-- ══ WOMEN IN DESIGN & TECH — full bleed ══ -->
+<div class="women-band">
+  <div class="women-band-inner">
+    <div class="women-band-header">
+      <div>
+        <div class="women-band-eyebrow">Women in Design &amp; Technology</div>
+        <h2>In Service of Women</h2>
+      </div>
+      <p class="women-band-intro">Advocacy isn't a side project — it's woven into how I lead. Whether I'm building the first Women in Tech event for an entire organization or facilitating a design thinking workshop to strengthen a client relationship, I show up where it matters most: early, intentionally, and with something real to offer.</p>
+    </div>
+
+    <!-- IBM CE Women in Tech — Featured -->
+    <div class="women-featured">
+      <div class="women-featured-header">
+        <div>
+          
+          <div class="women-featured-title">IBM CE Women in Tech — Founding Event</div>
+          <p class="women-featured-body">I led IBM Client Engineering's first-ever Women in Tech event — a half day of hands-on career guidance activities, conversations, panel discussions, and networking built specifically for women in the organization.</p>
+          
+        </div>
+      </div>
+
+      <!-- Photo grid — first 5 photos -->
+      <div class="ce-photo-grid">
+        <img src="links/presence/women-in-ce-event/IMG_0721.JPG" alt="CE Women in Tech event">
+        <img src="links/presence/women-in-ce-event/IMG_5904.jpeg" alt="CE Women in Tech event">
+        <img src="links/presence/women-in-ce-event/IMG_6933.jpeg" alt="CE Women in Tech event">
+        <img src="links/presence/women-in-ce-event/IMG_5906.jpeg" alt="CE Women in Tech event">
+        <img src="links/presence/women-in-ce-event/IMG_5971.jpeg" alt="CE Women in Tech event">
+      </div>
+
+      <!-- Carousel — all 11 photos -->
+      <div class="ce-carousel">
+        <div class="ce-track" id="ce-track">
+          <img src="links/presence/women-in-ce-event/IMG_6960.jpeg" alt="CE Women in Tech 1">
+           <img src="links/presence/women-in-ce-event/IMG_6284.jpeg" alt="CE Women in Tech 2">
+          <img src="links/presence/women-in-ce-event/IMG_6933.jpeg" alt="CE Women in Tech 3">
+          <img src="links/presence/women-in-ce-event/IMG_0721.JPG" alt="CE Women in Tech 4">
+          <img src="links/presence/women-in-ce-event/IMG_5904.jpeg" alt="CE Women in Tech 5">
+          <img src="links/presence/women-in-ce-event/Cover.png" alt="CE Women in Tech 6">
+          <img src="links/presence/women-in-ce-event/IMG_5971.jpeg" alt="CE Women in Tech 7">
+          <img src="links/presence/women-in-ce-event/IMG_5972.jpeg" alt="CE Women in Tech 8">
+          <img src="links/presence/women-in-ce-event/IMG_5977.jpeg" alt="CE Women in Tech 9">
+          <img src="links/presence/women-in-ce-event/IMG_6938.jpeg" alt="CE Women in Tech 10">
+           <img src="links/presence/women-in-ce-event/IMG_5899.jpeg" alt="CE Women in Tech 11">
+        </div>
+        <div class="ce-controls">
+          <button class="ce-btn" onclick="cePrev()" aria-label="Previous">&#8592;</button>
+          <div class="ce-dots">
+            <span class="ce-dot active" onclick="ceGo(0)"></span>
+            <span class="ce-dot" onclick="ceGo(1)"></span>
+            <span class="ce-dot" onclick="ceGo(2)"></span>
+            <span class="ce-dot" onclick="ceGo(3)"></span>
+            <span class="ce-dot" onclick="ceGo(4)"></span>
+            <span class="ce-dot" onclick="ceGo(5)"></span>
+            <span class="ce-dot" onclick="ceGo(6)"></span>
+            <span class="ce-dot" onclick="ceGo(7)"></span>
+            <span class="ce-dot" onclick="ceGo(8)"></span>
+            <span class="ce-dot" onclick="ceGo(9)"></span>
+            <span class="ce-dot" onclick="ceGo(10)"></span>
+          </div>
+          <button class="ce-btn" onclick="ceNext()" aria-label="Next">&#8594;</button>
+        </div>
+      </div>
+
+      <p class="women-featured-body" style="font-family:'Sedgwick Ave',cursive;font-size:1.056rem;line-height:1.6;color:var(--text-primary);padding-top:calc(0.6rem + var(--s-04));padding-left:90px;">What it created: a blueprint for how CE invests in its women, and a community that hadn't existed before we built it together.</p>
+
+      <div class="women-featured-meta">IBM Client Engineering</div>
+    </div>
+
+    <div class="women-cards">
+
+      <!-- State Street PWN -->
+      <div class="women-card">
+        <div class="women-card-eyebrow">State Street · PWN Women's Network</div>
+        <div class="women-card-title">Design Thinking 101 — Educator</div>
+        <p class="women-card-body">Facilitated a hybrid Design Thinking 101 course and interactive workshop for State Street's Professional Women's Network — bringing real design methodology into a client relationship in a way that was generous, practical, and genuinely useful.</p>
+        <div class="women-card-outcome">
+          <div class="women-card-outcome-label">What it led to</div>
+          <p>Strengthened our relationship, built real rapport, and created a refreshed impression with the client. The same sponsor opened the door to a company-wide hackathon. <a href="cs2.html" style="color:var(--accent-on-light);font-weight:600;text-decoration:none;">See Case Study 02 →</a></p>
+        </div>
+        <div class="women-card-meta">State Street · Professional Women's Network</div>
+      </div>
+
+      <!-- WHM IBM -->
+      <div class="women-card">
+        <div class="women-card-eyebrow">IBM · Internal Leadership</div>
+        <div class="women-card-title">International Women's Day — Planning Committee &amp; Panel Host</div>
+        <p class="women-card-body">Served on the planning committee and hosted panels for IBM's Women's History Month and International Women's Day programming — organizing the kind of conversations that stay with people long after the calendar event is over.</p>
+        <div class="women-card-outcome">
+          <div class="women-card-outcome-label">The through line</div>
+          <p>Community doesn't happen by announcement. Someone has to design the experience, hold the room, and make it worth showing up for.</p>
+        </div>
+        <div class="women-card-meta">IBM · Annual Programming</div>
+      </div>
+
+      <!-- eSchool 4 Girls -->
+      <div class="women-card">
+        <div class="women-card-eyebrow">Volunteer · Speaker · Judge</div>
+        <div class="women-card-title">eSchool 4 Girls — Judge Panelist & Speaker</div>
+        <p class="women-card-body">I volunteer with eSchool 4 Girls, a nonprofit developing and supporting under-served high school girls as leaders and entrepreneurs. I've served as a speaker and as a judge evaluating student final business pitch presentations at NYU.</p>
+        
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--s-03);margin-top:var(--s-02);">
+          <img src="links/presence/Eschool_1500px_DSC07077.jpg" alt="eSchool 4 Girls event" style="width:100%;height:140px;object-fit:cover;">
+          <img src="links/presence/Eschool_1500px_2.jpg" alt="eSchool 4 Girls session" style="width:100%;height:140px;object-fit:cover;">
+        </div>
+        <div class="women-card-meta">eSchool 4 Girls · NYU</div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <!-- ══ COMMUNITY & EDITORIAL ══ -->
+  <section class="tl-section">
+    <div class="section-eyebrow">Community &amp; Mentorship</div>
+    <h2>In Service of Growth</h2>
+
+    <div class="feature-grid">
+
+      <!-- Mastery Podcast -->
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2a10 10 0 0 1 10 10"/><path d="M12 2a10 10 0 0 0-10 10"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M4.93 4.93a10 10 0 0 0 0 14.14"/></svg>
+        </div>
+        <div class="feature-eyebrow">Founded &amp; Hosted</div>
+        <div class="feature-title">Podcast Mastery — Internal Knowledge Series</div>
+        <p class="feature-body">When design decentralized across four hubs nationwide, connection didn't happen by accident — so I built it on purpose. I founded the Mastery podcast and personally hosted episodes with standout practitioners, sharing knowledge across a multi-disciplinary design community that suddenly had no shared hallway.</p>
+        <div class="callout" style="margin:0;padding:var(--s-04) var(--s-05);">
+          <div class="callout-label" style="margin-bottom:var(--s-03);">The mission</div>
+          <p style="font-size:1.05rem;">Inspire and encourage the pursuit of personal and professional mastery across the organization — because excellence is more contagious when it has a mic.</p>
+        </div>
+        <div class="feature-meta">Newell Brands Internal · 4 Design Hubs Nationwide</div>
+      </div>
+
+      <!-- Newsletter Editor -->
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </div>
+        <div class="feature-eyebrow">Editorial Lead · Since 2023</div>
+        <div class="feature-title">IBM FSM Newsletter — Market-Wide Editorial Direction</div>
+        <p class="feature-body">Since 2023, I've led the editorial strategy for the Financial Services Client Engineering organization's market-wide newsletter — shaping how a team of 1,000+ practitioners understands its own impact through KPIs, featured stories, and key client wins.</p>
+        <p class="feature-body" style="font-family:'Sedgwick Ave',cursive;font-size:1.056rem;font-weight:400;line-height:1.6;color:var(--text-primary);">This isn't a recap email. It's a positioning tool — one that turns scattered work into a coherent story of business value so our recipe for success is scalable to others.</p>
+        <div class="feature-meta">IBM · 1,000+ Readers · Since 2023</div>
+      </div>
+
+    </div>
+  </section>
+</div>
+
+<script>
+  document.getElementById('nav-presence').classList.add('active');
+  var _pi = 0, _pn = 3;
+  function _pUpdate() {
+    document.getElementById('princeton-track').style.transform = 'translateX(-' + (_pi * 100) + '%)';
+    document.querySelectorAll('.princeton-dot').forEach(function(d, i) { d.classList.toggle('active', i === _pi); });
+  }
+  function princetonNext() { _pi = (_pi + 1) % _pn; _pUpdate(); }
+  var _ci = 0, _cn = 11;
+  function _cUpdate() {
+    document.getElementById('ce-track').style.transform = 'translateX(-' + (_ci * 100) + '%)';
+    document.querySelectorAll('.ce-dot').forEach(function(d, i) { d.classList.toggle('active', i === _ci); });
+  }
+  function ceNext() { _ci = (_ci + 1) % _cn; _cUpdate(); }
+  function cePrev() { _ci = (_ci - 1 + _cn) % _cn; _cUpdate(); }
+  function ceGo(i) { _ci = i; _cUpdate(); }
+  function princetonPrev() { _pi = (_pi - 1 + _pn) % _pn; _pUpdate(); }
+  function princetonGo(i) { _pi = i; _pUpdate(); }
+  var revealObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) { entry.target.classList.add('in-view'); revealObserver.unobserve(entry.target); }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach(function(el) { revealObserver.observe(el); });
+</script>
+</body>
+</html>

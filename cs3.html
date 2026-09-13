@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>CS 03 — Upskilling IBMers · Design Director Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sedgwick+Ave&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #ffffff; --layer-01: #f4f4f4; --border-subtle: #e0e0e0;
+  --border-strong: #8d8d8d; --text-primary: #161616; --text-secondary: #525252;
+  --accent: #ec5d5e; --accent-secondary: #ff9592; --accent-tertiary: #ffd1d9; --accent-text: #ffffff;
+  --tag-bg: #ffe8e8; --tag-color: #c22828;
+  --font: 'IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif;
+  --s-02:.25rem;--s-03:.5rem;--s-04:.75rem;--s-05:1rem;
+  --s-06:1.5rem;--s-07:2rem;--s-08:2.5rem;--s-09:3rem;--s-10:4rem;--s-12:6rem;
+}
+html { font-family: var(--font); font-size: 16px; scroll-behavior: smooth; }
+body { background: var(--bg); color: var(--text-primary); line-height: 1.6; }
+.page { max-width: 1056px; margin: 0 auto; padding: 0 var(--s-07); }
+.nav-bar { background: var(--bg); border-bottom: 1px solid var(--border-subtle); padding: var(--s-04) var(--s-07); display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; }
+.nav-wordmark { font-size: .75rem; font-weight: 600; letter-spacing: .1em; color: var(--text-secondary); text-decoration: none; display:flex; flex-direction:column; gap:.1em; }
+.nav-wordmark:hover { color: var(--accent); }
+.nav-links { display: flex; flex-wrap: wrap; gap: var(--s-02); }
+.nav-links a { font-size: .75rem; color: var(--text-secondary); text-decoration: none; padding: var(--s-02) var(--s-04); border-bottom: 2px solid transparent; }
+.nav-links a:hover, .nav-links a.active { color: var(--accent); border-bottom-color: var(--accent); }
+.hero { padding: var(--s-10) 0 var(--s-09); border-bottom: 1px solid var(--border-subtle); }
+.hero-meta { display: flex; align-items: center; gap: var(--s-05); flex-wrap: wrap; margin-bottom: var(--s-06); }
+.tag { display: inline-block; padding: var(--s-02) var(--s-04); background: var(--tag-bg); color: var(--tag-color); font-size: .75rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; }
+.tag-accent { background: var(--accent); color: var(--accent-text); }
+.hero-eyebrow { font-size: .75rem; color: var(--text-secondary); letter-spacing: .08em; text-transform: uppercase; }
+.hero h1 { font-size: clamp(1.75rem,4vw,2.625rem); font-weight: 300; line-height: 1.2; max-width: 800px; margin-bottom: var(--s-06); }
+.hero h1 strong { font-weight: 600; color: var(--accent); }
+.hero-summary { font-size: 1.125rem; color: var(--text-secondary); max-width: 680px; line-height: 1.7; margin-bottom: var(--s-08); }
+.stat-row { display: grid; grid-template-columns: repeat(auto-fit,minmax(140px,1fr)); gap: 1px; background: var(--border-subtle); border: 1px solid var(--border-subtle); margin-top: var(--s-07); }
+.stat { background: var(--bg); padding: var(--s-07) var(--s-06); display: flex; flex-direction: column; gap: var(--s-02); }
+.stat-number { font-size: clamp(1.5rem,3vw,2.25rem); font-weight: 300; line-height: 1; color: var(--accent); }
+.stat-number strong { font-weight: 600; }
+.stat-label { font-size: .75rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: .06em; }
+.toc { display: flex; flex-wrap: wrap; border-bottom: 1px solid var(--border-subtle); margin-bottom: var(--s-09); background: var(--bg); }
+.toc a { padding: var(--s-04) var(--s-06); font-size: .75rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--text-secondary); text-decoration: none; border-bottom: 2px solid transparent; white-space: nowrap; }
+.toc a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+.content { padding-bottom: var(--s-12); }
+.section { display: grid; grid-template-columns: 220px 1fr; gap: 0 var(--s-09); padding: var(--s-09) 0; border-bottom: 1px solid var(--border-subtle); }
+.section:last-child { border-bottom: none; }
+.section-number { font-size: .75rem; font-weight: 600; color: var(--accent); text-transform: uppercase; letter-spacing: .1em; margin-bottom: var(--s-03); display: flex; align-items: center; gap: var(--s-03); }
+.section-number::before { content: ''; display: inline-block; width: 16px; height: 2px; background: var(--accent); }
+.section-title { font-size: 1.25rem; font-weight: 600; line-height: 1.3; }
+h2.bh { font-size: 1.25rem; font-weight: 600; margin-top: var(--s-07); margin-bottom: var(--s-04); }
+h2.bh:first-child { margin-top: 0; }
+p { font-size: .875rem; color: var(--text-secondary); margin-bottom: var(--s-05); line-height: 1.7; }
+p:last-child { margin-bottom: 0; }
+em { font-style: italic; }
+.callout { background: var(--layer-01); padding: var(--s-06) var(--s-07); margin: var(--s-06) 0; }
+.callout-label { font-size: .75rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--accent); margin-bottom: var(--s-04); }
+.callout p { font-family: 'Sedgwick Ave', cursive; font-size: 1.46rem; font-weight: 400; color: var(--text-primary); line-height: 1.6; margin: 0; }
+.callout p strong { font-weight: 600; }
+.callout ul { list-style: none; padding: 0; margin: var(--s-04) 0 0; }
+.callout ul li { font-size: 1rem; font-weight: 300; color: var(--text-primary); line-height: 1.7; padding: var(--s-02) 0 var(--s-02) var(--s-06); position: relative; }
+.callout ul li::before { content: ''; position: absolute; left: 0; top: .7em; width: 4px; height: 4px; background: var(--accent); }
+.card-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(180px,1fr)); gap: 1px; background: var(--border-subtle); border: 1px solid var(--border-subtle); margin: var(--s-06) 0; }
+.card { background: var(--bg); padding: var(--s-06); display: flex; flex-direction: column; gap: var(--s-03); border-top: 3px solid transparent; }
+.card:hover { border-top-color: var(--accent-secondary); }
+.card-title { font-size: 1rem; font-weight: 600; }
+.card p { font-size: .875rem; color: var(--text-secondary); margin: 0; }
+ul.cl { list-style: none; padding: 0; margin: var(--s-03) 0 var(--s-05); }
+ul.cl li { font-size: .875rem; color: var(--text-secondary); line-height: 1.7; padding: var(--s-03) 0 var(--s-03) var(--s-06); position: relative; }
+ul.cl li::before { content: ''; position: absolute; left: 0; top: .75em; width: 4px; height: 4px; background: var(--accent); }
+.phases { display: flex; flex-direction: column; margin: var(--s-06) 0; }
+.phase { display: grid; grid-template-columns: 90px 1fr; gap: 0 var(--s-06); padding: var(--s-06) 0; border-bottom: 1px solid var(--border-subtle); }
+.phase:last-child { border-bottom: none; }
+.phase-num { font-size: .75rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); padding-top: var(--s-02); }
+.phase h3 { font-size: 1rem; font-weight: 600; margin-bottom: var(--s-03); }
+.phase p { margin-bottom: var(--s-03); }
+.outcome-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(160px,1fr)); gap: var(--s-05); margin: var(--s-06) 0; }
+.metric { padding: var(--s-06); background: var(--accent); color: var(--accent-text); display: flex; flex-direction: column; gap: var(--s-02); }
+.metric-value { font-size: clamp(1.25rem,3vw,1.75rem); font-weight: 300; line-height: 1; }
+.metric-value strong { font-weight: 600; }
+.metric-label { font-size: .75rem; text-transform: uppercase; letter-spacing: .06em; opacity: .85; }
+.metric-desc { font-size: .8125rem; opacity: .8; margin-top: var(--s-03); line-height: 1.5; }
+.metric-secondary { background: var(--accent-secondary); color: #161616; }
+.metric-secondary .metric-label { opacity: .7; }
+.metric-light { background: var(--layer-01); color: var(--text-primary); border: 1px solid var(--accent-secondary); }
+.metric-light .metric-value { color: var(--accent); }
+.metric-light .metric-label { color: var(--accent); opacity: 1; }
+.metric-light .metric-desc { color: var(--text-secondary); opacity: 1; }
+.quote-block { margin: var(--s-07) 0; padding: var(--s-07) var(--s-07) var(--s-07) var(--s-08); background: var(--layer-01); border-left: 3px solid var(--accent-secondary); position: relative; }
+.quote-mark { position: absolute; left: var(--s-06); top: var(--s-05); font-size: 3rem; font-weight: 300; line-height: 1; color: var(--accent-secondary); }
+.quote-block blockquote { font-size: 1rem; font-style: italic; font-weight: 300; color: var(--text-primary); line-height: 1.7; margin: 0 0 var(--s-04); }
+.quote-attr { font-size: .75rem; color: var(--accent); font-weight: 600; text-transform: uppercase; letter-spacing: .06em; }
+.ownership-table { width: 100%; border-collapse: collapse; margin: var(--s-06) 0; }
+.ownership-table th, .ownership-table td { padding: var(--s-04) var(--s-05); text-align: left; font-size: .875rem; border-bottom: 1px solid var(--border-subtle); }
+.ownership-table th { font-weight: 600; background: var(--layer-01); font-size: .75rem; text-transform: uppercase; letter-spacing: .06em; color: var(--accent); }
+.ownership-table td { color: var(--text-secondary); }
+.dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: var(--s-03); vertical-align: middle; }
+.dot-full { background: var(--accent); } .dot-shared { background: var(--accent-secondary); }
+.back-btn { display: inline-flex; align-items: center; gap: var(--s-03); font-size: .75rem; font-weight: 600; text-transform: uppercase; letter-spacing: .08em; color: var(--text-secondary); cursor: pointer; background: none; border: none; padding: var(--s-05) 0; text-decoration: none; }
+.back-btn:hover { color: var(--accent); }
+.back-btn svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2; }
+footer { border-top: 1px solid var(--border-subtle); padding: var(--s-07) 0; text-align: center; font-size: .75rem; color: var(--text-secondary); }
+footer a { color: var(--text-secondary); }
+@media (max-width: 768px) { .section { grid-template-columns: 1fr; } .page { padding: 0 var(--s-05); } .nav-bar { padding: var(--s-04) var(--s-05); flex-wrap: wrap; gap: var(--s-03); } }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav-bar">
+  <a class="nav-wordmark" href="index.html"><span style="display:block;">Katie Shimmin</span><em style="display:block;font-style:italic;font-weight:400;letter-spacing:0;text-transform:none;color:inherit;">Connecting vision to value through design, AI, &amp; human-centered innovation</em></a>
+  <div class="nav-links">
+    <a href="index.html">Portfolio</a>
+    <a href="cs1.html">CS 01</a>
+    <a href="cs2.html">CS 02</a>
+    <a href="cs3.html" id="nav-cs3">CS 03</a>
+    <a href="cs4.html">CS 04</a>
+    <a href="cs5.html">CS 05</a>
+    <a href="presence.html">Presence</a>
+    <a href="people.html">People</a>
+    <a href="vision.html">Vision</a>
+  </div>
+</nav>
+
+<div class="page">
+
+  <a class="back-btn" href="index.html">
+    <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+    All Case Studies
+  </a>
+
+  <header class="hero">
+    <div class="hero-meta">
+      <span class="tag tag-accent">Case Study 03</span>
+      <span class="tag">Organizational Change</span>
+      <span class="tag">AI Enablement</span>
+      <span class="hero-eyebrow">IBM Internal · 2024</span>
+    </div>
+    <h1>What happens when you design learning around <strong>real people doing real work?</strong> Turns out — a lot. 77 IBMers got to find out firsthand.</h1>
+    <p class="hero-summary">I had four weeks, my ear to the ground, and a team full of people who were curious about the newly GA'ed SDLC tool IBM BOB but needed the right spark to get started. So I pitched the same "Bobathon" we offer clients but geared the experience to tackle the hopes and hesitations of our pre-sales org — one where everyone got to create something meaningful in the first hour.</p>
+    <div class="stat-row">
+      <div class="stat"><div class="stat-number"><strong>77</strong></div><div class="stat-label">People Who Showed Up Ready to Learn</div></div>
+      <div class="stat"><div class="stat-number"><strong>81.2%</strong></div><div class="stat-label">Created Their Own Bob Skill</div></div>
+      <div class="stat"><div class="stat-number"><strong>96.9%</strong></div><div class="stat-label">Said They Learned More Than Expected</div></div>
+      <div class="stat"><div class="stat-number"><strong>93.8%</strong></div><div class="stat-label">Walked Away Feeling Genuinely Confident</div></div>
+      <div class="stat"><div class="stat-number"><strong>111.73%</strong></div><div class="stat-label">More AI-Generated Code — Two Months Later</div></div>
+    </div>
+  </header>
+
+  <nav class="toc">
+    <a href="#cs3-s1">01&nbsp; Context</a>
+    <a href="#cs3-s2">02&nbsp; My Role</a>
+    <a href="#cs3-s3">03&nbsp; Strategic Framing</a>
+    <a href="#cs3-s4">04&nbsp; My Process</a>
+    <a href="#cs3-s5">05&nbsp; Outcomes</a>
+  </nav>
+
+  <main class="content">
+    <section class="section" id="cs3-s1">
+      <div><div class="section-number">01</div><div class="section-title">Context</div></div>
+      <div>
+        <h2 class="bh">Everyone Was Excited. Not Everyone Was Using It.</h2>
+        <p>IBM Bob was available to everyone on our team, and the excitement was genuinely there. People were curious, interested, and asking questions. But there's a meaningful difference between being excited about the hype around the new tool and actually weaving it into your day-to-day work — and that gap was wider than it looked.</p>
+        <p>Some teammates had already fallen in love with Bob, building custom skills and moving faster than ever. Others were still at step zero. And for a team whose whole purpose is helping clients adopt emerging technology, that uneven adoption was something I really wanted to address — not as a mandate, but as an opportunity to invest in the people I worked alongside.</p>
+        <div class="callout"><div class="callout-label">Four things I wanted to change</div>
+          <ul>
+            <li><strong>Capability Gap</strong> — "Technical" fluency looked very different depending on who you asked, and that inconsistency was limiting what we could do together</li>
+            <li><strong>Credibility Gap</strong> — we help clients on their AI journeys every day, and it felt important that we were genuinely walking that path ourselves</li>
+            <li><strong>Intrapreneurship Gap</strong> — we knew our newest talent had fresh perspectives to offer, but we needed a clearer path for those ideas to surface and grow</li>
+          
+            <li><strong>Adoption Gap</strong> — I'd seen enough enablement programs to know that awareness and actual behavior change are two very different things</li>
+          
+          </ul>
+        </div>
+        <h2 class="bh">A Beautiful, Wonderfully Complicated Audience</h2>
+        <p>About 80 practitioners across five disciplines, each with completely different workflows, priorities, and definitions of "a productive day." That diversity was actually one of my favorite parts of this challenge — it meant the design had to be genuinely thoughtful, not one-size-fits-all.</p>
+        <div class="card-grid">
+          <div class="card"><div class="card-title">AI Engineers</div><p>Already deeply technical — they were excited about Bob and needed examples that could actually keep up with the sophistication of their work.</p></div>
+          <div class="card"><div class="card-title">Strategy Designers</div><p>Wanted Bob woven naturally into how they research, facilitate, and visualize — not as an add-on, but as a genuine thought partner.</p></div>
+          <div class="card"><div class="card-title">Solution Architects</div><p>Looking for ways to think through architecture faster and produce clearer documentation without cutting corners on quality.</p></div>
+          <div class="card"><div class="card-title">Platform Engineers</div><p>Eager to explore smarter ways to write, review, and ship code — all within the tools they already loved.</p></div>
+          <div class="card"><div class="card-title">Squad Managers</div><p>Craving more time back in their day — less time on reporting and comms, more time on the work that actually energizes them.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="cs3-s2">
+      <div><div class="section-number">02</div><div class="section-title">My Role</div></div>
+      <div>
+        <h2 class="bh">I Spotted the Opportunity and Got to Work</h2>
+        <p>This program started as an idea I brought to leadership — something I genuinely believed in and wanted to make happen. Once I had the green light, I owned the whole thing: the strategy, the experience design, the logistics, the community building, and the measurement. Four weeks, a lot of moving pieces, and a team I really wanted to serve well.</p>
+        <table class="ownership-table"><thead><tr><th>What I Owned</th><th>How I Approached It</th></tr></thead><tbody>
+          <tr><td>Strategic Leadership &amp; Executive Alignment</td><td><span class="dot dot-full"></span>Brought the idea forward, built the case, and got people genuinely excited about it</td></tr>
+          <tr><td>Experience &amp; Learning Design</td><td><span class="dot dot-full"></span>Reimagined the learning format entirely — from passive training to active creation</td></tr>
+          <tr><td>Program Orchestration</td><td><span class="dot dot-full"></span>Designed the role-based tracks, selected facilitators, managed every communication and timeline</td></tr>
+          <tr><td>Change Management &amp; Messaging</td><td><span class="dot dot-full"></span>Positioned Bob as a thoughtful productivity partner — something to look forward to, not endure</td></tr>
+          <tr><td>Measurement &amp; Outcome Analysis</td><td><span class="dot dot-full"></span>Built feedback systems that looked for real behavior change, not just satisfaction scores</td></tr>
+        </tbody></table>
+      </div>
+    </section>
+
+    <section class="section" id="cs3-s3">
+      <div><div class="section-number">03</div><div class="section-title">Strategic Framing</div></div>
+      <div>
+        <h2 class="bh">The Belief at the Heart of This</h2>
+        <div class="callout"><div class="callout-label">What I knew going in</div><p>People don't truly adopt a tool by learning <em>about</em> it. They adopt it the moment they use it to solve something they genuinely care about — and feel the joy of it working. <strong>That's the experience I wanted to design.</strong></p></div>
+        <p>So rather than building a training program, I built a creation experience. I wanted people to walk away with something they'd actually made — a skill, an artifact, a workflow tweak that saved them real time. Something they could point to and say, "I built that."</p>
+        <h2 class="bh">Measuring What Actually Mattered</h2>
+        <p>I cared a lot less about completion rates and attendance than I did about four much more meaningful questions:</p>
+        <div class="card-grid">
+          <div class="card"><div class="card-title">Did they create something?</div><p>Making something with a tool is what makes it memorable. A full room means nothing if people leave empty-handed.</p></div>
+          <div class="card"><div class="card-title">Did their confidence grow?</div><p>Confidence is what brings someone back to a tool on a quiet afternoon weeks later, just to see what else it can do.</p></div>
+          <div class="card"><div class="card-title">Did their skills genuinely improve?</div><p>Not just "I enjoyed it" — but "I can do something today that I couldn't do yesterday."</p></div>
+          <div class="card"><div class="card-title">Did it last beyond the event?</div><p>The truest measure of any enablement experience is what people are doing with it two months later.</p></div>
+        </div>
+        <h2 class="bh">The Principles I Designed Around</h2>
+        <div class="card-grid">
+          <div class="card"><div class="card-title">Role-Relevant</div><p>What lights up an engineer is completely different from what resonates with a strategist. Both deserve something that feels made for them.</p></div>
+          <div class="card"><div class="card-title">Hands-On</div><p>No decks about Bob, no watching someone else use it. Just a real challenge, real time, and real support to figure it out together.</p></div>
+          <div class="card"><div class="card-title">Peer-Led</div><p>The most knowledgeable Bob users were already sitting next to everyone else. I gave them the chance to shine as teachers.</p></div>
+          <div class="card"><div class="card-title">Cross-Pollinating</div><p>Sometimes the best idea for your workflow is sitting in someone else's discipline. I made space for that kind of happy discovery.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="cs3-s4">
+      <div><div class="section-number">04</div><div class="section-title">My Process</div></div>
+      <div>
+        <div class="phases">
+          <div class="phase"><div class="phase-num">Phase 1</div><div><h3>Start by Listening</h3><p>Before I designed anything, I had conversations. I wanted to understand where Bob was already creating joy on the team, where it was sitting unused, and what kinds of friction people were bumping into day-to-day. What I heard was lovely and consistent: people weren't resistant — they were just waiting for examples that felt genuinely relevant to their specific work. That insight became the foundation for everything that followed.</p></div></div>
+          <div class="phase"><div class="phase-num">Phase 2</div><div><h3>Design the Bobathon</h3><p>I created five discipline-specific tracks, each one built around the real challenges that particular role was navigating. Role leads, dedicated build time, pre-event collaboration sessions, and technical support throughout. The part I loved most: participants didn't receive a list of use cases to complete. They got to choose the ones that genuinely mattered to their work. That small act of agency made an enormous difference in how invested people felt from the start.</p></div></div>
+          <div class="phase"><div class="phase-num">Phase 3</div><div><h3>Bring the Community Together</h3><p>The squad managers identified track leads to pair-up who were already thriving with Bob alongside those who were just beginning or junior. Together, they co-created labs, shared real workflows, and built things side by side. What surprised me most was how much the "experts" got out of it too — teaching is one of the best ways to deepen your own understanding. The knowledge spread in every direction, not just one.</p></div></div>
+          <div class="phase"><div class="phase-num">Phase 4</div><div><h3>A Day Designed to Create, Not Consume</h3><p>The event was intentionally built around making. Teams built, experimented, got curious about what Bob could do, created artifacts they'd actually use afterward, and learned from the person sitting right next to them. It was energetic, collaborative, and genuinely fun — and the work that came out of it reflected that energy beautifully.</p></div></div>
+          <div class="phase"><div class="phase-num">Phase 5</div><div><h3>Measure What Changed, Not Just What People Felt</h3><p>I cared deeply about getting the measurement right. I didn't want a survey that told me people had a nice time — I wanted to know if something had actually shifted. So I designed feedback that looked at confidence growth, skill progression, and real usage patterns in the weeks and months that followed. Two months later, the data told a story I was genuinely proud of.</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="cs3-s5">
+      <div><div class="section-number">05</div><div class="section-title">Outcomes</div></div>
+      <div>
+        <h2 class="bh">People Grew — and Kept Growing</h2>
+        <div class="outcome-grid">
+          <div class="metric"><div class="metric-value"><strong>111.73%</strong></div><div class="metric-label">More AI-Generated Code</div><div class="metric-desc">Two months after the event — the habits that formed that day kept growing long after we all went home.</div></div>
+          <div class="metric metric-secondary"><div class="metric-value"><strong>81.2%</strong></div><div class="metric-label">Created Their Own Bob Skill</div><div class="metric-desc">More than 4 in 5 participants made something entirely new. That's not learning — that's ownership.</div></div>
+          <div class="metric metric-light"><div class="metric-value"><strong>96.9%</strong></div><div class="metric-label">Said They Learned More Than Expected</div><div class="metric-desc">Nearly everyone left with more capability than they arrived with. That kind of result genuinely fills my heart.</div></div>
+          <div class="metric metric-light"><div class="metric-value"><strong>93.8%</strong></div><div class="metric-label">Walked Away Feeling Confident</div><div class="metric-desc">Confidence is the quiet gift that keeps giving — it's what turns curiosity into consistent, lasting practice.</div></div>
+          <div class="metric metric-light"><div class="metric-value"><strong>25%</strong></div><div class="metric-label">Advanced a Full Proficiency Level</div><div class="metric-desc">One in four participants genuinely leveled up — not just a warmer feeling about the tool, but measurably stronger skills.</div></div>
+          <div class="metric metric-light"><div class="metric-value"><strong>11</strong></div><div class="metric-label">Volunteered to Lead Next Time</div><div class="metric-desc">Eleven teammates raised their hands to help run future sessions. That might be my favorite number in here.</div></div>
+        </div>
+        <h2 class="bh">What People Said</h2>
+        <div class="quote-block"><div class="quote-mark">&ldquo;</div><blockquote>"I really liked the role specialized use cases. Instead of general use cases where every role does the same thing — role specific use cases help understand how to use Bob for our specific purposes."</blockquote><div class="quote-attr">Participant Feedback</div></div>
+        <div class="quote-block"><div class="quote-mark">&ldquo;</div><blockquote>"The lab tracks were well thought-out and the role-based grouping was ideal."</blockquote><div class="quote-attr">Participant Feedback</div></div>
+        <div class="quote-block"><div class="quote-mark">&ldquo;</div><blockquote>"I really liked the knowledge sharing and having dedicated time to explore Bob."</blockquote><div class="quote-attr">Participant Feedback</div></div>
+      </div>
+    </section>
+  </main>
+
+</div><!-- /page --><script>
+  document.getElementById('nav-cs3').classList.add('active');
+</script>
+</body>
+</html>
