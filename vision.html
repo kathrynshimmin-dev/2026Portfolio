@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Vision Work · Design Director Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sedgwick+Ave&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #ffffff; --layer-01: #f4f4f4; --border-subtle: #e0e0e0;
+  --border-strong: #8d8d8d; --text-primary: #161616; --text-secondary: #525252;
+  --accent: #ec5d5e; --accent-secondary: #ff9592; --accent-tertiary: #ffd1d9; --accent-text: #ffffff;
+  --tag-bg: #ffe8e8; --tag-color: #c22828;
+  --font: 'IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif;
+  --s-02:.25rem;--s-03:.5rem;--s-04:.75rem;--s-05:1rem;
+  --s-06:1.5rem;--s-07:2rem;--s-08:2.5rem;--s-09:3rem;--s-10:4rem;--s-12:6rem;
+}
+html { font-family: var(--font); font-size: 16px; scroll-behavior: smooth; }
+body { background: var(--bg); color: var(--text-primary); line-height: 1.6; }
+.page { max-width: 1056px; margin: 0 auto; padding: 0 var(--s-07); }
+
+/* NAV */
+.nav-bar { background: var(--bg); border-bottom: 1px solid var(--border-subtle); padding: var(--s-04) var(--s-07); display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; }
+.nav-wordmark { font-size: .75rem; font-weight: 600; letter-spacing: .1em; color: var(--text-secondary); text-decoration: none; display:flex; flex-direction:column; gap:.1em; }
+.nav-wordmark:hover { color: var(--accent); }
+.nav-links { display: flex; flex-wrap: wrap; gap: var(--s-02); }
+.nav-links a { font-size: .75rem; color: var(--text-secondary); text-decoration: none; padding: var(--s-02) var(--s-04); border-bottom: 2px solid transparent; }
+.nav-links a:hover, .nav-links a.active { color: var(--accent); border-bottom-color: var(--accent); }
+
+/* BACK */
+.back-btn { display: inline-flex; align-items: center; gap: var(--s-03); font-size: .75rem; font-weight: 600; text-transform: uppercase; letter-spacing: .08em; color: var(--text-secondary); text-decoration: none; padding: var(--s-05) 0; }
+.back-btn:hover { color: var(--accent); }
+.back-btn svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2; }
+
+/* HERO */
+.hero { padding: var(--s-10) 0 var(--s-09); border-bottom: 1px solid var(--border-subtle); display: grid; grid-template-columns: 1fr 320px; gap: var(--s-09); align-items: end; }
+.hero-eyebrow { font-size: .65rem; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; color: var(--accent); display: flex; align-items: center; gap: var(--s-03); margin-bottom: var(--s-05); }
+.hero-eyebrow::before { content: ''; width: 16px; height: 2px; background: var(--accent); display: inline-block; }
+.hero h1 { font-size: clamp(1.75rem,4vw,2.625rem); font-weight: 300; line-height: 1.2; margin-bottom: var(--s-06); }
+.hero h1 strong { font-weight: 600; color: var(--accent); }
+.hero-summary { font-size: 1.0625rem; color: var(--text-secondary); line-height: 1.7; }
+.hero-stats { display: flex; flex-direction: column; gap: var(--s-04); }
+.hero-stat { padding: var(--s-05) var(--s-06); background: var(--layer-01); display: flex; flex-direction: column; gap: var(--s-02); border-left: 3px solid var(--accent-secondary); }
+.hero-stat-num { font-size: 1.75rem; font-weight: 300; line-height: 1; color: var(--accent); }
+.hero-stat-num strong { font-weight: 600; }
+.hero-stat-label { font-size: .7rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: .06em; }
+
+/* FRAMEWORK EXPLAINER */
+.framework-band { background: var(--text-primary); color: var(--accent-text); padding: var(--s-10) var(--s-07); }
+.framework-inner { max-width: 1056px; margin: 0 auto; }
+.framework-eyebrow { font-size: .65rem; font-weight: 700; text-transform: uppercase; letter-spacing: .14em; opacity: .6; margin-bottom: var(--s-05); }
+.framework-heading { font-size: clamp(1.25rem,2.5vw,1.75rem); font-weight: 300; line-height: 1.3; margin-bottom: var(--s-08); max-width: 600px; }
+.framework-heading strong { font-weight: 600; color: var(--accent-secondary); }
+.framework-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-07); }
+.framework-card { padding: var(--s-07) var(--s-06); border: 1px solid rgba(255,255,255,.15); display: flex; flex-direction: column; gap: var(--s-05); }
+.framework-type { font-size: .6rem; font-weight: 700; text-transform: uppercase; letter-spacing: .14em; color: var(--accent-secondary); display: flex; align-items: center; gap: var(--s-03); }
+.framework-type::before { content: ''; width: 12px; height: 2px; background: var(--accent-secondary); display: inline-block; }
+.framework-title { font-size: 1rem; font-weight: 600; line-height: 1.3; }
+.framework-sentence { font-size: .875rem; line-height: 1.75; opacity: .8; }
+.framework-parts { display: flex; flex-direction: column; gap: var(--s-03); margin-top: var(--s-02); }
+.framework-part { display: grid; grid-template-columns: 130px 1fr; gap: var(--s-04); align-items: baseline; }
+.framework-part-label { font-size: .6rem; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--accent-secondary); opacity: .8; padding: var(--s-02) var(--s-03); background: rgba(255,255,255,.07); }
+.framework-part-desc { font-size: .8125rem; opacity: .65; line-height: 1.55; }
+
+/* PROVOCATION CARDS */
+.provocations-section { padding: var(--s-10) 0; }
+.section-eyebrow { font-size: .65rem; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; color: var(--accent); display: flex; align-items: center; gap: var(--s-03); margin-bottom: var(--s-05); }
+.section-eyebrow::before { content: ''; width: 16px; height: 2px; background: var(--accent); display: inline-block; }
+.provocations-section h2 { font-size: 1.5rem; font-weight: 300; line-height: 1.25; margin-bottom: var(--s-08); }
+.provocations-section h2 strong { font-weight: 600; }
+.prov-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: var(--s-06); }
+
+/* WHAT IF card */
+.prov-card { display: flex; flex-direction: column; border: 1px solid var(--border-subtle); overflow: hidden; }
+.prov-card:hover .prov-image-area { filter: brightness(.95); }
+.prov-image-area { position: relative; aspect-ratio: 16/9; background: var(--accent-tertiary); overflow: hidden; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: var(--s-03); }
+.prov-image-area img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.prov-image-area-placeholder { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: var(--s-03); width: 100%; height: 100%; }
+.prov-image-area-placeholder svg { width: 36px; height: 36px; stroke: var(--accent-secondary); fill: none; stroke-width: 1.2; }
+.prov-image-area-placeholder span { font-size: .65rem; text-transform: uppercase; letter-spacing: .08em; color: var(--accent-secondary); }
+.prov-type-badge { position: absolute; top: var(--s-04); left: var(--s-04); font-size: .6rem; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; padding: var(--s-02) var(--s-04); }
+.badge-whatif { background: var(--accent); color: #fff; }
+.badge-hmw { background: var(--text-primary); color: #fff; }
+.prov-body { padding: var(--s-06); display: flex; flex-direction: column; gap: var(--s-04); flex: 1; }
+.prov-brand { font-size: .6rem; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; color: var(--accent); }
+.prov-statement { font-size: .9375rem; font-weight: 300; color: var(--text-primary); line-height: 1.6; }
+.prov-statement em { font-style: normal; font-weight: 600; color: var(--accent); }
+.prov-impact { font-size: .8rem; color: var(--text-secondary); line-height: 1.6; padding-top: var(--s-04); border-top: 1px solid var(--border-subtle); margin-top: auto; }
+.prov-impact strong { font-weight: 600; color: var(--text-primary); }
+
+/* IMAGE SWAP INSTRUCTION */
+.swap-note { font-size: .7rem; color: var(--border-strong); text-transform: uppercase; letter-spacing: .06em; margin-top: var(--s-03); text-align: center; }
+
+/* CALLOUT */
+.callout { background: var(--layer-01); padding: var(--s-06) var(--s-07); margin: var(--s-07) 0; }
+.callout-label { font-size: .75rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--accent); margin-bottom: var(--s-04); }
+.callout p { font-family: 'Sedgwick Ave', cursive; font-size: 1.46rem; font-weight: 400; color: var(--text-primary); line-height: 1.6; margin: 0; }
+.callout p strong { font-weight: 600; }
+
+/* IMPACT ROW */
+.impact-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px,1fr)); gap: 1px; background: var(--border-subtle); border: 1px solid var(--border-subtle); margin: var(--s-08) 0; }
+.impact-stat { background: var(--bg); padding: var(--s-07) var(--s-06); display: flex; flex-direction: column; gap: var(--s-02); }
+.impact-stat-num { font-size: clamp(1.5rem,3vw,2.25rem); font-weight: 300; line-height: 1; color: var(--accent); }
+.impact-stat-num strong { font-weight: 600; }
+.impact-stat-label { font-size: .75rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: .06em; }
+
+/* TYPOGRAPHY */
+p { font-size: .875rem; color: var(--text-secondary); margin-bottom: var(--s-05); line-height: 1.7; }
+p:last-child { margin-bottom: 0; }
+
+/* FOOTER */
+footer { border-top: 1px solid var(--border-subtle); padding: var(--s-07) 0; text-align: center; font-size: .75rem; color: var(--text-secondary); }
+footer a { color: var(--text-secondary); }
+
+@media (max-width: 860px) {
+  .hero { grid-template-columns: 1fr; }
+  .framework-grid { grid-template-columns: 1fr; }
+  .framework-part { grid-template-columns: 1fr; gap: var(--s-02); }
+}
+@media (max-width: 768px) {
+  .page { padding: 0 var(--s-05); }
+  .nav-bar { padding: var(--s-04) var(--s-05); flex-wrap: wrap; gap: var(--s-03); }
+  .prov-grid { grid-template-columns: 1fr; }
+  .framework-band { padding: var(--s-08) var(--s-05); }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav-bar">
+  <a class="nav-wordmark" href="index.html"><span style="display:block;">Katie Shimmin</span><em style="display:block;font-style:italic;font-weight:400;letter-spacing:0;text-transform:none;color:inherit;">Connecting vision to value through design, AI, &amp; human-centered innovation</em></a>
+  <div class="nav-links">
+    <a href="index.html">Portfolio</a>
+    <a href="cs1.html">CS 01</a>
+    <a href="cs2.html">CS 02</a>
+    <a href="cs3.html">CS 03</a>
+    <a href="cs4.html">CS 04</a>
+    <a href="cs5.html">CS 05</a>
+    <a href="presence.html">Presence</a>
+    <a href="people.html">People</a>
+    <a href="vision.html" id="nav-vision" class="active">Vision</a>
+  </div>
+</nav>
+
+<div class="page">
+
+  <a class="back-btn" href="index.html">
+    <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+    Portfolio
+  </a>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div>
+      <div class="hero-eyebrow">Vision &amp; Concept Work</div>
+      <h1>What if we <strong>designed for what comes next?</strong></h1>
+      <p class="hero-summary">A question about bringing design thinking to a new headquarters took me from the midwest to the east coast — and lit something I haven't stopped chasing since. I've spent years working at the intersection of provocation and strategy: translating messy future possibilities into clear, compelling visions that give organizations the confidence to act.</p>
+      <p class="hero-summary" style="margin-top:var(--s-05);">These aren't polished case studies. They're a body of thinking — concepts, futures, and frameworks across brands, channels, and categories that show how vision work shapes roadmaps, moves budgets, and shifts direction.</p>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hero-stat-num"><strong>40+</strong></div>
+        <div class="hero-stat-label">Brand Experiences Influenced</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num"><strong>5</strong></div>
+        <div class="hero-stat-label">Business Divisions Partnered</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num"><strong>C-suite</strong></div>
+        <div class="hero-stat-label">Audience for Key Vision Presentations</div>
+      </div>
+    </div>
+  </header>
+
+</div><!-- /page -->
+
+<!-- FRAMEWORK EXPLAINER — dark full-bleed band -->
+<div class="framework-band">
+  <div class="framework-inner">
+    <div class="framework-eyebrow">How I Frame Vision Work</div>
+    <h2 class="framework-heading">Two questions that unlock <strong>everything</strong> else.</h2>
+    <div class="framework-grid">
+
+      <div class="framework-card">
+        <div class="framework-type">What If — Future Provocation</div>
+        <div class="framework-title">Disruption-first thinking that exposes opportunity</div>
+        <p class="framework-sentence">"What if <em style="color:var(--accent-secondary);font-style:normal;">[disruptive trigger or shift]</em> happens, resulting in <em style="color:var(--accent-secondary);font-style:normal;">[impact on human behavior or system]</em>, forcing us to <em style="color:var(--accent-secondary);font-style:normal;">[design opportunity]</em>?"</p>
+        <div class="framework-parts">
+          <div class="framework-part">
+            <div class="framework-part-label">Disruptive Trigger</div>
+            <div class="framework-part-desc">The shift in technology, behavior, culture, or market that changes the rules</div>
+          </div>
+          <div class="framework-part">
+            <div class="framework-part-label">Human Impact</div>
+            <div class="framework-part-desc">How that shift changes what people need, expect, or do</div>
+          </div>
+          <div class="framework-part">
+            <div class="framework-part-label">Design Opportunity</div>
+            <div class="framework-part-desc">The space where a designed response can create real value</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="framework-card">
+        <div class="framework-type">How Might We — Design Question</div>
+        <div class="framework-title">Action-oriented framing that aligns teams around what to build</div>
+        <p class="framework-sentence">"How might we <em style="color:var(--accent-secondary);font-style:normal;">[intended action]</em> for <em style="color:var(--accent-secondary);font-style:normal;">[primary user]</em> so that <em style="color:var(--accent-secondary);font-style:normal;">[desired outcome]</em>?"</p>
+        <div class="framework-parts">
+          <div class="framework-part">
+            <div class="framework-part-label">Intended Action</div>
+            <div class="framework-part-desc">The specific design move — what you're doing for the person</div>
+          </div>
+          <div class="framework-part">
+            <div class="framework-part-label">Primary User</div>
+            <div class="framework-part-desc">Who this is actually for — named and specific, not "the user"</div>
+          </div>
+          <div class="framework-part">
+            <div class="framework-part-label">Desired Outcome</div>
+            <div class="framework-part-desc">The human or business result that justifies the work</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="page">
+
+  <!-- IMPACT STRIP -->
+  <div class="impact-row">
+    <div class="impact-stat"><div class="impact-stat-num"><strong>40+</strong></div><div class="impact-stat-label">Brand Experiences Across Digital, Physical &amp; Packaging</div></div>
+    <div class="impact-stat"><div class="impact-stat-num"><strong>5</strong></div><div class="impact-stat-label">Business Divisions — From Cookware to Fine Writing</div></div>
+    <div class="impact-stat"><div class="impact-stat-num"><strong>Board</strong></div><div class="impact-stat-label">Newell eCommerce Vision Presented by CEO to Board of Directors</div></div>
+    <div class="impact-stat"><div class="impact-stat-num"><strong>AIGA</strong></div><div class="impact-stat-label">CMF Exhibit &amp; Book Accepted into AIGA West Michigan Archives</div></div>
+  </div>
+
+  <!-- PROVOCATIONS -->
+  <section class="provocations-section">
+    <div class="section-eyebrow">The Work</div>
+    <h2>Seven visions. <strong>Seven different questions.</strong></h2>
+
+    <div class="prov-grid">
+
+      <!-- 1 — Newell Brands eCommerce -->
+      <div class="prov-card">
+        <div class="prov-image-area">
+          <!-- Drop image: <img src="images/newell-ecomm.jpg" alt="Newell Brands eCommerce Vision"> -->
+          <div class="prov-image-area-placeholder">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+            <span>Vision Images</span>
+          </div>
+          <span class="prov-type-badge badge-whatif">What If</span>
+        </div>
+        <div class="prov-body">
+          <div class="prov-brand">Newell Brands · eCommerce</div>
+          <p class="prov-statement">What if <em>digital commerce becomes the preferred purchasing channel</em>, resulting in consumers expecting anytime, anywhere shopping experiences, forcing us to <em>reimagine how our brands engage, convert, and serve customers online?</em></p>
+          <p class="prov-impact"><strong>Influence:</strong> Vision presented by the CEO to the Board of Directors to demonstrate the company's commitment to eCommerce growth. Art direction &amp; design led by Katie.</p>
+        </div>
+      </div>
+
+      <!-- 2 — CMF Exhibit -->
+      <div class="prov-card">
+        <div class="prov-image-area">
+          <!-- Drop image: <img src="images/cmf-exhibit.jpg" alt="CMF Exhibit"> -->
+          <div class="prov-image-area-placeholder">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+            <span>Exhibit &amp; Book Images</span>
+          </div>
+          <span class="prov-type-badge badge-hmw">How Might We</span>
+        </div>
+        <div class="prov-body">
+          <div class="prov-brand">Newell Brands · Color Material Finish</div>
+          <p class="prov-statement">How might we <em>help the company understand the impact of CMF on the business?</em> The best way is to walk them through it — literally. Plus a book to keep the conversation going.</p>
+          <p class="prov-impact"><strong>Influence:</strong> Physical exhibit and accompanying publication accepted into the AIGA West Michigan Archives. Storytelling experience design recognized for impact on CPG brand strategy.</p>
+        </div>
+      </div>
+
+      <!-- 3 — Yankee Candle -->
+      <div class="prov-card">
+        <div class="prov-image-area">
+          <!-- Drop image: <img src="images/yankee-candle.jpg" alt="Yankee Candle Try Experience"> -->
+          <div class="prov-image-area-placeholder">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+            <span>Concept Images</span>
+          </div>
+          <span class="prov-type-badge badge-hmw">How Might We</span>
+        </div>
+        <div class="prov-body">
+          <div class="prov-brand">Yankee Candle · eCommerce Try Experience</div>
+          <p class="prov-statement">How might <em>consumers get a fragrance discovery experience</em> that's easier and more compelling — so they feel confident purchasing from YankeeCandle.com without smelling it first?</p>
+          <p class="prov-impact"><strong>Influence:</strong> Reframed the eCommerce conversion barrier as a sensory design challenge, informing digital experience and content strategy across the fragrance portfolio.</p>
+        </div>
+      </div>
+
+      <!-- 4 — IoT -->
+      <div class="prov-card">
+        <div class="prov-image-area">
+          <!-- Drop image: <img src="images/iot-vision.jpg" alt="IoT Vision"> -->
+          <div class="prov-image-area-placeholder">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+            <span>Future Vision Images</span>
+          </div>
+          <span class="prov-type-badge badge-whatif">What If</span>
+        </div>
+        <div class="prov-body">
+          <div class="prov-brand">Newell Brands · Internet of Things</div>
+          <p class="prov-statement">What if <em>the Internet of Things transforms consumer products into connected platforms</em>, resulting in new purchase behaviors driven by convenience, personalization, and data, forcing us to <em>reimagine how our brands create value beyond the physical product?</em></p>
+          <p class="prov-impact"><strong>Influence:</strong> Shaped multi-brand digital product roadmap conversations by repositioning hardware as a platform — not just a product.</p>
+        </div>
+      </div>
+
+      <!-- 5 — Sunbeam -->
+      <div class="prov-card">
+        <div class="prov-image-area">
+          <!-- Drop image: <img src="images/sunbeam.jpg" alt="Sunbeam Wellness Companion"> -->
+          <div class="prov-image-area-placeholder">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+            <span>Concept Images</span>
+          </div>
+          <span class="prov-type-badge badge-hmw">How Might We</span>
+        </div>
+        <div class="prov-body">
+          <div class="prov-brand">Sunbeam · Wellness &amp; Connected Living</div>
+          <p class="prov-statement">How might we <em>transform a heated throw from a simple blanket into a personalized wellness companion</em> that helps Millennials and Gen Z unwind, recharge, and feel their best?</p>
+          <p class="prov-impact"><strong>Influence:</strong> Repositioned a commodity product category through a wellness lens, influencing brand positioning and connected product feature strategy for a new generation of buyers.</p>
+        </div>
+      </div>
+
+      <!-- 6 — Crock-Pot -->
+      <div class="prov-card">
+        <div class="prov-image-area">
+          <!-- Drop image: <img src="images/crockpot.jpg" alt="Crock-Pot+ Vision"> -->
+          <div class="prov-image-area-placeholder">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+            <span>Concept Images</span>
+          </div>
+          <span class="prov-type-badge badge-hmw">How Might We</span>
+        </div>
+        <div class="prov-body">
+          <div class="prov-brand">Crock-Pot+ · Household &amp; Cooking</div>
+          <p class="prov-statement">How might we <em>help busy households put a home-cooked meal on the table more easily</em>, despite varying tastes, preferences, and dietary needs across the family?</p>
+          <p class="prov-impact"><strong>Influence:</strong> Defined the product-plus-service vision that informed the Crock-Pot+ connected platform strategy — from recipe personalization to meal planning integration.</p>
+        </div>
+      </div>
+
+      <!-- 7 — Parker Pens -->
+      <div class="prov-card">
+        <div class="prov-image-area">
+          <!-- Drop image: <img src="images/parker-pens.jpg" alt="Parker Pens eCommerce"> -->
+          <div class="prov-image-area-placeholder">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+            <span>eCommerce Vision Images</span>
+          </div>
+          <span class="prov-type-badge badge-hmw">How Might We</span>
+        </div>
+        <div class="prov-body">
+          <div class="prov-brand">Parker Pens · eCommerce &amp; Premium Brand</div>
+          <p class="prov-statement">How might we <em>create a seamless and inspiring eCommerce experience for fine writing brands</em> like Parker that reflects the premium brand experience online and attracts a new generation of consumers?</p>
+          <p class="prov-impact"><strong>Influence:</strong> Translated a heritage brand's in-store premium experience into a digital vision — connecting brand equity to conversion strategy for a category at risk of becoming invisible online.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="swap-note" style="text-align:left;margin-top:var(--s-06);">
+      <span style="display:inline-flex;align-items:center;gap:var(--s-03);color:var(--border-strong);font-size:.7rem;text-transform:uppercase;letter-spacing:.06em;">
+        To add images: replace each placeholder div with
+        <code style="background:var(--layer-01);padding:var(--s-02) var(--s-04);font-size:.7rem;color:var(--text-primary);">&lt;img src="your-image.jpg" alt="..."&gt;</code>
+        inside the existing <code style="background:var(--layer-01);padding:var(--s-02) var(--s-04);font-size:.7rem;color:var(--text-primary);">.prov-image-area</code> div
+      </span>
+    </div>
+
+    <div class="callout" style="margin-top:var(--s-09);">
+      <div class="callout-label">The through line</div>
+      <p>Near term and future state. In-store and online. Packaging to environmental graphics and everything in between. The job is always the same: <strong>connect the dots across a vast portfolio — physical to digital — so the organization knows exactly where it's going and why.</strong></p>
+    </div>
+
+  </section>
+
+</div><!-- /page --><script>
+  document.getElementById('nav-vision').classList.add('active');
+</script>
+</body>
+</html>

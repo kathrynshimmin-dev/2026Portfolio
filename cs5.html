@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>CS 05 — Home Fragrance Shopping Experience · Design Director Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sedgwick+Ave&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #ffffff; --layer-01: #f4f4f4; --border-subtle: #e0e0e0;
+  --border-strong: #8d8d8d; --text-primary: #161616; --text-secondary: #525252;
+  --accent: #ec5d5e; --accent-secondary: #ff9592; --accent-tertiary: #ffd1d9; --accent-text: #ffffff;
+  --tag-bg: #ffe8e8; --tag-color: #c22828;
+  --font: 'IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif;
+  --s-02:.25rem;--s-03:.5rem;--s-04:.75rem;--s-05:1rem;
+  --s-06:1.5rem;--s-07:2rem;--s-08:2.5rem;--s-09:3rem;--s-10:4rem;--s-12:6rem;
+}
+html { font-family: var(--font); font-size: 16px; scroll-behavior: smooth; }
+body { background: var(--bg); color: var(--text-primary); line-height: 1.6; }
+.page { max-width: 1056px; margin: 0 auto; padding: 0 var(--s-07); }
+.nav-bar { background: var(--bg); border-bottom: 1px solid var(--border-subtle); padding: var(--s-04) var(--s-07); display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; }
+.nav-wordmark { font-size: .75rem; font-weight: 600; letter-spacing: .1em; color: var(--text-secondary); text-decoration: none; display:flex; flex-direction:column; gap:.1em; }
+.nav-wordmark:hover { color: var(--accent); }
+.nav-links { display: flex; flex-wrap: wrap; gap: var(--s-02); }
+.nav-links a { font-size: .75rem; color: var(--text-secondary); text-decoration: none; padding: var(--s-02) var(--s-04); border-bottom: 2px solid transparent; }
+.nav-links a:hover, .nav-links a.active { color: var(--accent); border-bottom-color: var(--accent); }
+.hero { padding: var(--s-10) 0 var(--s-09); border-bottom: 1px solid var(--border-subtle); }
+.hero-meta { display: flex; align-items: center; gap: var(--s-05); flex-wrap: wrap; margin-bottom: var(--s-06); }
+.tag { display: inline-block; padding: var(--s-02) var(--s-04); background: var(--tag-bg); color: var(--tag-color); font-size: .75rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; }
+.tag-accent { background: var(--accent); color: var(--accent-text); }
+.hero-eyebrow { font-size: .75rem; color: var(--text-secondary); letter-spacing: .08em; text-transform: uppercase; }
+.hero h1 { font-size: clamp(1.75rem,4vw,2.625rem); font-weight: 300; line-height: 1.2; max-width: 800px; margin-bottom: var(--s-06); }
+.hero h1 strong { font-weight: 600; color: var(--accent); }
+.hero-summary { font-size: 1.125rem; color: var(--text-secondary); max-width: 680px; line-height: 1.7; margin-bottom: var(--s-08); }
+.stat-row { display: grid; grid-template-columns: repeat(auto-fit,minmax(140px,1fr)); gap: 1px; background: var(--border-subtle); border: 1px solid var(--border-subtle); margin-top: var(--s-07); }
+.stat { background: var(--bg); padding: var(--s-07) var(--s-06); display: flex; flex-direction: column; gap: var(--s-02); }
+.stat-number { font-size: clamp(1.5rem,3vw,2.25rem); font-weight: 300; line-height: 1; color: var(--accent); }
+.stat-number strong { font-weight: 600; }
+.stat-label { font-size: .75rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: .06em; }
+.toc { display: flex; flex-wrap: wrap; border-bottom: 1px solid var(--border-subtle); margin-bottom: var(--s-09); background: var(--bg); }
+.toc a { padding: var(--s-04) var(--s-06); font-size: .75rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--text-secondary); text-decoration: none; border-bottom: 2px solid transparent; white-space: nowrap; }
+.toc a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+.content { padding-bottom: var(--s-12); }
+.section { display: grid; grid-template-columns: 220px 1fr; gap: 0 var(--s-09); padding: var(--s-09) 0; border-bottom: 1px solid var(--border-subtle); }
+.section:last-child { border-bottom: none; }
+.section-number { font-size: .75rem; font-weight: 600; color: var(--accent); text-transform: uppercase; letter-spacing: .1em; margin-bottom: var(--s-03); display: flex; align-items: center; gap: var(--s-03); }
+.section-number::before { content: ''; display: inline-block; width: 16px; height: 2px; background: var(--accent); }
+.section-title { font-size: 1.25rem; font-weight: 600; line-height: 1.3; }
+h2.bh { font-size: 1.25rem; font-weight: 600; margin-top: var(--s-07); margin-bottom: var(--s-04); }
+h2.bh:first-child { margin-top: 0; }
+p { font-size: .875rem; color: var(--text-secondary); margin-bottom: var(--s-05); line-height: 1.7; }
+p:last-child { margin-bottom: 0; }
+em { font-style: italic; }
+.callout { background: var(--layer-01); padding: var(--s-06) var(--s-07); margin: var(--s-06) 0; }
+.callout-label { font-size: .75rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--accent); margin-bottom: var(--s-04); }
+.callout p { font-family: 'Sedgwick Ave', cursive; font-size: 1.46rem; font-weight: 400; color: var(--text-primary); line-height: 1.6; margin: 0; }
+.callout p strong { font-weight: 600; }
+.card-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(180px,1fr)); gap: 1px; background: var(--border-subtle); border: 1px solid var(--border-subtle); margin: var(--s-06) 0; }
+.card { background: var(--bg); padding: var(--s-06); display: flex; flex-direction: column; gap: var(--s-03); border-top: 3px solid transparent; }
+.card:hover { border-top-color: var(--accent-secondary); }
+.card-title { font-size: 1rem; font-weight: 600; }
+.card p { font-size: .875rem; color: var(--text-secondary); margin: 0; }
+ul.cl { list-style: none; padding: 0; margin: var(--s-03) 0 var(--s-05); }
+ul.cl li { font-size: .875rem; color: var(--text-secondary); line-height: 1.7; padding: var(--s-03) 0 var(--s-03) var(--s-06); position: relative; }
+ul.cl li::before { content: ''; position: absolute; left: 0; top: .75em; width: 4px; height: 4px; background: var(--accent); }
+.outcome-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(160px,1fr)); gap: var(--s-05); margin: var(--s-06) 0; }
+.metric { padding: var(--s-06); background: var(--accent); color: var(--accent-text); display: flex; flex-direction: column; gap: var(--s-02); }
+.metric-value { font-size: clamp(1.25rem,3vw,1.75rem); font-weight: 300; line-height: 1; }
+.metric-value strong { font-weight: 600; }
+.metric-label { font-size: .75rem; text-transform: uppercase; letter-spacing: .06em; opacity: .85; }
+.metric-desc { font-size: .8125rem; opacity: .8; margin-top: var(--s-03); line-height: 1.5; }
+.metric-secondary { background: var(--accent-secondary); color: #161616; }
+.metric-secondary .metric-label { opacity: .7; }
+.metric-light { background: var(--layer-01); color: var(--text-primary); border: 1px solid var(--accent-secondary); }
+.metric-light .metric-value { color: var(--accent); }
+.metric-light .metric-label { color: var(--accent); opacity: 1; }
+.metric-light .metric-desc { color: var(--text-secondary); opacity: 1; }
+.back-btn { display: inline-flex; align-items: center; gap: var(--s-03); font-size: .75rem; font-weight: 600; text-transform: uppercase; letter-spacing: .08em; color: var(--text-secondary); cursor: pointer; background: none; border: none; padding: var(--s-05) 0; text-decoration: none; }
+.back-btn:hover { color: var(--accent); }
+.back-btn svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2; }
+footer { border-top: 1px solid var(--border-subtle); padding: var(--s-07) 0; text-align: center; font-size: .75rem; color: var(--text-secondary); }
+footer a { color: var(--text-secondary); }
+
+/* IMAGE PLACEHOLDERS */
+.img-placeholder { background: var(--accent-tertiary); border: 1px dashed var(--border-strong); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: var(--s-03); color: var(--border-strong); font-size: .7rem; text-transform: uppercase; letter-spacing: .06em; width: 100%; }
+.img-placeholder svg { width: 32px; height: 32px; stroke: var(--accent-secondary); fill: none; stroke-width: 1.2; }
+.img-placeholder.hero-img { height: 400px; }
+.img-placeholder.half-img { height: 260px; }
+.img-placeholder.third-img { height: 200px; }
+.img-swap-note { font-size: .7rem; color: var(--border-strong); text-transform: uppercase; letter-spacing: .06em; margin-top: var(--s-03); }
+
+/* IMAGE GRID */
+.img-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-05); margin: var(--s-06) 0; }
+.img-grid-3 { display: grid; grid-template-columns: repeat(3,1fr); gap: var(--s-05); margin: var(--s-06) 0; }
+.img-grid-4 { display: grid; grid-template-columns: repeat(4,1fr); gap: var(--s-04); margin: var(--s-06) 0; }
+
+/* 5E FRAMEWORK */
+.five-e { display: grid; grid-template-columns: repeat(5,1fr); gap: 1px; background: var(--border-subtle); border: 1px solid var(--border-subtle); margin: var(--s-06) 0; }
+.five-e-step { background: var(--bg); padding: var(--s-06) var(--s-05); display: flex; flex-direction: column; gap: var(--s-03); }
+.five-e-step:first-child { background: var(--accent); color: var(--accent-text); }
+.five-e-label { font-size: .7rem; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; }
+.five-e-step:first-child .five-e-label { opacity: .8; }
+.five-e-title { font-size: 1rem; font-weight: 600; }
+.five-e-desc { font-size: .8rem; line-height: 1.6; color: var(--text-secondary); margin: 0; }
+.five-e-step:first-child .five-e-desc { color: rgba(255,255,255,.8); }
+
+/* ORIGIN CALLOUT — What If link */
+.origin-band { background: var(--layer-01); border-left: 4px solid var(--accent); padding: var(--s-06) var(--s-07); margin: var(--s-07) 0; display: grid; grid-template-columns: auto 1fr; gap: var(--s-06); align-items: start; }
+.origin-icon { width: 40px; height: 40px; background: var(--accent); display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
+.origin-icon svg { width: 20px; height: 20px; stroke: #fff; fill: none; stroke-width: 2; }
+.origin-eyebrow { font-size: .6rem; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; color: var(--accent); margin-bottom: var(--s-02); }
+.origin-text { font-size: .9375rem; font-weight: 300; color: var(--text-primary); line-height: 1.65; margin: 0; }
+.origin-text a { color: var(--accent); font-weight: 600; text-decoration: none; }
+.origin-text a:hover { text-decoration: underline; }
+
+@media (max-width: 768px) {
+  .section { grid-template-columns: 1fr; }
+  .img-grid-2, .img-grid-3, .img-grid-4 { grid-template-columns: 1fr 1fr; }
+  .five-e { grid-template-columns: 1fr 1fr; }
+  .page { padding: 0 var(--s-05); }
+  .nav-bar { padding: var(--s-04) var(--s-05); flex-wrap: wrap; gap: var(--s-03); }
+  .origin-band { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav-bar">
+  <a class="nav-wordmark" href="index.html"><span style="display:block;">Katie Shimmin</span><em style="display:block;font-style:italic;font-weight:400;letter-spacing:0;text-transform:none;color:inherit;">Connecting vision to value through design, AI, &amp; human-centered innovation</em></a>
+  <div class="nav-links">
+    <a href="index.html">Portfolio</a>
+    <a href="cs1.html">CS 01</a>
+    <a href="cs2.html">CS 02</a>
+    <a href="cs3.html">CS 03</a>
+    <a href="cs4.html">CS 04</a>
+    <a href="cs5.html" id="nav-cs5" class="active">CS 05</a>
+    <a href="presence.html">Presence</a>
+    <a href="people.html">People</a>
+    <a href="vision.html">Vision</a>
+  </div>
+</nav>
+
+<div class="page">
+
+  <a class="back-btn" href="index.html">
+    <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+    All Case Studies
+  </a>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-meta">
+      <span class="tag tag-accent">Case Study 05</span>
+      <span class="tag">Experience Design</span>
+      <span class="tag">Retail Innovation</span>
+      <span class="tag">Brand Storytelling</span>
+      <span class="hero-eyebrow">Newell Brands · Yankee Candle · New York City</span>
+    </div>
+    <h1>What if <strong>buying a candle felt like an experience</strong> worth posting about — not a shelf to scroll past?</h1>
+    <p class="hero-summary">Millennials weren't just shopping differently — they were rejecting shopping that felt like shopping. So we stopped trying to sell fragrance and started designing an experience that made them feel something. Surrealist-inspired, Instagrammable, and completely ownable: The Candle Power NYC pop-up proved a scent could move people before they ever opened the lid.</p>
+    <div class="stat-row">
+      <div class="stat"><div class="stat-number"><strong>400%</strong></div><div class="stat-label">Above Impressions Target</div></div>
+      <div class="stat"><div class="stat-number"><strong>WGSN</strong></div><div class="stat-label">Featured in Trend Report</div></div>
+      <div class="stat"><div class="stat-number"><strong>PR Platinum</strong></div><div class="stat-label">Award Winner</div></div>
+      <div class="stat"><div class="stat-number"><strong>+1</strong></div><div class="stat-label">Invited to Reimagine Mass Retail</div></div>
+    </div>
+  </header>
+
+  <!-- TOC -->
+  <nav class="toc">
+    <a href="#cs5-s1">01&nbsp; Context</a>
+    <a href="#cs5-s2">02&nbsp; My Role</a>
+    <a href="#cs5-s3">03&nbsp; Strategic Framing</a>
+    <a href="#cs5-s4">04&nbsp; My Process</a>
+    <a href="#cs5-s5">05&nbsp; Outcomes</a>
+  </nav>
+
+  <main class="content">
+
+    <!-- ── SECTION 01: CONTEXT ── -->
+    <section class="section" id="cs5-s1">
+      <div><div class="section-number">01</div><div class="section-title">Context</div></div>
+      <div>
+
+        <div class="origin-band">
+          <div class="origin-icon">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+          </div>
+          <div>
+            <div class="origin-eyebrow">Where This Came From</div>
+            <p class="origin-text">This work grew directly out of a bigger vision provocation: <em>"What if digital commerce becomes the preferred purchasing channel, resulting in consumers expecting anytime, anywhere shopping experiences, forcing us to reimagine how our brands engage, convert, and serve customers online?"</em> The pop-up was one answer to that question — a physical proof point that built brand conviction and drove the online experience conversation forward. <a href="vision.html">See the full vision framework →</a></p>
+          </div>
+        </div>
+
+        <h2 class="bh">The Business Problem</h2>
+        <p>Retail sales were down. Millennials — the growth audience Newell Brands needed — were shopping in ways the existing home fragrance experience wasn't built for. They valued <em>experiences over things</em>. They expected brands to earn their attention, not just occupy shelf space. A traditional candle display wasn't going to cut it anymore.</p>
+
+        <div class="callout">
+          <div class="callout-label">Problem Statement</div>
+          <p>Millennials need a more <strong>modernized home fragrance shopping experience</strong> because they value experiences over things — and retail sales are declining.</p>
+        </div>
+
+        <h2 class="bh">Who Was Involved</h2>
+        <div class="card-grid">
+          <div class="card"><div class="card-title">Innovation Managers</div><p>Brought strategic framing and cross-brand context to the challenge.</p></div>
+          <div class="card"><div class="card-title">Brand Marketing</div><p>Owned the Yankee Candle brand voice and target audience brief.</p></div>
+          <div class="card"><div class="card-title">Internal Retail Team</div><p>Provided operational knowledge of retail environment constraints.</p></div>
+          <div class="card"><div class="card-title">Industrial Design</div><p>Shaped the physical environment and installation design.</p></div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ── SECTION 02: MY ROLE ── -->
+    <section class="section" id="cs5-s2">
+      <div><div class="section-number">02</div><div class="section-title">My Role</div></div>
+      <div>
+        <h2 class="bh">Workshop Participant &amp; Designer</h2>
+        <p>I contributed as both a workshop participant in the ideation process and a designer on the experience. That dual seat — being in the room where the concept was shaped and then helping bring it to life — gave me a complete view of how good design decisions get made when creative and strategic minds share the same whiteboard.</p>
+        <p>My focus was on the experience design: how the space communicated, how it felt to move through it, and how the brand story translated into something a visitor would stop, engage with, and share.</p>
+      </div>
+    </section>
+
+    <!-- ── SECTION 03: STRATEGIC FRAMING ── -->
+    <section class="section" id="cs5-s3">
+      <div><div class="section-number">03</div><div class="section-title">Strategic Framing</div></div>
+      <div>
+        <h2 class="bh">The Reframe</h2>
+        <p>The instinct was to sell fragrance better. We reframed it: <em>what if we stopped selling and started transporting?</em> Scent is one of the most powerful memory-making senses humans have. Instead of describing fragrance, we designed an environment that let people experience what a scent could make them feel — then connected that feeling back to the brand.</p>
+
+        <div class="callout">
+          <div class="callout-label">The Strategic Bet</div>
+          <p>An <strong>Instagrammable NYC pop-up</strong> to build awareness of Newell Brands' home fragrance portfolio, drive trial, and engage new consumers — meeting Millennials where they live: in experiences worth sharing.</p>
+        </div>
+
+        <h2 class="bh">What Success Looked Like</h2>
+        <div class="card-grid">
+          <div class="card"><div class="card-title">Brand Awareness</div><p>Put the home fragrance portfolio in front of a Millennial audience that hadn't been actively seeking it.</p></div>
+          <div class="card"><div class="card-title">Trial &amp; Discovery</div><p>Get people to engage with fragrance in a way that felt personal, not transactional.</p></div>
+          <div class="card"><div class="card-title">Social Amplification</div><p>Design spaces worth photographing — so the experience extended far beyond the four walls.</p></div>
+          <div class="card"><div class="card-title">Earned Media</div><p>Create something compelling enough that press and trend forecasters would cover it organically.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── SECTION 04: PROCESS ── -->
+    <section class="section" id="cs5-s4">
+      <div><div class="section-number">04</div><div class="section-title">My Process</div></div>
+      <div>
+
+        <h2 class="bh">Phase 1 — Empathy: A Trend Trek Through NYC</h2>
+        <p>Before designing anything, we went out into the city. Our team conducted a trend trek through New York, observing and documenting retail experiences, cultural signals, and the environments people actually chose to spend time in. We were looking for what made people stop, linger, and share.</p>
+
+        <!-- Image grid: trend trek photos -->
+        <div class="img-grid-3">
+          <div>
+            <!-- <img src="images/trend-trek-01.jpg" alt="Trend Trek NYC"> -->
+            <div class="img-placeholder third-img">
+              <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+              <span>Trend Trek Photo</span>
+            </div>
+          </div>
+          <div>
+            <!-- <img src="images/trend-trek-02.jpg" alt="Trend Trek NYC"> -->
+            <div class="img-placeholder third-img">
+              <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+              <span>Trend Trek Photo</span>
+            </div>
+          </div>
+          <div>
+            <!-- <img src="images/trend-trek-03.jpg" alt="Trend Trek NYC"> -->
+            <div class="img-placeholder third-img">
+              <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+              <span>Trend Trek Photo</span>
+            </div>
+          </div>
+        </div>
+        <p class="img-swap-note">Replace placeholders with your trend trek photos — swap the div.img-placeholder with &lt;img src="..."&gt;</p>
+
+        <h2 class="bh">Phase 2 — Ideation: The 5E Framework</h2>
+        <p>We structured our ideation around the <strong>5E Framework</strong> — a journey model that considers every phase of the consumer experience, from the moment they discover the pop-up to long after they've left it. This discipline kept us from designing a room and reminded us we were designing an <em>arc</em>.</p>
+
+        <div class="five-e">
+          <div class="five-e-step">
+            <div class="five-e-label">01</div>
+            <div class="five-e-title">Entice</div>
+            <p class="five-e-desc">How do we get Millennials to notice, stop, and want in?</p>
+          </div>
+          <div class="five-e-step">
+            <div class="five-e-label">02</div>
+            <div class="five-e-title">Enter</div>
+            <p class="five-e-desc">What's the first moment? How does the brand declare itself?</p>
+          </div>
+          <div class="five-e-step">
+            <div class="five-e-label">03</div>
+            <div class="five-e-title">Engage</div>
+            <p class="five-e-desc">What do people do? How do they interact with fragrance?</p>
+          </div>
+          <div class="five-e-step">
+            <div class="five-e-label">04</div>
+            <div class="five-e-title">Exit</div>
+            <p class="five-e-desc">How do they leave? What do they take with them — physically and emotionally?</p>
+          </div>
+          <div class="five-e-step">
+            <div class="five-e-label">05</div>
+            <div class="five-e-title">Extend</div>
+            <p class="five-e-desc">How does the experience live on — in posts, in memory, in future purchases?</p>
+          </div>
+        </div>
+
+        <!-- Ideation image -->
+        <div class="img-grid-2">
+          <div>
+            <!-- <img src="images/ideation-01.jpg" alt="Ideation Workshop"> -->
+            <div class="img-placeholder half-img">
+              <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+              <span>Ideation / Sketches</span>
+            </div>
+          </div>
+          <div>
+            <!-- <img src="images/ideation-02.jpg" alt="5E Framework Work"> -->
+            <div class="img-placeholder half-img">
+              <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+              <span>Framework / Concepts</span>
+            </div>
+          </div>
+        </div>
+
+        <h2 class="bh">Phase 3 — The Launched Experience: Candle Power</h2>
+        <p>The result was <strong>Candle Power</strong> — a surrealist-inspired NYC pop-up featuring immersive graphics and interactive installations built around Yankee Candle's signature fragrances. Each space was designed to show the power of scent to transform and transport. Not just pleasant. Transportive.</p>
+
+        <!-- Hero experience image -->
+        <!-- <img src="images/candle-power-hero.jpg" alt="Candle Power Pop-Up Experience" style="width:100%;height:420px;object-fit:cover;margin:var(--s-06) 0;"> -->
+        <div class="img-placeholder hero-img" style="margin:var(--s-06) 0;">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          <span>Candle Power — Hero Experience Image</span>
+        </div>
+
+        <!-- Experience detail grid -->
+        <div class="img-grid-4">
+          <div>
+            <!-- <img src="images/cp-detail-01.jpg" alt="Installation Detail"> -->
+            <div class="img-placeholder third-img">
+              <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+              <span>Installation</span>
+            </div>
+          </div>
+          <div>
+            <!-- <img src="images/cp-detail-02.jpg" alt="Graphics Detail"> -->
+            <div class="img-placeholder third-img">
+              <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+              <span>Graphics</span>
+            </div>
+          </div>
+          <div>
+            <!-- <img src="images/cp-detail-03.jpg" alt="Fragrance Discovery"> -->
+            <div class="img-placeholder third-img">
+              <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+              <span>Experience</span>
+            </div>
+          </div>
+          <div>
+            <!-- <img src="images/cp-detail-04.jpg" alt="Consumer Moments"> -->
+            <div class="img-placeholder third-img">
+              <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+              <span>Consumer Moments</span>
+            </div>
+          </div>
+        </div>
+        <p class="img-swap-note">Replace each placeholder with &lt;img src="your-photo.jpg" alt="..."&gt; inside the existing wrapper div</p>
+
+      </div>
+    </section>
+
+    <!-- ── SECTION 05: OUTCOMES ── -->
+    <section class="section" id="cs5-s5">
+      <div><div class="section-number">05</div><div class="section-title">Outcomes</div></div>
+      <div>
+
+        <h2 class="bh">It Worked — and Then Some</h2>
+        <div class="outcome-grid">
+          <div class="metric">
+            <div class="metric-value"><strong>400%</strong></div>
+            <div class="metric-label">Above Social &amp; Media Target</div>
+            <div class="metric-desc">Exceeded social and media impressions goals by 400%. The experience spread far beyond the pop-up walls.</div>
+          </div>
+          <div class="metric metric-secondary">
+            <div class="metric-value"><strong>PR Platinum</strong></div>
+            <div class="metric-label">Award Winner</div>
+            <div class="metric-desc">Recognized for demonstrating innovative storytelling, creativity, and measurable results. September 2018.</div>
+          </div>
+          <div class="metric metric-light">
+            <div class="metric-value"><strong>WGSN</strong></div>
+            <div class="metric-label">Trend Report Feature</div>
+            <div class="metric-desc">The work was featured in a WGSN trend report — validating the concept as a cultural signal, not just a brand activation.</div>
+          </div>
+          <div class="metric metric-light">
+            <div class="metric-value"><strong>+1 Store</strong></div>
+            <div class="metric-label">Expanded to MA</div>
+            <div class="metric-desc">The most successful aspects were incorporated into another test store in Massachusetts — proving scalability.</div>
+          </div>
+          <div class="metric metric-light">
+            <div class="metric-value"><strong>Invited Back</strong></div>
+            <div class="metric-label">Mass Retail Reimagination</div>
+            <div class="metric-desc">The work earned a seat at the next table: invited to reimagine the mass retail store experience. The best outcome is the next assignment.</div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+</div><!-- /page --><script>
+  document.getElementById('nav-cs5').classList.add('active');
+</script>
+</body>
+</html>

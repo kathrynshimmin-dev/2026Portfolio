@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Katie Shimmin — Design Director Resume</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: -apple-system, "Segoe UI", system-ui, sans-serif;
+    font-size: 14px;
+    line-height: 1.55;
+    color: #1f2328;
+    background: #ffffff;
+    padding: 48px 32px;
+    max-width: 820px;
+    margin: 0 auto;
+  }
+
+  /* ── HEADER ── */
+  header {
+    border-bottom: 2px solid #1f2328;
+    padding-bottom: 16px;
+    margin-bottom: 24px;
+  }
+
+  header h1 {
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: -0.3px;
+    line-height: 1.2;
+  }
+
+  header .title {
+    font-size: 15px;
+    font-weight: 500;
+    color: #db6763;
+    margin-top: 3px;
+    letter-spacing: 0.2px;
+  }
+
+  header .contact {
+    margin-top: 8px;
+    font-size: 12.5px;
+    color: #57606a;
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  /* ── LAYOUT ── */
+  .body-grid {
+    display: grid;
+    grid-template-columns: 1fr 220px;
+    gap: 32px;
+    align-items: start;
+  }
+
+  /* ── SECTIONS ── */
+  section {
+    margin-bottom: 28px;
+  }
+
+  section:last-child {
+    margin-bottom: 0;
+  }
+
+  h2 {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: #57606a;
+    border-bottom: 1px solid #e5e7eb;
+    padding-bottom: 4px;
+    margin-bottom: 14px;
+  }
+
+  /* ── EXPERIENCE ── */
+  .role {
+    margin-bottom: 20px;
+  }
+
+  .role:last-child {
+    margin-bottom: 0;
+  }
+
+  .role-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 8px;
+  }
+
+  .role-title {
+    font-size: 14px;
+    font-weight: 700;
+  }
+
+  .role-dates {
+    font-size: 12px;
+    color: #1f2328;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .role-company {
+    font-size: 13px;
+    font-weight: 500;
+    color: #db6763;
+    margin-bottom: 7px;
+  }
+
+  .role-subroles {
+    margin-bottom: 10px;
+  }
+
+  .subrole-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 8px;
+    padding: 2px 0;
+  }
+
+  .subrole-title {
+    font-size: 12.5px;
+    font-weight: 600;
+    color: #db6763;
+  }
+
+  .subrole-dates {
+    font-size: 11.5px;
+    color: #db6763;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .accomplishments-label {
+    font-size: 10.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: #57606a;
+    margin-bottom: 6px;
+    margin-top: 4px;
+  }
+
+  ul {
+    padding-left: 16px;
+  }
+
+  ul li {
+    font-size: 13px;
+    line-height: 1.6;
+    margin-bottom: 4px;
+    color: #1f2328;
+  }
+
+  ul li:last-child {
+    margin-bottom: 0;
+  }
+
+  ul.sub-bullets {
+    margin-top: 4px;
+    padding-left: 16px;
+  }
+
+  ul.sub-bullets li {
+    font-size: 12px;
+    color: #57606a;
+    margin-bottom: 3px;
+  }
+
+  strong {
+    font-weight: 600;
+  }
+
+  /* ── SIDEBAR ── */
+  .sidebar section {
+    margin-bottom: 24px;
+  }
+
+  .skill-group {
+    margin-bottom: 12px;
+  }
+
+  .skill-group-label {
+    font-size: 11.5px;
+    font-weight: 600;
+    color: #1f2328;
+    margin-bottom: 4px;
+  }
+
+  .skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+
+  .tag {
+    background: #f7f8fa;
+    border: 1px solid #e5e7eb;
+    border-radius: 3px;
+    font-size: 11px;
+    color: #1f2328;
+    padding: 2px 7px;
+    line-height: 1.5;
+  }
+
+  .award {
+    margin-bottom: 10px;
+  }
+
+  .award-name {
+    font-size: 12.5px;
+    font-weight: 600;
+  }
+
+  .award-detail {
+    font-size: 11.5px;
+    color: #57606a;
+    line-height: 1.5;
+  }
+
+  .metrics-bar {
+    background: #f7f8fa;
+    border: 1px solid #e5e7eb;
+    border-radius: 4px;
+    padding: 10px 12px;
+    margin-bottom: 10px;
+  }
+
+  .metric-value {
+    font-size: 17px;
+    font-weight: 700;
+    color: #1f2328;
+    line-height: 1.2;
+  }
+
+  .metric-label {
+    font-size: 11px;
+    color: #57606a;
+    line-height: 1.4;
+  }
+
+  .testimony {
+    font-size: 12px;
+    font-style: italic;
+    color: #57606a;
+    border-left: 2px solid #e5e7eb;
+    padding-left: 10px;
+    margin-bottom: 10px;
+    line-height: 1.5;
+  }
+
+  .testimony cite {
+    display: block;
+    margin-top: 4px;
+    font-style: normal;
+    font-size: 11px;
+    font-weight: 600;
+    color: #1f2328;
+  }
+
+  @media print {
+    body { padding: 24px 20px; font-size: 12.5px; }
+    header h1 { font-size: 22px; }
+    .body-grid { gap: 24px; }
+    .body-grid > aside { min-width: 180px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Katie Shimmin</h1>
+  <div class="title">Enterprise Design Strategy &nbsp;·&nbsp; AI Innovation &nbsp;·&nbsp; Executive Facilitation &nbsp;·&nbsp; Experience Design</div>
+  <div class="contact">
+    <span>Kathrynshimmin@gmail.com</span>
+    <span>917-667-5716</span>
+    <span>New York, NY</span>
+  </div>
+</header>
+
+<div class="body-grid">
+
+  <!-- ── MAIN COLUMN ── -->
+  <main>
+
+    <section>
+      <h2>Summary</h2>
+      <p style="font-size:13.5px; line-height:1.65;">
+        I turn big ideas into experiences people don't forget. Whether it's an executive briefing or an innovation showcase, I bring creative vision, strategic clarity, and the energy to make it land. I've spent my career at the intersection of design, technology, and storytelling—uncovering customer behaviors, industry trends, and emerging technologies to generate actionable insights and foresights. I translate those insights into customer value and real end-user adoption that solves pressing consumer needs, directing teams, agencies, and cross-functional partners through end-to-end innovation journeys—from uncovering customer needs and prioritizing problem spaces to shaping opportunities, redefining frameworks, and delivering new experiences that land. I'm fluent in AI and emerging tech, and I know how to make complex ideas feel exciting and accessible to C-suite audiences. I also bring a strong background in Financial Services—understanding the stakes, the audiences, and what it takes to earn trust in that space.
+      </p>
+    </section>
+
+    <section>
+      <h2>Experience</h2>
+
+      <!-- IBM -->
+      <div class="role">
+        <div class="role-header">
+          <span class="role-title">IBM</span>
+          <span class="role-dates">4.5 years</span>
+        </div>
+        <div class="role-subroles">
+          <div class="subrole-row"><span class="subrole-title">AI Forward Deployed Engineer, Financial Services</span><span class="subrole-dates">2026 – Present</span></div>
+          <div class="subrole-row"><span class="subrole-title">Head of Strategy Design, Americas Client Engineering</span><span class="subrole-dates">2025 – 2026</span></div>
+          <div class="subrole-row"><span class="subrole-title">Advisory Innovation Designer</span><span class="subrole-dates">2021 – 2025</span></div>
+        </div>
+        <div class="accomplishments-label">Selected Accomplishments</div>
+        <ul>
+          <li>Built and scaled a <strong>client-centered account-planning operating model</strong> for IBM FSM across 63 accounts in one quarter, producing <strong>$50.6M in won revenue</strong> and 1,000+ surfaced opportunities; framework adopted by two additional IBM markets.</li>
+          <li>Designed and directed a <strong>State Street AI client experience</strong> (60+ participants, 9 qualified AI use cases) that was codified into a playbook and mandated across 7 IBM markets by a General Manager the following year.</li>
+          <li>Lead design strategy, program design, and facilitation enablement across IBM's Financial Services, Commercial, and Social Impact markets, coordinating <strong>89 designers</strong> across six Americas markets.</li>
+          <li>Originated a two-year <strong>nonprofit AI adoption framework</strong> for IBM Social Impact, partnering with funders to generate <strong>$750K+ in opportunity value</strong> and 20+ AI use cases across housing, healthcare, education, and economic mobility sectors.</li>
+          <li>Created <strong>Career Pathways &amp; Progression</strong> program artifacts scaled to 200+ Innovation Designers worldwide in 2025, mapping IBM core and adjacent design roles with skills gaps for long-term career guidance.</li>
+          <li>Enabled <strong>15 designers</strong> across 6 markets to attend Adobe Creative Jam and Figma Config through business cases and budget advocacy.</li>
+          <li>Created and led a role-based AI upskilling program for ~80 IBM practitioners: <strong>93.8% post-event confidence</strong>, 111.73% increase in AI-generated code two months post-event, and 25% of participants advancing a full proficiency level.</li>
+          <li>Named <strong>Top 7 of 2,000</strong> IBM Client Engineering practitioners worldwide (2024) and selected for the <strong>Artemis Program</strong> cohort tasked with transforming how Client Engineering operates as a business.</li>
+        </ul>
+      </div>
+
+      <!-- Newell Brands -->
+      <div class="role">
+        <div class="role-header">
+          <span class="role-title">Newell Brands</span>
+          <span class="role-dates">7.5 years</span>
+        </div>
+        <div class="role-subroles">
+          <div class="subrole-row"><span class="subrole-title">Senior Art Director, Experience Design</span><span class="subrole-dates">2019 – 2021</span></div>
+          <div class="subrole-row"><span class="subrole-title">Senior Graphic Designer</span><span class="subrole-dates">2015 – 2019</span></div>
+          <div class="subrole-row"><span class="subrole-title">Graphic Designer</span><span class="subrole-dates">2014 – 2015</span></div>
+        </div>
+        <div class="accomplishments-label">Selected Accomplishments</div>
+        <ul>
+          <li>Identified a gap in consumer-driven eCommerce design, secured executive buy-in for a new Experience Design function, and recruited, developed, and scaled the team from 1 to 3 members (<strong>200% growth</strong>) in under a year, tripling delivery capacity and expanding support for strategic initiatives. Integrated user research as part of a new pre-launch process to ensure designs resonate and user flows meet end-user needs for a portfolio of CPG brands across outdoor, food, cookware, and baby markets.</li>
+          <li>Co-designed the <strong>Candle Power NYC pop-up</strong> for Yankee Candle using the 5E experience framework (Entice, Enter, Engage, Exit, Extend), exceeding social and media impressions targets by <strong>400%</strong> and winning the <strong>PR Platinum Award (2018)</strong>. Experience was featured in a <strong>WGSN trend report</strong> and expanded to an additional Massachusetts retail location.</li>
+          <li>Drove digital commerce innovation for Yankee Candle by redefining fragrance discovery as a sensory-led customer experience strategy and launching the company's <strong>first subscription offering</strong>—a sold-out launch in under two months that prompted a 3× increase in projected demand.</li>
+          <li>Shaped enterprise and consumer brand experiences across the Newell portfolio: led the <strong>Paper Mate packaging refresh</strong>, contributed to the <strong>Sharpie redesign</strong>, and supported the global <strong>Newell Brands corporate rebrand</strong>; extended brand standards into scalable activation frameworks across physical, print, and digital channels.</li>
+          <li>Led vision strategy across <strong>5 business divisions</strong>, influencing <strong>40+ brand experiences</strong>; presented eCommerce vision to the CEO, who presented it to the Board of Directors.</li>
+        </ul>
+      </div>
+
+      <!-- Michigan Fitness Foundation -->
+      <div class="role">
+        <div class="role-header">
+          <span class="role-title">Michigan Fitness Foundation</span>
+          <span class="role-dates">1 year</span>
+        </div>
+        <div class="role-subroles">
+          <div class="subrole-row"><span class="subrole-title">Digital Designer</span><span class="subrole-dates">2013 – 2014</span></div>
+        </div>
+        <ul style="margin-top:8px;">
+          <li>Within the Communications and Technology team, designed and maintained seven CMS-powered websites, implementing current web standards and SEO guidelines.</li>
+        </ul>
+      </div>
+
+    </section>
+
+    <section>
+      <h2>Speaking &amp; External Presence</h2>
+      <ul>
+        <li><strong>New York University</strong>
+          <ul class="sub-bullets">
+            <li>Wagner Graduate School — Panelist, AI &amp; Data Strategy for Social Impact; coached graduate students on stakeholder confidence and decision-enabling strategy.</li>
+            <li>Guest lecturer, Fall 2026 (repeat engagement).</li>
+            <li>eSchool 4 Girls — Volunteer, speaker, and judge for student entrepreneurship pitch presentations.</li>
+          </ul>
+        </li>
+        <li><strong>IBM / Princeton University TigerTrek</strong> — Panelist for Princeton's top 20 entrepreneurial students on interdisciplinary careers and entrepreneurial thinking inside enterprise.</li>
+        <li><strong>Ferris State University, College of Business</strong> — Alumni panelist, Design program graduates session (Class of 2020 &amp; 2023).</li>
+        <li><strong>ATL Onboarding, Austin TX</strong> — Featured speaker (invitation from IBM VP of Tech Sales); delivered practical "art of storytelling" guidance to Account Technical Leaders.</li>
+        <li><strong>AIGA New York</strong> — Member since 2016.</li>
+      </ul>
+    </section>
+
+  </main>
+
+  <!-- ── SIDEBAR ── -->
+  <aside class="sidebar">
+
+    <section>
+      <h2>Career Highlights</h2>
+      <div class="metrics-bar">
+        <div class="metric-value">$50.6M</div>
+        <div class="metric-label">Won revenue from account-planning program, IBM FSM (Q1 2025)</div>
+      </div>
+      <div class="metrics-bar">
+        <div class="metric-value">$750K+</div>
+        <div class="metric-label">Total opportunity value, IBM Social Impact AI program (2022–2024)</div>
+      </div>
+      <div class="metrics-bar">
+        <div class="metric-value">Top 7 / 2,000</div>
+        <div class="metric-label">IBM Client Engineering practitioners worldwide (2024)</div>
+      </div>
+      <div class="metrics-bar">
+        <div class="metric-value">+111%</div>
+        <div class="metric-label">Increase in AI-generated code, post-Bobathon (2-month follow-up)</div>
+      </div>
+      <div class="metrics-bar">
+        <div class="metric-value">7 markets</div>
+        <div class="metric-label">Adopted the State Street AI innovation playbook</div>
+      </div>
+      <div class="metrics-bar">
+        <div class="metric-value">400%</div>
+        <div class="metric-label">Exceeded impressions target — Candle Power NYC pop-up</div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Awards</h2>
+      <div class="award">
+        <div class="award-name">IBM Artemis Program</div>
+        <div class="award-detail">Top 7 of 2,000 CE practitioners — selected by worldwide CE VP (2024)</div>
+      </div>
+      <div class="award">
+        <div class="award-name">PR Platinum Award</div>
+        <div class="award-detail">Candle Power / Yankee Candle NYC pop-up — innovative storytelling &amp; measurable results (2018)</div>
+      </div>
+      <div class="award">
+        <div class="award-name">AIGA West Michigan Archives</div>
+        <div class="award-detail">CMF storytelling &amp; experience design — accepted for archival recognition</div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Core Skills</h2>
+
+      <div class="skill-group">
+        <div class="skill-group-label">Creative &amp; Experience Design</div>
+        <div class="skill-tags">
+          <span class="tag">Visual storytelling</span>
+          <span class="tag">Creative direction</span>
+          <span class="tag">Immersive experience design</span>
+          <span class="tag">Customer journey design</span>
+          <span class="tag">Interactive demonstrations</span>
+          <span class="tag">Data visualization</span>
+          <span class="tag">Experience frameworks</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <div class="skill-group-label">Innovation &amp; Executive Engagement</div>
+        <div class="skill-tags">
+          <span class="tag">Executive briefing programs</span>
+          <span class="tag">Innovation showcases</span>
+          <span class="tag">Experience Centers</span>
+          <span class="tag">AI opportunity discovery</span>
+          <span class="tag">Agentic AI</span>
+          <span class="tag">Emerging technology</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <div class="skill-group-label">Strategy &amp; Leadership</div>
+        <div class="skill-tags">
+          <span class="tag">Creative strategy</span>
+          <span class="tag">Cross-functional leadership</span>
+          <span class="tag">Agency &amp; partner direction</span>
+          <span class="tag">Stakeholder alignment</span>
+          <span class="tag">Executive presence</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <div class="skill-group-label">Brand &amp; Communication</div>
+        <div class="skill-tags">
+          <span class="tag">Brand strategy</span>
+          <span class="tag">Keynote &amp; presentation design</span>
+          <span class="tag">Thought leadership</span>
+          <span class="tag">Visual narrative</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <div class="skill-group-label">Tools &amp; Platforms</div>
+        <div class="skill-tags">
+          <span class="tag">Figma</span>
+          <span class="tag">Mural</span>
+          <span class="tag">Salesforce</span>
+          <span class="tag">Jira</span>
+          <span class="tag">Monday.com</span>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Testimonials</h2>
+      <div class="testimony">
+        "You were such a motivated leader during this last quarter of Artemis. With many headwinds and low participation, you still pushed us forward. Your leadership did not go unnoticed by me!"
+        <cite>Takashi Ohno — Artemis Peer, IBM</cite>
+      </div>
+      <div class="testimony">
+        "I appreciate you consistently leading with empathy and collecting perspectives from across the market. The momentum and focus on meaningful impact in our initiatives is exactly what we need right now."
+        <cite>Amy Lewis — Canada Design Market Lead, IBM</cite>
+      </div>
+      <div class="testimony">
+        "The Career Progression initiative is a rigorous, long-term guide with lasting value for the CE design community."
+        <cite>Misti Peinado — Strategy &amp; Transformation Design Lead, EMEA, IBM</cite>
+      </div>
+    </section>
+
+  </aside>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>CS 01 — Technical Account Planning · Design Director Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sedgwick+Ave&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #ffffff; --layer-01: #f4f4f4; --border-subtle: #e0e0e0;
+  --border-strong: #8d8d8d; --text-primary: #161616; --text-secondary: #525252;
+  --accent: #ec5d5e; --accent-secondary: #ff9592; --accent-tertiary: #ffd1d9; --accent-text: #ffffff;
+  --tag-bg: #ffe8e8; --tag-color: #c22828;
+  --font: 'IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif;
+  --s-02:.25rem;--s-03:.5rem;--s-04:.75rem;--s-05:1rem;
+  --s-06:1.5rem;--s-07:2rem;--s-08:2.5rem;--s-09:3rem;--s-10:4rem;--s-12:6rem;
+}
+html { font-family: var(--font); font-size: 16px; scroll-behavior: smooth; }
+body { background: var(--bg); color: var(--text-primary); line-height: 1.6; }
+.page { max-width: 1056px; margin: 0 auto; padding: 0 var(--s-07); }
+.parallax-hero { position: relative; overflow: hidden; background: var(--accent-tertiary); min-height: 320px; display: flex; align-items: center; }
+.parallax-hero::before { content: ''; position: absolute; inset: -60px 0; background: radial-gradient(ellipse 60% 80% at 80% 50%, var(--accent-secondary) 0%, transparent 70%), radial-gradient(ellipse 40% 60% at 10% 30%, var(--accent) 0%, transparent 60%), var(--accent-tertiary); background-attachment: fixed; opacity: .18; }
+.parallax-hero-inner { position: relative; z-index: 1; max-width: 1056px; width: 100%; margin: 0 auto; padding: var(--s-10) var(--s-07); display: grid; grid-template-columns: 1fr 360px; gap: var(--s-09); align-items: center; }
+.parallax-strip { position: relative; overflow: hidden; height: 6px; }
+.parallax-strip::before { content: ''; position: absolute; inset: -40px 0; background: linear-gradient(90deg, var(--accent) 0%, var(--accent-secondary) 50%, var(--accent-tertiary) 100%); background-attachment: fixed; background-size: 200% 100%; }
+.reveal { opacity: 0; transform: translateY(28px); transition: opacity .6s cubic-bezier(.22,1,.36,1), transform .6s cubic-bezier(.22,1,.36,1); }
+.reveal.in-view { opacity: 1; transform: translateY(0); }
+.reveal-delay-1 { transition-delay: .1s; } .reveal-delay-2 { transition-delay: .2s; } .reveal-delay-3 { transition-delay: .3s; }
+@media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } .parallax-hero::before { background-attachment: scroll; } .parallax-strip::before { background-attachment: scroll; } }
+.nav-bar { background: var(--bg); border-bottom: 1px solid var(--border-subtle); padding: var(--s-04) var(--s-07); display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; }
+.nav-wordmark { font-size: .75rem; font-weight: 600; letter-spacing: .1em; color: var(--text-secondary); text-decoration: none; display:flex; flex-direction:column; gap:.1em; }
+.nav-wordmark:hover { color: var(--accent); }
+.nav-links { display: flex; flex-wrap: wrap; gap: var(--s-02); }
+.nav-links a { font-size: .75rem; color: var(--text-secondary); text-decoration: none; padding: var(--s-02) var(--s-04); border-bottom: 2px solid transparent; }
+.nav-links a:hover, .nav-links a.active { color: var(--accent); border-bottom-color: var(--accent); }
+.portfolio-index { padding: var(--s-10) 0 var(--s-09); border-bottom: 1px solid var(--border-subtle); }
+.portfolio-index h1 { font-size: clamp(1.5rem,3vw,2.25rem); font-weight: 300; margin-bottom: var(--s-04); }
+.portfolio-index h1 strong { font-weight: 600; color: var(--accent); }
+.portfolio-intro { font-size: 1rem; color: var(--text-secondary); max-width: 600px; line-height: 1.7; margin-bottom: var(--s-08); }
+.landing-section { padding: var(--s-10) 0; border-bottom: 1px solid var(--border-subtle); display: grid; grid-template-columns: 280px 1fr; gap: 0 var(--s-09); }
+.ls-eyebrow { font-size: .65rem; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; color: var(--accent); display: flex; align-items: center; gap: var(--s-03); margin-bottom: var(--s-04); }
+.ls-eyebrow::before { content: ''; width: 16px; height: 2px; background: var(--accent); display: inline-block; }
+.landing-section-label h2 { font-size: 1.5rem; font-weight: 300; line-height: 1.25; color: var(--text-primary); }
+.landing-section-label h2 strong { font-weight: 600; }
+.philosophy-lead { font-size: 1.375rem; font-weight: 300; color: var(--text-primary); line-height: 1.55; margin-bottom: var(--s-07); max-width: 600px; }
+.philosophy-lead strong { font-weight: 600; }
+.philosophy-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px,1fr)); gap: var(--s-05); margin-top: var(--s-06); }
+.philosophy-card { background: var(--accent-tertiary); padding: var(--s-06); display: flex; flex-direction: column; gap: var(--s-03); }
+.philosophy-card-label { font-size: .65rem; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; color: var(--accent); }
+.philosophy-card p { font-size: .875rem; color: var(--text-primary); line-height: 1.65; margin: 0; font-weight: 300; }
+.strategy-list { list-style: none; padding: 0; margin: 0; }
+.strategy-list li { display: grid; grid-template-columns: 2rem 1fr; gap: 0 var(--s-05); padding: var(--s-06) 0; border-bottom: 1px solid var(--border-subtle); align-items: start; }
+.strategy-list li:last-child { border-bottom: none; }
+.strategy-num { font-size: .65rem; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: .1em; padding-top: .2rem; }
+.strategy-text strong { display: block; font-size: 1rem; font-weight: 600; color: var(--text-primary); margin-bottom: var(--s-02); }
+.strategy-text p { font-size: .875rem; color: var(--text-secondary); margin: 0; line-height: 1.7; }
+.ibm-quote-mark { font-size: 4rem; font-weight: 300; line-height: .8; color: var(--accent); margin-bottom: var(--s-04); }
+.ibm-quote-inner blockquote { font-size: clamp(1.25rem,2.5vw,1.75rem); font-weight: 300; color: var(--text-primary); line-height: 1.4; margin-bottom: var(--s-05); }
+.ibm-quote-inner blockquote strong { font-weight: 600; }
+.ibm-quote-attr { font-size: .75rem; font-weight: 600; text-transform: uppercase; letter-spacing: .1em; color: var(--accent); }
+.ibm-quote-meaning-label { font-size: .65rem; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; color: var(--text-secondary); margin-bottom: var(--s-04); display: flex; align-items: center; gap: var(--s-03); }
+.ibm-quote-meaning-label::before { content: ''; width: 16px; height: 2px; background: var(--accent); display: inline-block; }
+.ibm-quote-meaning ul { list-style: none; padding: 0; margin: 0; }
+.ibm-quote-meaning ul li { font-size: .875rem; color: var(--text-primary); line-height: 1.7; padding: var(--s-02) 0 var(--s-02) var(--s-06); position: relative; }
+.ibm-quote-meaning ul li::before { content: ''; position: absolute; left: 0; top: .7em; width: 4px; height: 4px; background: var(--accent); }
+@media (max-width: 860px) { .landing-section { grid-template-columns: 1fr; } .parallax-hero-inner { grid-template-columns: 1fr; padding: var(--s-07) var(--s-05); } }
+.case-index { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap: 1px; background: var(--border-subtle); border: 1px solid var(--border-subtle); }
+.case-card { background: var(--bg); padding: var(--s-07) var(--s-06); display: flex; flex-direction: column; gap: var(--s-04); cursor: pointer; border-top: 3px solid transparent; text-decoration: none; color: inherit; }
+.case-card:hover { border-top-color: var(--accent); background: var(--layer-01); }
+.case-num { font-size: .65rem; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; color: var(--accent); }
+.case-card h3 { font-size: 1rem; font-weight: 600; line-height: 1.35; }
+.case-card p { font-size: .8125rem; color: var(--text-secondary); line-height: 1.6; margin: 0; }
+.case-meta { font-size: .75rem; color: var(--border-strong); text-transform: uppercase; letter-spacing: .06em; margin-top: auto; padding-top: var(--s-03); }
+.hero { padding: var(--s-10) 0 var(--s-09); border-bottom: 1px solid var(--border-subtle); }
+.hero-meta { display: flex; align-items: center; gap: var(--s-05); flex-wrap: wrap; margin-bottom: var(--s-06); }
+.tag { display: inline-block; padding: var(--s-02) var(--s-04); background: var(--tag-bg); color: var(--tag-color); font-size: .75rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; }
+.tag-accent { background: var(--accent); color: var(--accent-text); }
+.hero-eyebrow { font-size: .75rem; color: var(--text-secondary); letter-spacing: .08em; text-transform: uppercase; }
+.hero h1 { font-size: clamp(1.75rem,4vw,2.625rem); font-weight: 300; line-height: 1.2; max-width: 800px; margin-bottom: var(--s-06); }
+.hero h1 strong { font-weight: 600; color: var(--accent); }
+.hero-summary { font-size: 1.125rem; color: var(--text-secondary); max-width: 680px; line-height: 1.7; margin-bottom: var(--s-08); }
+.stat-row { display: grid; grid-template-columns: repeat(auto-fit,minmax(140px,1fr)); gap: 1px; background: var(--border-subtle); border: 1px solid var(--border-subtle); margin-top: var(--s-07); }
+.stat { background: var(--bg); padding: var(--s-07) var(--s-06); display: flex; flex-direction: column; gap: var(--s-02); }
+.stat-number { font-size: clamp(1.5rem,3vw,2.25rem); font-weight: 300; line-height: 1; color: var(--accent); }
+.stat-number strong { font-weight: 600; }
+.stat-label { font-size: .75rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: .06em; }
+.toc { display: flex; flex-wrap: wrap; border-bottom: 1px solid var(--border-subtle); margin-bottom: var(--s-09); background: var(--bg); }
+.toc a { padding: var(--s-04) var(--s-06); font-size: .75rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--text-secondary); text-decoration: none; border-bottom: 2px solid transparent; white-space: nowrap; }
+.toc a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+.content { padding-bottom: var(--s-12); }
+.section { display: grid; grid-template-columns: 220px 1fr; gap: 0 var(--s-09); padding: var(--s-09) 0; border-bottom: 1px solid var(--border-subtle); }
+.section:last-child { border-bottom: none; }
+.section-number { font-size: .75rem; font-weight: 600; color: var(--accent); text-transform: uppercase; letter-spacing: .1em; margin-bottom: var(--s-03); display: flex; align-items: center; gap: var(--s-03); }
+.section-number::before { content: ''; display: inline-block; width: 16px; height: 2px; background: var(--accent); }
+.section-title { font-size: 1.25rem; font-weight: 600; line-height: 1.3; }
+h2.bh { font-size: 1.25rem; font-weight: 600; margin-top: var(--s-07); margin-bottom: var(--s-04); }
+h2.bh:first-child { margin-top: 0; }
+p { font-size: .875rem; color: var(--text-secondary); margin-bottom: var(--s-05); line-height: 1.7; }
+p:last-child { margin-bottom: 0; }
+em { font-style: italic; }
+.callout { background: var(--layer-01); padding: var(--s-06) var(--s-07); margin: var(--s-06) 0; }
+.callout-label { font-size: .75rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--accent); margin-bottom: var(--s-04); }
+.callout p { font-family: 'Sedgwick Ave', cursive; font-size: 1.46rem; font-weight: 400; color: var(--text-primary); line-height: 1.6; margin: 0; }
+.callout p strong { font-weight: 600; }
+.callout ul { list-style: none; padding: 0; margin: var(--s-04) 0 0; }
+.callout ul li { font-size: 1rem; font-weight: 300; color: var(--text-primary); line-height: 1.7; padding: var(--s-02) 0 var(--s-02) var(--s-06); position: relative; }
+.callout ul li::before { content: ''; position: absolute; left: 0; top: .7em; width: 4px; height: 4px; background: var(--accent); }
+.card-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(180px,1fr)); gap: 1px; background: var(--border-subtle); border: 1px solid var(--border-subtle); margin: var(--s-06) 0; }
+.card { background: var(--bg); padding: var(--s-06); display: flex; flex-direction: column; gap: var(--s-03); border-top: 3px solid transparent; }
+.card:hover { border-top-color: var(--accent-secondary); }
+.card-title { font-size: 1rem; font-weight: 600; }
+.card p { font-size: .875rem; color: var(--text-secondary); margin: 0; }
+ul.cl { list-style: none; padding: 0; margin: var(--s-03) 0 var(--s-05); }
+ul.cl li { font-size: .875rem; color: var(--text-secondary); line-height: 1.7; padding: var(--s-03) 0 var(--s-03) var(--s-06); position: relative; }
+ul.cl li::before { content: ''; position: absolute; left: 0; top: .75em; width: 4px; height: 4px; background: var(--accent); }
+.phases { display: flex; flex-direction: column; margin: var(--s-06) 0; }
+.phase { display: grid; grid-template-columns: 90px 1fr; gap: 0 var(--s-06); padding: var(--s-06) 0; border-bottom: 1px solid var(--border-subtle); }
+.phase:last-child { border-bottom: none; }
+.phase-num { font-size: .75rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); padding-top: var(--s-02); }
+.phase h3 { font-size: 1rem; font-weight: 600; margin-bottom: var(--s-03); }
+.phase p { margin-bottom: var(--s-03); }
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-07); margin: var(--s-06) 0; }
+.two-col h3 { font-size: 1rem; font-weight: 600; margin-bottom: var(--s-03); }
+.year-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-06); margin: var(--s-06) 0; }
+.year-block { padding: var(--s-06); background: var(--layer-01); }
+.year-block h3 { font-size: .75rem; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--accent); margin-bottom: var(--s-04); display: flex; align-items: center; gap: var(--s-03); }
+.year-block h3::before { content: ''; width: 16px; height: 2px; background: var(--accent); display: inline-block; }
+.compare { width: 100%; border-collapse: collapse; margin: var(--s-06) 0; }
+.compare th, .compare td { padding: var(--s-04) var(--s-05); text-align: left; font-size: .875rem; border-bottom: 1px solid var(--border-subtle); vertical-align: top; }
+.compare th { font-weight: 600; background: var(--layer-01); font-size: .75rem; text-transform: uppercase; letter-spacing: .06em; color: var(--accent); }
+.compare td { color: var(--text-secondary); }
+.compare td:first-child { font-weight: 600; color: var(--text-primary); width: 35%; }
+.ownership-table { width: 100%; border-collapse: collapse; margin: var(--s-06) 0; }
+.ownership-table th, .ownership-table td { padding: var(--s-04) var(--s-05); text-align: left; font-size: .875rem; border-bottom: 1px solid var(--border-subtle); }
+.ownership-table th { font-weight: 600; background: var(--layer-01); font-size: .75rem; text-transform: uppercase; letter-spacing: .06em; color: var(--accent); }
+.ownership-table td { color: var(--text-secondary); }
+.dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: var(--s-03); vertical-align: middle; }
+.dot-full { background: var(--accent); } .dot-shared { background: var(--accent-secondary); }
+.tag-cluster { display: flex; flex-wrap: wrap; gap: var(--s-03); margin: var(--s-04) 0; }
+.theme-tag { font-size: .75rem; font-weight: 600; padding: var(--s-02) var(--s-05); border: 1px solid var(--accent-secondary); color: var(--accent); background: var(--bg); letter-spacing: .04em; }
+.outcome-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(160px,1fr)); gap: var(--s-05); margin: var(--s-06) 0; }
+.metric { padding: var(--s-06); background: var(--accent); color: var(--accent-text); display: flex; flex-direction: column; gap: var(--s-02); }
+.metric-value { font-size: clamp(1.25rem,3vw,1.75rem); font-weight: 300; line-height: 1; }
+.metric-value strong { font-weight: 600; }
+.metric-label { font-size: .75rem; text-transform: uppercase; letter-spacing: .06em; opacity: .85; }
+.metric-desc { font-size: .8125rem; opacity: .8; margin-top: var(--s-03); line-height: 1.5; }
+.metric-secondary { background: var(--accent-secondary); color: #161616; }
+.metric-secondary .metric-label { opacity: .7; }
+.metric-light { background: var(--layer-01); color: var(--text-primary); border: 1px solid var(--accent-secondary); }
+.metric-light .metric-value { color: var(--accent); }
+.metric-light .metric-label { color: var(--accent); opacity: 1; }
+.metric-light .metric-desc { color: var(--text-secondary); opacity: 1; }
+.quote-block { margin: var(--s-07) 0; padding: var(--s-07) var(--s-07) var(--s-07) var(--s-08); background: var(--layer-01); border-left: 3px solid var(--accent-secondary); position: relative; }
+.quote-mark { position: absolute; left: var(--s-06); top: var(--s-05); font-size: 3rem; font-weight: 300; line-height: 1; color: var(--accent-secondary); }
+.quote-block blockquote { font-size: 1rem; font-style: italic; font-weight: 300; color: var(--text-primary); line-height: 1.7; margin: 0 0 var(--s-04); }
+.quote-attr { font-size: .75rem; color: var(--accent); font-weight: 600; text-transform: uppercase; letter-spacing: .06em; }
+.back-btn { display: inline-flex; align-items: center; gap: var(--s-03); font-size: .75rem; font-weight: 600; text-transform: uppercase; letter-spacing: .08em; color: var(--text-secondary); cursor: pointer; background: none; border: none; padding: var(--s-05) 0; text-decoration: none; }
+.back-btn:hover { color: var(--accent); }
+.back-btn svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2; }
+footer { border-top: 1px solid var(--border-subtle); padding: var(--s-07) 0; text-align: center; font-size: .75rem; color: var(--text-secondary); }
+footer a { color: var(--text-secondary); }
+@media (max-width: 768px) { .section, .two-col, .year-grid { grid-template-columns: 1fr; } .page { padding: 0 var(--s-05); } .nav-bar { padding: var(--s-04) var(--s-05); flex-wrap: wrap; gap: var(--s-03); } }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav-bar">
+  <a class="nav-wordmark" href="index.html"><span style="display:block;">Katie Shimmin</span><em style="display:block;font-style:italic;font-weight:400;letter-spacing:0;text-transform:none;color:inherit;">Connecting vision to value through design, AI, &amp; human-centered innovation</em></a>
+  <div class="nav-links">
+    <a href="index.html">Portfolio</a>
+    <a href="cs1.html" id="nav-cs1">CS 01</a>
+    <a href="cs2.html">CS 02</a>
+    <a href="cs3.html">CS 03</a>
+    <a href="cs4.html">CS 04</a>
+    <a href="cs5.html">CS 05</a>
+    <a href="presence.html">Presence</a>
+    <a href="people.html">People</a>
+    <a href="vision.html">Vision</a>
+  </div>
+</nav>
+
+<div class="page">
+
+  <a class="back-btn" href="index.html">
+    <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+    All Case Studies
+  </a>
+
+  <header class="hero">
+    <div class="hero-meta">
+      <span class="tag tag-accent">Case Study 01</span>
+      <span class="tag">Strategy &amp; Systems Design</span>
+      <span class="tag">Enterprise Scale</span>
+      <span class="hero-eyebrow">IBM Financial Services Market · 2024–2025</span>
+    </div>
+    <h1>What if account planning could actually <strong>move the needle?</strong> I built the system that proved it could — $50.6M in won revenue, 1,000+ opportunities, 63 accounts. One quarter.</h1>
+    <p class="hero-summary">Spoiler: this isn't a workshop story. It's the story of how I took a fragmented, inconsistent planning process and turned it into a repeatable operating model that account teams actually loved using — and that leadership couldn't stop talking about.</p>
+    <div class="stat-row">
+      <div class="stat"><div class="stat-number"><strong>$50.6M</strong></div><div class="stat-label">Won Revenue — 1 Quarter</div></div>
+      <div class="stat"><div class="stat-number"><strong>1,000+</strong></div><div class="stat-label">Opportunities Surfaced</div></div>
+      <div class="stat"><div class="stat-number"><strong>63</strong></div><div class="stat-label">Accounts Covered</div></div>
+      <div class="stat"><div class="stat-number"><strong>14</strong></div><div class="stat-label">Designers I Enabled</div></div>
+      <div class="stat"><div class="stat-number"><strong>2</strong></div><div class="stat-label">New Markets Adopted It</div></div>
+    </div>
+  </header>
+
+  <nav class="toc">
+    <a href="#cs1-s1">01&nbsp; Context</a>
+    <a href="#cs1-s2">02&nbsp; My Role</a>
+    <a href="#cs1-s3">03&nbsp; Strategic Framing</a>
+    <a href="#cs1-s4">04&nbsp; My Process</a>
+    <a href="#cs1-s5">05&nbsp; Outcomes</a>
+  </nav>
+
+  <main class="content">
+    <section class="section" id="cs1-s1">
+      <div><div class="section-number">01</div><div class="section-title">Context</div></div>
+      <div>
+        <h2 class="bh">The Real Problem</h2>
+        <p>IBM's Financial Services Market teams were full of brilliant, technically deep account teams — but brilliant and consistent aren't the same thing. Opportunity discovery was hit-or-miss. Strategic initiatives lived in scattered docs, tribal knowledge, and varying formats. There was no shared picture of what was happening across accounts, let alone why.</p>
+        <p>The result? Great work happening in silos, with limited visibility for leadership and no repeatable way to connect client priorities to IBM opportunities at scale.</p>
+        <div class="callout"><div class="callout-label">What I set out to do</div><p>Build a planning framework so good that teams would <strong>want</strong> to use it — one that aligned opportunities to client priorities, surfaced what was blocking progress, created clear ownership, and generated real pipeline. Consistently. At scale. Without adding a ton of overhead.</p></div>
+        <h2 class="bh">Who Was in the Room</h2>
+        <p>This wasn't a small lift. Pulling this off meant coordinating across seven distinct stakeholder groups — all with different priorities, workflows, and definitions of "done."</p>
+        <div class="card-grid">
+          <div class="card"><div class="card-title">Account Technical Leaders</div><p>The heart of it. They owned the accounts and drove the strategy in every session.</p></div>
+          <div class="card"><div class="card-title">Client Engineering + Expert Labs</div><p>The builders. Brought technical depth and delivery credibility to every opportunity discussion.</p></div>
+          <div class="card"><div class="card-title">BTS + CSMs</div><p>The connectors. Kept product and customer realities grounded in every conversation.</p></div>
+          <div class="card"><div class="card-title">Red Hat + HashiCorp</div><p>The partners. Wove multi-product narratives into account stories that were bigger than IBM alone.</p></div>
+        </div>
+        <h2 class="bh">The Constraints (They Were Real)</h2>
+        <div class="two-col">
+          <div><h3>Year 1</h3><ul class="cl"><li>52 accounts to cover</li><li>A 2-month window to do it</li></ul></div>
+          <div><h3>Year 2</h3><ul class="cl"><li>Expanded to 63 accounts</li><li>Completed in a single quarter</li></ul></div>
+        </div>
+        <ul class="cl"><li>Account maturity levels all over the map</li><li>Stakeholders scattered across geographies</li><li>Strategic initiative data that was... let's say, a work in progress</li><li>Teams already stretched thin — adoption had to feel easy, not like another mandate</li></ul>
+      </div>
+    </section>
+
+    <section class="section" id="cs1-s2">
+      <div><div class="section-number">02</div><div class="section-title">My Role</div></div>
+      <div>
+        <h2 class="bh">I Built It, Ran It, and Scaled It</h2>
+        <p>This was end-to-end ownership from day one — strategy, design, enablement, measurement, and everything in between. I started with a blank page and a hypothesis, and finished with a program running across 63 accounts, 14 enabled facilitators, and two new markets asking to adopt it.</p>
+        <table class="ownership-table"><thead><tr><th>What I Owned</th><th>How</th></tr></thead><tbody>
+          <tr><td>Strategy Development &amp; Methodology</td><td><span class="dot dot-full"></span>Designed the entire approach, goals, and what success would actually look like</td></tr>
+          <tr><td>Program &amp; Workshop Design</td><td><span class="dot dot-full"></span>Built the Mural framework, facilitation guides, and every planning artifact teams used</td></tr>
+          <tr><td>Scale &amp; Enablement</td><td><span class="dot dot-full"></span>Personally onboarded 14 strategy designers and governed the whole rollout</td></tr>
+          <tr><td>Data Synthesis &amp; Analytics</td><td><span class="dot dot-full"></span>Turned raw session outputs into market-level intelligence leadership could act on</td></tr>
+          <tr><td>Stakeholder &amp; Leadership Alignment</td><td><span class="dot dot-shared"></span>Shared with FSM leadership — but I drove the narrative</td></tr>
+        </tbody></table>
+      </div>
+    </section>
+
+    <section class="section" id="cs1-s3">
+      <div><div class="section-number">03</div><div class="section-title">Strategic Framing</div></div>
+      <div>
+        <h2 class="bh">The Shift That Changed Everything</h2>
+        <p>Most account planning starts with products. What can we sell? What's in the pipeline? I flipped that entirely.</p>
+        <div class="callout"><div class="callout-label">The big idea</div><p><strong>"Work Outside-In."</strong> Start every conversation with what the client is trying to accomplish — their strategy, their priorities, their definition of success. IBM's role comes second. Always.</p></div>
+        <p>That one reframe changed the whole dynamic. Instead of <em>"Here's what IBM can offer,"</em> the conversation became <em>"Here's what matters most to you — and here's exactly how we fit."</em> Teams showed up differently. Clients engaged differently. Opportunities got better.</p>
+        <h2 class="bh">What I Was Building Toward</h2>
+        <p>I wasn't just designing sessions — I was designing a system with four specific outcomes that I held myself accountable to from day one:</p>
+        <div class="card-grid">
+          <div class="card"><div class="card-title">Clean Initiative Data</div><p>Every account leaving with accurate, complete Strategic Initiative records. No more guessing what clients actually care about.</p></div>
+          <div class="card"><div class="card-title">Linked Opportunities</div><p>Every opportunity tied directly to a client initiative — so IBM could show up with relevance, not just presence.</p></div>
+          <div class="card"><div class="card-title">Unblocked Pipeline</div><p>A clear picture of what's stuck and why — so teams could act, not speculate.</p></div>
+          <div class="card"><div class="card-title">Market-Level Intelligence</div><p>Patterns across 63 accounts that no single team could see on their own — but leadership absolutely needed.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="cs1-s4">
+      <div><div class="section-number">04</div><div class="section-title">My Process</div></div>
+      <div>
+        <div class="phases">
+          <div class="phase"><div class="phase-num">Phase 1</div><div><h3>Design the Workshop</h3><p>I built a Mural-based workshop experience from scratch — structured enough to produce consistent outputs, flexible enough that every account felt like it was built for them. It covered client initiatives, opportunity gaps, deployment ideas, blockers, and who owns what next. Simple on the surface. Powerful underneath.</p></div></div>
+          <div class="phase"><div class="phase-num">Phase 2</div><div><h3>Get Everyone Aligned Before the Room</h3><p>Great sessions don't happen by accident. I worked with ATLs ahead of each session to define what they wanted to walk away with, who needed to be in the room, and what success looked like for their specific account. Prep made all the difference.</p></div></div>
+          <div class="phase"><div class="phase-num">Phase 3</div><div><h3>Scale Without Losing Quality</h3><p>I couldn't personally run 63 sessions — so I built a facilitation system that could. I onboarded 14 strategy designers, created guides they could actually use, and put governance in place to keep quality consistent across every account. The goal was to make facilitators great, not just capable.</p></div></div>
+          <div class="phase"><div class="phase-num">Phase 4</div><div>
+            <h3>Turn 63 Accounts Into One Big Picture</h3>
+            <p>After sessions wrapped, I built a tagging strategy across all opportunity data and mapped 60+ client initiatives into 8 macro themes. Suddenly, patterns that were invisible at the account level became clear signals at the market level — and leadership had intelligence they'd never had before.</p>
+            <div class="tag-cluster">
+              <span class="theme-tag">AI &amp; Agentic Platforms</span><span class="theme-tag">Automation &amp; FinOps</span><span class="theme-tag">Data Modernization</span><span class="theme-tag">Risk, Security &amp; Compliance</span><span class="theme-tag">App &amp; Core Modernization</span><span class="theme-tag">Growth &amp; Innovation</span><span class="theme-tag">Observability &amp; AIOps</span><span class="theme-tag">Cloud &amp; SaaS Consolidation</span>
+            </div>
+          </div></div>
+          <div class="phase"><div class="phase-num">Phase 5</div><div><h3>Keep Getting Better</h3><p>I ran retrospectives after every cycle — with facilitators, account teams, and leadership. Not as a formality, but because I genuinely wanted to know what wasn't working. Every cycle, the model got sharper. That's the point.</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="cs1-s5">
+      <div><div class="section-number">05</div><div class="section-title">Outcomes</div></div>
+      <div>
+        <h2 class="bh">The Numbers Speak for Themselves</h2>
+        <div class="outcome-grid">
+          <div class="metric"><div class="metric-value"><strong>$50.6M</strong></div><div class="metric-label">Won Revenue</div><div class="metric-desc">Across just 3 tracked accounts — in the same quarter the sessions were held. That's speed and quality.</div></div>
+          <div class="metric metric-secondary"><div class="metric-value"><strong>1,000+</strong></div><div class="metric-label">Opportunities Surfaced</div><div class="metric-desc">Across 63 accounts in a single quarter. Opportunities that simply didn't exist in the system before.</div></div>
+          <div class="metric metric-light"><div class="metric-value"><strong>88%</strong></div><div class="metric-label">of FSM Covered</div><div class="metric-desc">The framework reached 88% of all Financial Services Market accounts. Not a pilot — a movement.</div></div>
+          <div class="metric metric-light"><div class="metric-value"><strong>2</strong></div><div class="metric-label">New Markets Adopted It</div><div class="metric-desc">Other markets saw what was happening and wanted in. That's the best kind of validation.</div></div>
+        </div>
+        <h2 class="bh">What People Said</h2>
+        <div class="quote-block"><div class="quote-mark">&ldquo;</div><blockquote>"Katie, your Deployment Clinic Template was very effective with the CVS team in Public Market and we are now leveraging it for other accounts. Thank you for your guidance, leadership, and even attending where you can to provide your input. We appreciate you."</blockquote><div class="quote-attr">Andy Quintana — Principal ATL Manager, November 2025</div></div>
+        <div class="quote-block"><div class="quote-mark">&ldquo;</div><blockquote>"Thank you for the opportunity to experience how a high performing team comes together to focus and deliver great results. This was an excellent session which all teams should be adopting."</blockquote><div class="quote-attr">Kathryn McAvoy — ATL Manager</div></div>        <div class="quote-block"><div class="quote-mark">&ldquo;</div><blockquote>"I wanted to express my sincere thanks for the fantastic job you did on the technical account plan session for our FSM clients. Your infusion of design methodology to technical account planning was truly impressive. The positive feedback from our ATLs and extended account team members highlights your hard work and creativity."</blockquote><div class="quote-attr">Vice President, ATLs &amp; Client Engineering</div></div>
+      </div>
+    </section>
+  </main>
+
+</div><!-- /page --><script>
+  document.getElementById('nav-cs1').classList.add('active');
+</script>
+</body>
+</html>

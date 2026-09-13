@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>CS 02 — Scaling Innovation · Design Director Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sedgwick+Ave&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #ffffff; --layer-01: #f4f4f4; --border-subtle: #e0e0e0;
+  --border-strong: #8d8d8d; --text-primary: #161616; --text-secondary: #525252;
+  --accent: #ec5d5e; --accent-secondary: #ff9592; --accent-tertiary: #ffd1d9; --accent-text: #ffffff;
+  --tag-bg: #ffe8e8; --tag-color: #c22828;
+  --font: 'IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif;
+  --s-02:.25rem;--s-03:.5rem;--s-04:.75rem;--s-05:1rem;
+  --s-06:1.5rem;--s-07:2rem;--s-08:2.5rem;--s-09:3rem;--s-10:4rem;--s-12:6rem;
+}
+html { font-family: var(--font); font-size: 16px; scroll-behavior: smooth; }
+body { background: var(--bg); color: var(--text-primary); line-height: 1.6; }
+.page { max-width: 1056px; margin: 0 auto; padding: 0 var(--s-07); }
+.parallax-hero { position: relative; overflow: hidden; background: var(--accent-tertiary); min-height: 320px; display: flex; align-items: center; }
+.parallax-hero::before { content: ''; position: absolute; inset: -60px 0; background: radial-gradient(ellipse 60% 80% at 80% 50%, var(--accent-secondary) 0%, transparent 70%), radial-gradient(ellipse 40% 60% at 10% 30%, var(--accent) 0%, transparent 60%), var(--accent-tertiary); background-attachment: fixed; opacity: .18; }
+.parallax-hero-inner { position: relative; z-index: 1; max-width: 1056px; width: 100%; margin: 0 auto; padding: var(--s-10) var(--s-07); display: grid; grid-template-columns: 1fr 360px; gap: var(--s-09); align-items: center; }
+.parallax-strip { position: relative; overflow: hidden; height: 6px; }
+.parallax-strip::before { content: ''; position: absolute; inset: -40px 0; background: linear-gradient(90deg, var(--accent) 0%, var(--accent-secondary) 50%, var(--accent-tertiary) 100%); background-attachment: fixed; background-size: 200% 100%; }
+.reveal { opacity: 0; transform: translateY(28px); transition: opacity .6s cubic-bezier(.22,1,.36,1), transform .6s cubic-bezier(.22,1,.36,1); }
+.reveal.in-view { opacity: 1; transform: translateY(0); }
+.reveal-delay-1 { transition-delay: .1s; } .reveal-delay-2 { transition-delay: .2s; } .reveal-delay-3 { transition-delay: .3s; }
+@media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } .parallax-hero::before { background-attachment: scroll; } .parallax-strip::before { background-attachment: scroll; } }
+.nav-bar { background: var(--bg); border-bottom: 1px solid var(--border-subtle); padding: var(--s-04) var(--s-07); display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; }
+.nav-wordmark { font-size: .75rem; font-weight: 600; letter-spacing: .1em; color: var(--text-secondary); text-decoration: none; display:flex; flex-direction:column; gap:.1em; }
+.nav-wordmark:hover { color: var(--accent); }
+.nav-links { display: flex; flex-wrap: wrap; gap: var(--s-02); }
+.nav-links a { font-size: .75rem; color: var(--text-secondary); text-decoration: none; padding: var(--s-02) var(--s-04); border-bottom: 2px solid transparent; }
+.nav-links a:hover, .nav-links a.active { color: var(--accent); border-bottom-color: var(--accent); }
+.portfolio-index { padding: var(--s-10) 0 var(--s-09); border-bottom: 1px solid var(--border-subtle); }
+.portfolio-index h1 { font-size: clamp(1.5rem,3vw,2.25rem); font-weight: 300; margin-bottom: var(--s-04); }
+.portfolio-index h1 strong { font-weight: 600; color: var(--accent); }
+.portfolio-intro { font-size: 1rem; color: var(--text-secondary); max-width: 600px; line-height: 1.7; margin-bottom: var(--s-08); }
+.landing-section { padding: var(--s-10) 0; border-bottom: 1px solid var(--border-subtle); display: grid; grid-template-columns: 280px 1fr; gap: 0 var(--s-09); }
+.ls-eyebrow { font-size: .65rem; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; color: var(--accent); display: flex; align-items: center; gap: var(--s-03); margin-bottom: var(--s-04); }
+.ls-eyebrow::before { content: ''; width: 16px; height: 2px; background: var(--accent); display: inline-block; }
+.landing-section-label h2 { font-size: 1.5rem; font-weight: 300; line-height: 1.25; color: var(--text-primary); }
+.landing-section-label h2 strong { font-weight: 600; }
+.philosophy-lead { font-size: 1.375rem; font-weight: 300; color: var(--text-primary); line-height: 1.55; margin-bottom: var(--s-07); max-width: 600px; }
+.philosophy-lead strong { font-weight: 600; }
+.philosophy-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px,1fr)); gap: var(--s-05); margin-top: var(--s-06); }
+.philosophy-card { background: var(--accent-tertiary); padding: var(--s-06); display: flex; flex-direction: column; gap: var(--s-03); }
+.philosophy-card-label { font-size: .65rem; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; color: var(--accent); }
+.philosophy-card p { font-size: .875rem; color: var(--text-primary); line-height: 1.65; margin: 0; font-weight: 300; }
+.strategy-list { list-style: none; padding: 0; margin: 0; }
+.strategy-list li { display: grid; grid-template-columns: 2rem 1fr; gap: 0 var(--s-05); padding: var(--s-06) 0; border-bottom: 1px solid var(--border-subtle); align-items: start; }
+.strategy-list li:last-child { border-bottom: none; }
+.strategy-num { font-size: .65rem; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: .1em; padding-top: .2rem; }
+.strategy-text strong { display: block; font-size: 1rem; font-weight: 600; color: var(--text-primary); margin-bottom: var(--s-02); }
+.strategy-text p { font-size: .875rem; color: var(--text-secondary); margin: 0; line-height: 1.7; }
+.ibm-quote-mark { font-size: 4rem; font-weight: 300; line-height: .8; color: var(--accent); margin-bottom: var(--s-04); }
+.ibm-quote-inner blockquote { font-size: clamp(1.25rem,2.5vw,1.75rem); font-weight: 300; color: var(--text-primary); line-height: 1.4; margin-bottom: var(--s-05); }
+.ibm-quote-inner blockquote strong { font-weight: 600; }
+.ibm-quote-attr { font-size: .75rem; font-weight: 600; text-transform: uppercase; letter-spacing: .1em; color: var(--accent); }
+.ibm-quote-meaning-label { font-size: .65rem; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; color: var(--text-secondary); margin-bottom: var(--s-04); display: flex; align-items: center; gap: var(--s-03); }
+.ibm-quote-meaning-label::before { content: ''; width: 16px; height: 2px; background: var(--accent); display: inline-block; }
+.ibm-quote-meaning ul { list-style: none; padding: 0; margin: 0; }
+.ibm-quote-meaning ul li { font-size: .875rem; color: var(--text-primary); line-height: 1.7; padding: var(--s-02) 0 var(--s-02) var(--s-06); position: relative; }
+.ibm-quote-meaning ul li::before { content: ''; position: absolute; left: 0; top: .7em; width: 4px; height: 4px; background: var(--accent); }
+@media (max-width: 860px) { .landing-section { grid-template-columns: 1fr; } .parallax-hero-inner { grid-template-columns: 1fr; padding: var(--s-07) var(--s-05); } }
+.case-index { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap: 1px; background: var(--border-subtle); border: 1px solid var(--border-subtle); }
+.case-card { background: var(--bg); padding: var(--s-07) var(--s-06); display: flex; flex-direction: column; gap: var(--s-04); cursor: pointer; border-top: 3px solid transparent; text-decoration: none; color: inherit; }
+.case-card:hover { border-top-color: var(--accent); background: var(--layer-01); }
+.case-num { font-size: .65rem; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; color: var(--accent); }
+.case-card h3 { font-size: 1rem; font-weight: 600; line-height: 1.35; }
+.case-card p { font-size: .8125rem; color: var(--text-secondary); line-height: 1.6; margin: 0; }
+.case-meta { font-size: .75rem; color: var(--border-strong); text-transform: uppercase; letter-spacing: .06em; margin-top: auto; padding-top: var(--s-03); }
+.hero { padding: var(--s-10) 0 var(--s-09); border-bottom: 1px solid var(--border-subtle); }
+.hero-meta { display: flex; align-items: center; gap: var(--s-05); flex-wrap: wrap; margin-bottom: var(--s-06); }
+.tag { display: inline-block; padding: var(--s-02) var(--s-04); background: var(--tag-bg); color: var(--tag-color); font-size: .75rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; }
+.tag-accent { background: var(--accent); color: var(--accent-text); }
+.hero-eyebrow { font-size: .75rem; color: var(--text-secondary); letter-spacing: .08em; text-transform: uppercase; }
+.hero h1 { font-size: clamp(1.75rem,4vw,2.625rem); font-weight: 300; line-height: 1.2; max-width: 800px; margin-bottom: var(--s-06); }
+.hero h1 strong { font-weight: 600; color: var(--accent); }
+.hero-summary { font-size: 1.125rem; color: var(--text-secondary); max-width: 680px; line-height: 1.7; margin-bottom: var(--s-08); }
+.stat-row { display: grid; grid-template-columns: repeat(auto-fit,minmax(140px,1fr)); gap: 1px; background: var(--border-subtle); border: 1px solid var(--border-subtle); margin-top: var(--s-07); }
+.stat { background: var(--bg); padding: var(--s-07) var(--s-06); display: flex; flex-direction: column; gap: var(--s-02); }
+.stat-number { font-size: clamp(1.5rem,3vw,2.25rem); font-weight: 300; line-height: 1; color: var(--accent); }
+.stat-number strong { font-weight: 600; }
+.stat-label { font-size: .75rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: .06em; }
+.toc { display: flex; flex-wrap: wrap; border-bottom: 1px solid var(--border-subtle); margin-bottom: var(--s-09); background: var(--bg); }
+.toc a { padding: var(--s-04) var(--s-06); font-size: .75rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--text-secondary); text-decoration: none; border-bottom: 2px solid transparent; white-space: nowrap; }
+.toc a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+.content { padding-bottom: var(--s-12); }
+.section { display: grid; grid-template-columns: 220px 1fr; gap: 0 var(--s-09); padding: var(--s-09) 0; border-bottom: 1px solid var(--border-subtle); }
+.section:last-child { border-bottom: none; }
+.section-number { font-size: .75rem; font-weight: 600; color: var(--accent); text-transform: uppercase; letter-spacing: .1em; margin-bottom: var(--s-03); display: flex; align-items: center; gap: var(--s-03); }
+.section-number::before { content: ''; display: inline-block; width: 16px; height: 2px; background: var(--accent); }
+.section-title { font-size: 1.25rem; font-weight: 600; line-height: 1.3; }
+h2.bh { font-size: 1.25rem; font-weight: 600; margin-top: var(--s-07); margin-bottom: var(--s-04); }
+h2.bh:first-child { margin-top: 0; }
+p { font-size: .875rem; color: var(--text-secondary); margin-bottom: var(--s-05); line-height: 1.7; }
+p:last-child { margin-bottom: 0; }
+em { font-style: italic; }
+.callout { background: var(--layer-01); padding: var(--s-06) var(--s-07); margin: var(--s-06) 0; }
+.callout-label { font-size: .75rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--accent); margin-bottom: var(--s-04); }
+.callout p { font-family: 'Sedgwick Ave', cursive; font-size: 1.46rem; font-weight: 400; color: var(--text-primary); line-height: 1.6; margin: 0; }
+.callout p strong { font-weight: 600; }
+.callout ul { list-style: none; padding: 0; margin: var(--s-04) 0 0; }
+.callout ul li { font-size: 1rem; font-weight: 300; color: var(--text-primary); line-height: 1.7; padding: var(--s-02) 0 var(--s-02) var(--s-06); position: relative; }
+.callout ul li::before { content: ''; position: absolute; left: 0; top: .7em; width: 4px; height: 4px; background: var(--accent); }
+.card-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(180px,1fr)); gap: 1px; background: var(--border-subtle); border: 1px solid var(--border-subtle); margin: var(--s-06) 0; }
+.card { background: var(--bg); padding: var(--s-06); display: flex; flex-direction: column; gap: var(--s-03); border-top: 3px solid transparent; }
+.card:hover { border-top-color: var(--accent-secondary); }
+.card-title { font-size: 1rem; font-weight: 600; }
+.card p { font-size: .875rem; color: var(--text-secondary); margin: 0; }
+ul.cl { list-style: none; padding: 0; margin: var(--s-03) 0 var(--s-05); }
+ul.cl li { font-size: .875rem; color: var(--text-secondary); line-height: 1.7; padding: var(--s-03) 0 var(--s-03) var(--s-06); position: relative; }
+ul.cl li::before { content: ''; position: absolute; left: 0; top: .75em; width: 4px; height: 4px; background: var(--accent); }
+.phases { display: flex; flex-direction: column; margin: var(--s-06) 0; }
+.phase { display: grid; grid-template-columns: 90px 1fr; gap: 0 var(--s-06); padding: var(--s-06) 0; border-bottom: 1px solid var(--border-subtle); }
+.phase:last-child { border-bottom: none; }
+.phase-num { font-size: .75rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); padding-top: var(--s-02); }
+.phase h3 { font-size: 1rem; font-weight: 600; margin-bottom: var(--s-03); }
+.phase p { margin-bottom: var(--s-03); }
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-07); margin: var(--s-06) 0; }
+.two-col h3 { font-size: 1rem; font-weight: 600; margin-bottom: var(--s-03); }
+.year-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-06); margin: var(--s-06) 0; }
+.year-block { padding: var(--s-06); background: var(--layer-01); }
+.year-block h3 { font-size: .75rem; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--accent); margin-bottom: var(--s-04); display: flex; align-items: center; gap: var(--s-03); }
+.year-block h3::before { content: ''; width: 16px; height: 2px; background: var(--accent); display: inline-block; }
+.compare { width: 100%; border-collapse: collapse; margin: var(--s-06) 0; }
+.compare th, .compare td { padding: var(--s-04) var(--s-05); text-align: left; font-size: .875rem; border-bottom: 1px solid var(--border-subtle); vertical-align: top; }
+.compare th { font-weight: 600; background: var(--layer-01); font-size: .75rem; text-transform: uppercase; letter-spacing: .06em; color: var(--accent); }
+.compare td { color: var(--text-secondary); }
+.compare td:first-child { font-weight: 600; color: var(--text-primary); width: 35%; }
+.ownership-table { width: 100%; border-collapse: collapse; margin: var(--s-06) 0; }
+.ownership-table th, .ownership-table td { padding: var(--s-04) var(--s-05); text-align: left; font-size: .875rem; border-bottom: 1px solid var(--border-subtle); }
+.ownership-table th { font-weight: 600; background: var(--layer-01); font-size: .75rem; text-transform: uppercase; letter-spacing: .06em; color: var(--accent); }
+.ownership-table td { color: var(--text-secondary); }
+.dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: var(--s-03); vertical-align: middle; }
+.dot-full { background: var(--accent); } .dot-shared { background: var(--accent-secondary); }
+.tag-cluster { display: flex; flex-wrap: wrap; gap: var(--s-03); margin: var(--s-04) 0; }
+.theme-tag { font-size: .75rem; font-weight: 600; padding: var(--s-02) var(--s-05); border: 1px solid var(--accent-secondary); color: var(--accent); background: var(--bg); letter-spacing: .04em; }
+.outcome-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(160px,1fr)); gap: var(--s-05); margin: var(--s-06) 0; }
+.metric { padding: var(--s-06); background: var(--accent); color: var(--accent-text); display: flex; flex-direction: column; gap: var(--s-02); }
+.metric-value { font-size: clamp(1.25rem,3vw,1.75rem); font-weight: 300; line-height: 1; }
+.metric-value strong { font-weight: 600; }
+.metric-label { font-size: .75rem; text-transform: uppercase; letter-spacing: .06em; opacity: .85; }
+.metric-desc { font-size: .8125rem; opacity: .8; margin-top: var(--s-03); line-height: 1.5; }
+.metric-secondary { background: var(--accent-secondary); color: #161616; }
+.metric-secondary .metric-label { opacity: .7; }
+.metric-light { background: var(--layer-01); color: var(--text-primary); border: 1px solid var(--accent-secondary); }
+.metric-light .metric-value { color: var(--accent); }
+.metric-light .metric-label { color: var(--accent); opacity: 1; }
+.metric-light .metric-desc { color: var(--text-secondary); opacity: 1; }
+.quote-block { margin: var(--s-07) 0; padding: var(--s-07) var(--s-07) var(--s-07) var(--s-08); background: var(--layer-01); border-left: 3px solid var(--accent-secondary); position: relative; }
+.quote-mark { position: absolute; left: var(--s-06); top: var(--s-05); font-size: 3rem; font-weight: 300; line-height: 1; color: var(--accent-secondary); }
+.quote-block blockquote { font-size: 1rem; font-style: italic; font-weight: 300; color: var(--text-primary); line-height: 1.7; margin: 0 0 var(--s-04); }
+.quote-attr { font-size: .75rem; color: var(--accent); font-weight: 600; text-transform: uppercase; letter-spacing: .06em; }
+.back-btn { display: inline-flex; align-items: center; gap: var(--s-03); font-size: .75rem; font-weight: 600; text-transform: uppercase; letter-spacing: .08em; color: var(--text-secondary); cursor: pointer; background: none; border: none; padding: var(--s-05) 0; text-decoration: none; }
+.back-btn:hover { color: var(--accent); }
+.back-btn svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2; }
+footer { border-top: 1px solid var(--border-subtle); padding: var(--s-07) 0; text-align: center; font-size: .75rem; color: var(--text-secondary); }
+footer a { color: var(--text-secondary); }
+@media (max-width: 768px) { .section, .two-col, .year-grid { grid-template-columns: 1fr; } .page { padding: 0 var(--s-05); } .nav-bar { padding: var(--s-04) var(--s-05); flex-wrap: wrap; gap: var(--s-03); } }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav-bar">
+  <a class="nav-wordmark" href="index.html"><span style="display:block;">Katie Shimmin</span><em style="display:block;font-style:italic;font-weight:400;letter-spacing:0;text-transform:none;color:inherit;">Connecting vision to value through design, AI, &amp; human-centered innovation</em></a>
+  <div class="nav-links">
+    <a href="index.html">Portfolio</a>
+    <a href="cs1.html">CS 01</a>
+    <a href="cs2.html" id="nav-cs2">CS 02</a>
+    <a href="cs3.html">CS 03</a>
+    <a href="cs4.html">CS 04</a>
+    <a href="cs5.html">CS 05</a>
+    <a href="presence.html">Presence</a>
+    <a href="people.html">People</a>
+    <a href="vision.html">Vision</a>
+  </div>
+</nav>
+
+<div class="page">
+
+  <a class="back-btn" href="index.html">
+    <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+    All Case Studies
+  </a>
+
+  <header class="hero">
+    <div class="hero-meta">
+      <span class="tag tag-accent">Case Study 02</span>
+      <span class="tag">Experience Design</span>
+      <span class="tag">Innovation Strategy</span>
+      <span class="hero-eyebrow">State Street · October 2023</span>
+    </div>
+    <h1>Transformed a single client hackathon into a <strong>repeatable growth model</strong> adopted across multiple IBM markets.</h1>
+    <p class="hero-summary">This isn't a story about running an event. It's about designing a system that simultaneously educates clients, builds executive trust, generates qualified business opportunities, and creates the organizational blueprint for doing it again — at scale.</p>
+    <div class="stat-row">
+      <div class="stat"><div class="stat-number"><strong>60+</strong></div><div class="stat-label">Participants Engaged</div></div>
+      <div class="stat"><div class="stat-number"><strong>9</strong></div><div class="stat-label">Qualified AI Opportunities</div></div>
+      <div class="stat"><div class="stat-number"><strong>9</strong></div><div class="stat-label">Facilitators Enabled</div></div>
+      <div class="stat"><div class="stat-number"><strong>7</strong></div><div class="stat-label">Markets Influenced</div></div>
+      <div class="stat"><div class="stat-number"><strong>1</strong></div><div class="stat-label">Scalable Playbook Created</div></div>
+    </div>
+  </header>
+
+  <nav class="toc">
+    <a href="#cs2-s1">01&nbsp; Context</a>
+    <a href="#cs2-s2">02&nbsp; My Role</a>
+    <a href="#cs2-s3">03&nbsp; Strategic Framing</a>
+    <a href="#cs2-s4">04&nbsp; My Process</a>
+    <a href="#cs2-s5">05&nbsp; Outcomes</a>
+  </nav>
+
+  <main class="content">
+    <section class="section" id="cs2-s1">
+      <div><div class="section-number">01</div><div class="section-title">Context</div></div>
+      <div>
+        <h2 class="bh">The Challenge Behind the Challenge</h2>
+        <p>Most enterprise clients understand AI conceptually. Far fewer understand how AI can create business value within their specific organizational context — especially in 2023, when AI was catching mass audience attention for the first time.</p>
+        <div class="callout"><div class="callout-label">The Core Challenge</div><p>How do you move executive interest beyond conversations and demonstrations into <strong>tangible business opportunities</strong> — grounded in the client's actual strategic context?</p></div>
+        <p>At State Street, IBM had an opportunity to deepen engagement around watsonx, but success required more than showcasing technology. We needed to help client teams experience the technology firsthand, identify meaningful business applications, and build confidence through creation rather than observation.</p>
+        <h2 class="bh">Organizational Landscape</h2>
+        <div class="card-grid">
+          <div class="card"><div class="card-title">State Street Product Leaders</div><p>Executive sponsors accountable for strategic AI direction.</p></div>
+          <div class="card"><div class="card-title">Technology &amp; Data Science Teams</div><p>Technical participants with varying AI familiarity.</p></div>
+          <div class="card"><div class="card-title">Business Stakeholders</div><p>Outcome-focused leaders connecting AI to operational value.</p></div>
+          <div class="card"><div class="card-title">IBM Client Engineering, Sales &amp; Design</div><p>Cross-functional IBM team supporting facilitation and delivery.</p></div>
+        </div>
+        <h2 class="bh">Key Constraints</h2>
+        <ul class="cl">
+          <li>Limited time to create meaningful outcomes</li>
+          <li>Diverse participant skill levels across teams</li>
+          <li>Need for measurable business impact — not just participation</li>
+          <li>Highly competitive account environment</li>
+          <li>Requirement to demonstrate real-world AI value, not theoretical possibilities</li>
+        </ul>
+        <div class="callout"><div class="callout-label">The Risk</div><p>Without a structured experience, participants could leave <strong>inspired but without actionable opportunities</strong> for IBM or State Street.</p></div>
+      </div>
+    </section>
+
+    <section class="section" id="cs2-s2">
+      <div><div class="section-number">02</div><div class="section-title">My Role</div></div>
+      <div>
+        <h2 class="bh">The Architect Behind the Experience</h2>
+        <p>While the event itself was highly visible, my role focused on designing the system that made success repeatable. I coached and enabled 9 strategy design facilitators, ensuring consistency across every team experience.</p>
+        <table class="ownership-table"><thead><tr><th>Area</th><th>My Ownership</th></tr></thead><tbody>
+          <tr><td>Strategic Experience Design</td><td><span class="dot dot-full"></span>Full ownership</td></tr>
+          <tr><td>Facilitation Methodology</td><td><span class="dot dot-full"></span>Full — design thinking framework and participant journey</td></tr>
+          <tr><td>Facilitator Enablement</td><td><span class="dot dot-full"></span>Full — coached 9 facilitators for consistency at scale</td></tr>
+          <tr><td>Opportunity Identification Process</td><td><span class="dot dot-full"></span>Full — structured output requirements for every team</td></tr>
+          <tr><td>Scale &amp; Replication Planning</td><td><span class="dot dot-full"></span>Full — playbook for multi-market adoption</td></tr>
+          <tr><td>IBM Account Team Partnership</td><td><span class="dot dot-shared"></span>Shared — with Client Engineering and Technology Sales</td></tr>
+        </tbody></table>
+      </div>
+    </section>
+
+    <section class="section" id="cs2-s3">
+      <div><div class="section-number">03</div><div class="section-title">Strategic Framing</div></div>
+      <div>
+        <h2 class="bh">Reframing the Challenge</h2>
+        <p>Most hackathons optimize for prototypes. I reframed the challenge around business transformation.</p>
+        <div class="callout"><div class="callout-label">The Reframe</div><p>Instead of <em>"What can we build with AI?"</em> — we asked: <strong>"Where can State Street create measurable value through AI-enabled experiences, operations, and productivity?"</strong></p></div>
+        <h2 class="bh">Strategic Design Principles</h2>
+        <div class="card-grid">
+          <div class="card"><div class="card-title">Show, Don't Tell</div><p>Participants would use IBM technology directly — not watch demos.</p></div>
+          <div class="card"><div class="card-title">Business Before Technology</div><p>Every concept had to connect to a State Street strategic initiative.</p></div>
+          <div class="card"><div class="card-title">Create Advocates, Not Attendees</div><p>Success meant participants became internal champions for the platform.</p></div>
+          <div class="card"><div class="card-title">Design for Pipeline</div><p>The event was intentionally structured to generate future opportunities.</p></div>
+        </div>
+        <h2 class="bh">Required Outputs for Every Team</h2>
+        <div class="card-grid">
+          <div class="card"><div class="card-title">Design Thinking Output</div><p>Use-case exploration, prioritization rationale, business problem framing.</p></div>
+          <div class="card"><div class="card-title">Technical Output</div><p>Functional prototype, product demonstration, solution walkthrough.</p></div>
+          <div class="card"><div class="card-title">Executive Storytelling Output</div><p>Final pitch, value proposition, business impact narrative.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="cs2-s4">
+      <div><div class="section-number">04</div><div class="section-title">My Process</div></div>
+      <div>
+        <p>Rather than treating the hackathon as a single event, I designed it as a multi-phase engagement model with a clear participant journey.</p>
+        <div class="callout"><div class="callout-label">Participant Journey</div><p><strong>Beginning</strong> → Design Thinking &nbsp;&nbsp; <br><strong>Middle</strong> → Hands-On Solution Building &nbsp;&nbsp; <br><strong>End</strong> → Executive Storytelling &amp; Demos</p></div>
+        <div class="phases">
+          <div class="phase"><div class="phase-num">Phase 1</div><div><h3>Educate — Pre-Event Discovery</h3><p>Before participants entered the room: conducted education sessions, facilitated ideation discussions, explored business opportunities, and aligned solutions to strategic initiatives — creating stronger starting points.</p></div></div>
+          <div class="phase"><div class="phase-num">Phase 2</div><div><h3>Align — Design Thinking Framework</h3><p>Each team used structured activities to explore pain points, identify operational inefficiencies, prioritize opportunities, and define measurable value — ensuring ideas were grounded in real business needs.</p></div></div>
+          <div class="phase"><div class="phase-num">Phase 3</div><div><h3>Build — Hands-On Keyboard Experience</h3><p>Teams leveraged watsonx.ai, Watson Discovery, and Watson Assistant. Participants moved from observers to creators, dramatically increasing confidence in both the technology and its applicability.</p></div></div>
+          <div class="phase"><div class="phase-num">Phase 4</div><div><h3>Tell the Story — Executive Playback</h3><p>Every team prepared a final presentation covering problem, solution, technology, and business impact. Senior leaders from both IBM and State Street evaluated the concepts, elevating the conversation from experimentation to strategic business value.</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="cs2-s5">
+      <div><div class="section-number">05</div><div class="section-title">Outcomes</div></div>
+      <div>
+        <h2 class="bh">From One Event to Organizational Influence</h2>
+        <div class="outcome-grid">
+          <div class="metric"><div class="metric-value"><strong>60+</strong></div><div class="metric-label">Participants Engaged</div><div class="metric-desc">Cross-functional: data scientists, engineers, product stakeholders, and designers.</div></div>
+          <div class="metric metric-secondary"><div class="metric-value"><strong>9</strong></div><div class="metric-label">Qualified AI Use Cases</div><div class="metric-desc">Pipeline-ready opportunities tied directly to State Street business priorities.</div></div>
+          <div class="metric metric-light"><div class="metric-value"><strong>7</strong></div><div class="metric-label">Markets Influenced</div><div class="metric-desc">A GM overseeing 7 markets directed adoption of the model the following year.</div></div>
+          <div class="metric metric-light"><div class="metric-value"><strong>1</strong></div><div class="metric-label">Formal Playbook Created</div><div class="metric-desc">Blueprint used to replicate the innovation model across markets.</div></div>
+        </div>
+        <h2 class="bh">Traditional vs. Experience-Led Approach</h2>
+        <table class="compare"><thead><tr><th>Traditional Approach</th><th>Experience-Led Approach</th></tr></thead><tbody>
+          <tr><td>Presentations</td><td>Co-creation and hands-on experimentation</td></tr>
+          <tr><td>Product demos</td><td>Business storytelling with executive visibility</td></tr>
+          <tr><td>Feature discussions</td><td>Qualified use cases tied to strategic initiatives</td></tr>
+          <tr><td>One-off engagement</td><td>Repeatable model adopted across 7 markets</td></tr>
+        </tbody></table>
+        <div class="callout"><div class="callout-label">The Key Takeaway</div><p>The most meaningful outcome wasn't the hackathon. It was proving that <strong>thoughtfully designed experiences can simultaneously educate clients, build executive trust, generate business opportunities, and create scalable organizational change.</strong></p></div>
+      </div>
+    </section>
+  </main>
+
+</div><!-- /page --><script>
+  document.getElementById('nav-cs2').classList.add('active');
+</script>
+</body>
+</html>

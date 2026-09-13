@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>People &amp; Culture · Design Director Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sedgwick+Ave&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #ffffff; --layer-01: #f4f4f4; --border-subtle: #e0e0e0;
+  --border-strong: #8d8d8d; --text-primary: #161616; --text-secondary: #525252;
+  --accent: #ec5d5e; --accent-secondary: #ff9592; --accent-tertiary: #ffd1d9; --accent-text: #ffffff;
+  --tag-bg: #ffe8e8; --tag-color: #c22828;
+  --font: 'IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif;
+  --s-02:.25rem;--s-03:.5rem;--s-04:.75rem;--s-05:1rem;
+  --s-06:1.5rem;--s-07:2rem;--s-08:2.5rem;--s-09:3rem;--s-10:4rem;--s-12:6rem;
+}
+html { font-family: var(--font); font-size: 16px; scroll-behavior: smooth; }
+body { background: var(--bg); color: var(--text-primary); line-height: 1.6; }
+.page { max-width: 1056px; margin: 0 auto; padding: 0 var(--s-07); }
+
+/* NAV */
+.nav-bar { background: var(--bg); border-bottom: 1px solid var(--border-subtle); padding: var(--s-04) var(--s-07); display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; }
+.nav-wordmark { font-size: .75rem; font-weight: 600; letter-spacing: .1em; color: var(--text-secondary); text-decoration: none; display:flex; flex-direction:column; gap:.1em; }
+.nav-wordmark:hover { color: var(--accent); }
+.nav-links { display: flex; flex-wrap: wrap; gap: var(--s-02); }
+.nav-links a { font-size: .75rem; color: var(--text-secondary); text-decoration: none; padding: var(--s-02) var(--s-04); border-bottom: 2px solid transparent; }
+.nav-links a:hover, .nav-links a.active { color: var(--accent); border-bottom-color: var(--accent); }
+
+/* BACK */
+.back-btn { display: inline-flex; align-items: center; gap: var(--s-03); font-size: .75rem; font-weight: 600; text-transform: uppercase; letter-spacing: .08em; color: var(--text-secondary); text-decoration: none; padding: var(--s-05) 0; }
+.back-btn:hover { color: var(--accent); }
+.back-btn svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2; }
+
+/* HERO */
+.hero { padding: var(--s-10) 0 var(--s-09); border-bottom: 1px solid var(--border-subtle); }
+.hero-eyebrow { font-size: .65rem; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; color: var(--accent); display: flex; align-items: center; gap: var(--s-03); margin-bottom: var(--s-05); }
+.hero-eyebrow::before { content: ''; width: 16px; height: 2px; background: var(--accent); display: inline-block; }
+.hero h1 { font-size: clamp(1.75rem,4vw,2.625rem); font-weight: 300; line-height: 1.2; max-width: 800px; margin-bottom: var(--s-06); }
+.hero h1 strong { font-weight: 600; color: var(--accent); }
+.hero-summary { font-size: 1.125rem; color: var(--text-secondary); max-width: 640px; line-height: 1.7; }
+
+/* INITIATIVE ROW — two-column label + body */
+.initiative-list { display: flex; flex-direction: column; }
+.initiative-row { display: grid; grid-template-columns: 240px 1fr; gap: 0 var(--s-09); padding: var(--s-08) 0; border-bottom: 1px solid var(--border-subtle); align-items: start; }
+.initiative-row:last-child { border-bottom: none; }
+.initiative-label { position: sticky; top: calc(var(--s-10) + 20px); }
+.initiative-num { font-size: .65rem; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: .1em; display: flex; align-items: center; gap: var(--s-03); margin-bottom: var(--s-04); }
+.initiative-num::before { content: ''; width: 16px; height: 2px; background: var(--accent); display: inline-block; }
+.initiative-title { font-size: 1.125rem; font-weight: 600; line-height: 1.3; color: var(--text-primary); margin-bottom: var(--s-03); }
+.initiative-scope { font-size: .75rem; color: var(--border-strong); text-transform: uppercase; letter-spacing: .06em; }
+.initiative-body { display: flex; flex-direction: column; gap: var(--s-05); }
+.initiative-body p { font-size: .875rem; color: var(--text-secondary); margin: 0; line-height: 1.75; }
+.initiative-body p:first-child { font-size: 1rem; color: var(--text-primary); font-weight: 300; line-height: 1.65; }
+
+/* CALLOUT */
+.callout { background: var(--layer-01); padding: var(--s-05) var(--s-06); }
+.callout-label { font-size: .75rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--accent); margin-bottom: var(--s-04); }
+.callout p { font-family: 'Sedgwick Ave', cursive; font-size: 1.46rem; font-weight: 400; color: var(--text-primary); line-height: 1.6; margin: 0; }
+.callout p strong { font-weight: 600; }
+
+/* PEOPLE WALL — photo feature */
+.people-wall-feature { display: grid; grid-template-columns: 1fr 380px; gap: var(--s-09); align-items: start; }
+.people-wall-copy { display: flex; flex-direction: column; gap: var(--s-05); }
+
+/* CAROUSEL */
+.pw-carousel { position: relative; overflow: hidden; background: var(--layer-01); }
+.pw-carousel-track { display: flex; transition: transform .4s ease; will-change: transform; }
+.pw-carousel-track img { flex: 0 0 100%; width: 100%; max-height: 520px; object-fit: contain; object-position: center; display: block; background: var(--bg); }
+.pw-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,.85); border: 1px solid var(--border-subtle); width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 2; transition: background .15s; }
+.pw-btn:hover { background: #fff; }
+.pw-btn svg { width: 18px; height: 18px; stroke: var(--text-primary); fill: none; stroke-width: 2; }
+.pw-btn-prev { left: var(--s-04); }
+.pw-btn-next { right: var(--s-04); }
+.pw-dots { display: flex; justify-content: center; gap: var(--s-03); padding: var(--s-04) 0 0; }
+.pw-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--border-subtle); border: none; padding: 0; cursor: pointer; transition: background .15s; }
+.pw-dot.active { background: var(--accent); }
+.stat-pair { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-04); margin-top: var(--s-05); }
+.stat-box { padding: var(--s-05) var(--s-06); background: var(--layer-01); display: flex; flex-direction: column; gap: var(--s-02); }
+.stat-box-num { font-size: 2rem; font-weight: 300; line-height: 1; color: var(--accent); }
+.stat-box-num strong { font-weight: 600; }
+.stat-box-label { font-size: .7rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: .06em; }
+
+/* QUOTES SECTION */
+.quotes-section { padding: var(--s-10) 0 var(--s-12); }
+.quotes-eyebrow { font-size: .65rem; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; color: var(--accent); display: flex; align-items: center; gap: var(--s-03); margin-bottom: var(--s-05); }
+.quotes-eyebrow::before { content: ''; width: 16px; height: 2px; background: var(--accent); display: inline-block; }
+.quotes-section h2 { font-size: 1.5rem; font-weight: 300; line-height: 1.25; margin-bottom: var(--s-08); }
+.quotes-section h2 strong { font-weight: 600; }
+.quote-card { padding: var(--s-08) var(--s-09); background: var(--layer-01); border-left: 4px solid var(--accent-secondary); margin-bottom: var(--s-06); position: relative; }
+.quote-card:last-child { margin-bottom: 0; }
+.quote-card::before { content: '\201C'; position: absolute; top: var(--s-05); left: var(--s-06); font-size: 4rem; font-weight: 300; line-height: 1; color: var(--accent-secondary); font-family: Georgia, serif; }
+.quote-card blockquote { font-size: 1rem; font-weight: 300; font-style: italic; color: var(--text-primary); line-height: 1.75; margin: 0 0 var(--s-05); }
+.quote-card blockquote em { font-style: normal; font-weight: 600; color: var(--accent); }
+.quote-attribution { display: flex; flex-direction: column; gap: var(--s-02); }
+.quote-name { font-size: .875rem; font-weight: 600; color: var(--text-primary); }
+.quote-role { font-size: .75rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: .06em; }
+
+/* SECTION LABEL */
+.section-eyebrow { font-size: .65rem; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; color: var(--accent); display: flex; align-items: center; gap: var(--s-03); margin-bottom: var(--s-05); }
+.section-eyebrow::before { content: ''; width: 16px; height: 2px; background: var(--accent); display: inline-block; }
+.tl-section { padding: var(--s-10) 0; border-bottom: 1px solid var(--border-subtle); }
+.tl-section h2 { font-size: 1.5rem; font-weight: 300; margin-bottom: var(--s-07); }
+.tl-section h2 strong { font-weight: 600; }
+
+/* TYPOGRAPHY */
+p { font-size: .875rem; color: var(--text-secondary); margin-bottom: var(--s-05); line-height: 1.7; }
+p:last-child { margin-bottom: 0; }
+
+/* CONFERENCE SECTION */
+.conf-section { padding: var(--s-10) var(--s-07); background: var(--bg); border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle); }
+.conf-inner { max-width: 1056px; margin: 0 auto; }
+.conf-lead { font-size: 1.125rem; font-weight: 300; color: var(--text-primary); line-height: 1.65; max-width: 680px; margin-bottom: var(--s-07); }
+.conf-lead strong { font-weight: 600; }
+.conf-events { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-06); margin-bottom: var(--s-07); }
+.conf-event { border: 1px solid var(--border-subtle); padding: var(--s-07) var(--s-06); display: flex; flex-direction: column; gap: var(--s-04); border-top: 3px solid var(--accent); }
+.conf-event-eyebrow { font-size: .6rem; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; color: var(--accent); }
+.conf-event-title { font-size: 1.125rem; font-weight: 600; color: var(--text-primary); line-height: 1.3; }
+.conf-event-body { font-size: .875rem; color: var(--text-secondary); line-height: 1.7; margin: 0; }
+.conf-market-tags { display: flex; flex-wrap: wrap; gap: var(--s-02); margin-top: var(--s-02); }
+.conf-market-tag { font-size: .7rem; font-weight: 600; padding: var(--s-02) var(--s-04); border: 1px solid var(--accent-secondary); color: var(--accent); background: var(--bg); letter-spacing: .04em; }
+.conf-stat-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--border-subtle); border: 1px solid var(--border-subtle); margin-bottom: var(--s-07); }
+.conf-stat { background: var(--bg); padding: var(--s-06); display: flex; flex-direction: column; gap: var(--s-02); }
+.conf-stat-num { font-size: clamp(1.5rem,2.5vw,2rem); font-weight: 300; line-height: 1; color: var(--accent); }
+.conf-stat-num strong { font-weight: 600; }
+.conf-stat-label { font-size: .7rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: .06em; }
+.conf-photo-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--s-04); margin-top: var(--s-05); }
+.conf-photo { aspect-ratio: 4/3; background: var(--accent-tertiary); overflow: hidden; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: var(--s-03); color: var(--border-strong); font-size: .65rem; text-transform: uppercase; letter-spacing: .06em; }
+.conf-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.conf-photo svg { width: 28px; height: 28px; stroke: var(--accent-secondary); fill: none; stroke-width: 1.5; }
+@media (max-width: 768px) { .conf-events { grid-template-columns: 1fr; } .conf-stat-row { grid-template-columns: 1fr 1fr; } .conf-photo-grid { grid-template-columns: 1fr 1fr; } }
+
+/* FOOTER */
+footer { border-top: 1px solid var(--border-subtle); padding: var(--s-07) 0; text-align: center; font-size: .75rem; color: var(--text-secondary); }
+footer a { color: var(--text-secondary); }
+
+@media (max-width: 768px) {
+  .initiative-row { grid-template-columns: 1fr; gap: var(--s-05); }
+  .people-wall-feature { grid-template-columns: 1fr; }
+  .stat-pair { grid-template-columns: 1fr 1fr; }
+  .page { padding: 0 var(--s-05); }
+  .nav-bar { padding: var(--s-04) var(--s-05); flex-wrap: wrap; gap: var(--s-03); }
+  .quote-card { padding: var(--s-07) var(--s-06) var(--s-07) var(--s-08); }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav-bar">
+  <a class="nav-wordmark" href="index.html"><span style="display:block;">Katie Shimmin</span><em style="display:block;font-style:italic;font-weight:400;letter-spacing:0;text-transform:none;color:inherit;">Connecting vision to value through design, AI, &amp; human-centered innovation</em></a>
+  <div class="nav-links">
+    <a href="index.html">Portfolio</a>
+    <a href="cs1.html">CS 01</a>
+    <a href="cs2.html">CS 02</a>
+    <a href="cs3.html">CS 03</a>
+    <a href="cs4.html">CS 04</a>
+    <a href="cs5.html">CS 05</a>
+    <a href="presence.html">Presence</a>
+    <a href="people.html" id="nav-people" class="active">People</a>
+    <a href="vision.html">Vision</a>
+  </div>
+</nav>
+
+<div class="page">
+
+  <a class="back-btn" href="index.html">
+    <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+    Portfolio
+  </a>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-eyebrow">People &amp; Culture</div>
+    <h1>The work only works if <strong>the people do.</strong></h1>
+    <p class="hero-summary">Design leadership isn't about the deliverable — it's about building the conditions where great work becomes inevitable. I invest in clarity, community, and the careers of the people around me.</p>
+  </header>
+
+  <!-- ══ INITIATIVES ══ -->
+  <section class="tl-section" style="border-bottom:none;padding-bottom:0;">
+    <div class="section-eyebrow">Initiatives</div>
+    <h2>Where I <strong>heard the need and acted.</strong></h2>
+
+    <div class="initiative-list">
+
+      <!-- 6 for 2026 -->
+      <div class="initiative-row">
+        <div class="initiative-label">
+          <div class="initiative-num">01</div>
+          <div class="initiative-title">6 for 2026 — Pursuit of Excellence</div>
+          <div class="initiative-scope">IBM Design Community · Town Hall Rollout</div>
+        </div>
+        <div class="initiative-body">
+          <p>After a new role definition rolled out across Designers in Sales, the design community was overwhelmed — the language was high-level and abstract when people needed something grounded, specific, and usable on a Tuesday.</p>
+          <p>I heard that frustration surface, saw it get elevated to me, and responded with a set of scenario-based STAR-method behaviors across six key categories. Each one walked through the situation, task, action, and ideal result — translating enterprise language into the everyday scenarios designers actually live in.</p>
+          <div class="callout">
+            <div class="callout-label">The proof</div>
+            <p>Rolled it out at the town hall. Closed with a simple Microsoft Teams poll. <strong>The community confirmed it landed.</strong> That's the feedback loop that matters.</p>
+          </div>
+          <div class="pw-carousel" id="sixCarousel" style="margin-top:var(--s-05);">
+            <div class="pw-carousel-track" id="sixTrack">
+              <img src="links/6-for-2026/pursuit-of-excellence-1.png" alt="Pursuit of Excellence slide 1">
+              <img src="links/6-for-2026/pursuit-of-excellence-2.png" alt="Pursuit of Excellence slide 2">
+              <img src="links/6-for-2026/pursuit-of-excellence-3.png" alt="Pursuit of Excellence slide 3">
+              <img src="links/6-for-2026/pursuit-of-excellence-4.png" alt="Pursuit of Excellence slide 4">
+              <img src="links/6-for-2026/pursuit-of-excellence-5.png" alt="Pursuit of Excellence slide 5">
+            </div>
+            <button class="pw-btn pw-btn-prev" id="sixPrev" aria-label="Previous slide">
+              <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+            </button>
+            <button class="pw-btn pw-btn-next" id="sixNext" aria-label="Next slide">
+              <svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg>
+            </button>
+          </div>
+          <div class="pw-dots" id="sixDots">
+            <button class="pw-dot active" aria-label="Slide 1"></button>
+            <button class="pw-dot" aria-label="Slide 2"></button>
+            <button class="pw-dot" aria-label="Slide 3"></button>
+            <button class="pw-dot" aria-label="Slide 4"></button>
+            <button class="pw-dot" aria-label="Slide 5"></button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Career Pathways -->
+      <div class="initiative-row">
+        <div class="initiative-label">
+          <div class="initiative-num">02</div>
+          <div class="initiative-title">Career Pathways &amp; Progression</div>
+          <div class="initiative-scope">200+ Innovation Designers · Worldwide · 2025</div>
+        </div>
+        <div class="initiative-body">
+          <p>Designers across IBM were asking the same questions with no clear answers: What roles exist beyond mine? What skills do I actually need? Are adjacent design paths even realistic from where I stand?</p>
+          <p>I led a deep research process to map the entire IBM design landscape — core design options, adjacent-design roles, the skills each requires, and critically, what the shift would actually look like compared to where designers are today. That comparison is what made the difference. Not just a list of roles — a real picture of the distance between here and there.</p>
+          <div class="callout">
+            <div class="callout-label">Scale</div>
+            <p>Scaled to <strong>200+ Innovation Designers worldwide</strong> in 2025. A long-term guide that will support the CE design community for years to come.</p>
+          </div>
+          <video controls style="width:100%;margin-top:var(--s-05);display:block;">
+            <source src="links/career-pathways/ce-pathways.mov" type="video/mp4">
+          </video>
+        </div>
+      </div>
+
+      <!-- ATL Storytelling -->
+      <div class="initiative-row">
+        <div class="initiative-label">
+          <div class="initiative-num">03</div>
+          <div class="initiative-title">ATL Onboarding — Storytelling &amp; 1% Better</div>
+          <div class="initiative-scope">Invited Speaker · Austin, TX · 2026</div>
+        </div>
+        <div class="initiative-body">
+          <p>Account Technical Leaders own the full context of their client accounts. What they often lack is the storytelling precision to distill the right information, to the right audience, at the right moment — the kind of clarity that wins a competitive bake-off or earns a spot on a client's trusted advisor list.</p>
+          <p>I was invited to speak at the 2026 ATL Onboarding event in Austin, Texas by IBM's VP of Technology Sales to give them exactly that. A practical framework they could use immediately — in the room, on the call, in the pitch.</p>
+          <div class="callout">
+            <div class="callout-label">The ask</div>
+            <p>Equip ATLs with storytelling skills that <strong>make or break the competitive moment.</strong> Invited directly by the VP of Technology Sales — because the right voice in the room matters.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</div><!-- /page -->
+
+<!-- ══ PEOPLE WALL — full bleed ══ -->
+<div style="background:var(--layer-01);padding:var(--s-10) var(--s-07);border-top:1px solid var(--border-subtle);border-bottom:1px solid var(--border-subtle);">
+  <div style="max-width:1056px;margin:0 auto;">
+    <div class="people-wall-feature">
+
+      <!-- Carousel -->
+      <div>
+        <div class="section-eyebrow" style="margin-bottom:var(--s-06);">The People Wall</div>
+        <div class="pw-carousel" id="pwCarousel">
+          <div class="pw-carousel-track" id="pwTrack">
+            <img src="links/people-wall/PeopleWall_Portfolio_00.jpg" alt="People Wall">
+            <img src="links/people-wall/grid.jpg" alt="People Wall grid">
+            <img src="links/people-wall/largewall.png" alt="People Wall large installation">
+            
+          </div>
+          <button class="pw-btn pw-btn-prev" id="pwPrev" aria-label="Previous photo">
+            <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+          </button>
+          <button class="pw-btn pw-btn-next" id="pwNext" aria-label="Next photo">
+            <svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg>
+          </button>
+        </div>
+        <div class="pw-dots" id="pwDots">
+          <button class="pw-dot active" aria-label="Photo 1"></button>
+          <button class="pw-dot" aria-label="Photo 2"></button>
+          <button class="pw-dot" aria-label="Photo 3"></button>
+        </div>
+      </div>
+
+      <!-- Copy -->
+      <div class="people-wall-copy">
+        <p style="font-size:1rem;font-weight:300;color:var(--text-primary);line-height:1.65;">Some of the most lasting design work isn't on a screen. It's on a wall.</p>
+        <p>Over 100 employee portraits were printed, mounted individually, and combined into a modular grid displayed in the office atrium — making visible the people who make the culture what it is.</p>
+        <p>What happened next was the best kind of unplanned outcome: design teams started pulling the portraits into project decks. A way to recognize the people behind the work had become part of how the work got told.</p>
+        <div class="callout" style="margin-top:var(--s-04);">
+          <div class="callout-label">What it became</div>
+          <p>Not just a wall. A <strong>cultural artifact</strong> — a way for an organization to see itself and feel proud of what it sees.</p>
+        </div>
+        <div class="stat-pair">
+          <div class="stat-box">
+            <div class="stat-box-num"><strong>100+</strong></div>
+            <div class="stat-box-label">Portraits Printed &amp; Mounted</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-box-num"><strong>∞</strong></div>
+            <div class="stat-box-label">Times Reused in Project Decks</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ══ CONFERENCES & TRAVEL ══ -->
+<div class="conf-section">
+  <div class="conf-inner">
+
+    <div style="display:flex;align-items:center;gap:var(--s-03);margin-bottom:var(--s-05);font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--accent);">
+      <span style="display:inline-block;width:16px;height:2px;background:var(--accent);"></span>
+      Investing in People
+    </div>
+
+    <p class="conf-lead">The best leaders I ever had sent me places I wouldn't have found on my own. <strong>I made it my job to do the same.</strong> I advocated, wrote the emails, built the business cases, and got budget approved — so 15 designers across six markets could have the kind of conference experiences that change how you see your craft and your career.</p>
+
+    <div class="conf-stat-row">
+      <div class="conf-stat">
+        <div class="conf-stat-num"><strong>15</strong></div>
+        <div class="conf-stat-label">Designers Sent to Conferences</div>
+      </div>
+      <div class="conf-stat">
+        <div class="conf-stat-num"><strong>6 of 7</strong></div>
+        <div class="conf-stat-label">Markets Represented</div>
+      </div>
+      <div class="conf-stat">
+        <div class="conf-stat-num"><strong>2</strong></div>
+        <div class="conf-stat-label">Major Conference Programs</div>
+      </div>
+      <div class="conf-stat">
+        <div class="conf-stat-num"><strong>∞</strong></div>
+        <div class="conf-stat-label">Memories to Last a Lifetime</div>
+      </div>
+    </div>
+
+    <div class="conf-events">
+
+      <div class="conf-event">
+        <!-- Swap for event logo: <img src="logos/adobe.png" alt="Adobe Creative Jam" style="height:32px;object-fit:contain;margin-bottom:var(--s-03);"> -->
+        <div class="conf-event-eyebrow">Adobe · Creative Jam</div>
+        <div class="conf-event-title">Adobe Creative Jam — 11 Designers</div>
+        <p class="conf-event-body">Sent 11 designers to Adobe Creative Jam — a high-energy, skills-building creative competition that puts design chops to the test alongside peers from across the industry. I coordinated across markets, built the case for budget, and made it happen.</p>
+        <div class="conf-market-tags">
+          <span class="conf-market-tag">LATAM</span>
+          <span class="conf-market-tag">Horizon</span>
+          <span class="conf-market-tag">Industry</span>
+          <span class="conf-market-tag">FSM</span>
+        </div>
+      </div>
+
+      <div class="conf-event">
+        <!-- Swap for event logo: <img src="logos/config.png" alt="Config" style="height:32px;object-fit:contain;margin-bottom:var(--s-03);"> -->
+        <div class="conf-event-eyebrow">Figma · Config</div>
+        <div class="conf-event-title">Config — 4 Designers</div>
+        <p class="conf-event-body">Sent 4 designers to Config, Figma's flagship design conference — the room where the design community's next moves get made. One designer per market, representing the breadth of how we work across IBM.</p>
+        <div class="conf-market-tags">
+          <span class="conf-market-tag">Public</span>
+          <span class="conf-market-tag">Federal</span>
+          <span class="conf-market-tag">FSM</span>
+          <span class="conf-market-tag">Industry</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Photo grid -->
+    <div style="font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--accent);display:flex;align-items:center;gap:var(--s-03);margin-bottom:var(--s-05);">
+      <span style="display:inline-block;width:16px;height:2px;background:var(--accent);"></span>
+      From the field
+    </div>
+    <div class="conf-photo-grid">
+      <div class="conf-photo"><img src="links/from-the-field/IMG_0493.jpg" alt="From the field"></div>
+      <div class="conf-photo"><img src="links/from-the-field/IMG_4693.jpg" alt="From the field"></div>
+      <div class="conf-photo"><img src="links/from-the-field/IMG_5433.jpeg" alt="From the field"></div>
+      <div class="conf-photo"><img src="links/from-the-field/config.png" alt="Config conference"></div>
+    </div>
+
+    <!-- Attendee quote -->
+    <div class="quote-card" style="margin-top:var(--s-07);border-left-color:var(--accent);">
+      <blockquote>
+        "THANK YOU THANK YOU THANK YOU for advocating for us to participate in this event. <em>One of my top three experiences in my 7 years at IBM.</em> Truly career changing and invigorating. It's such an amazing partnership we get to have and I look forward to leaning into it more and working with Naved."
+      </blockquote>
+      <div class="quote-attribution">
+        <div class="quote-name">Madeline Helland</div>
+        <div class="quote-role">Conference Attendee</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="page">
+
+  <!-- ══ QUOTES ══ -->
+  <section class="quotes-section">
+    <div class="quotes-eyebrow">In Their Words</div>
+    <h2>What the people I work <strong>with</strong> say.</h2>
+
+    <div class="quote-card">
+      <blockquote>
+        "Katie — Thank you so much for all the energy, passion, expertise, and integrity you bring to the Americas Design Lead role. I appreciate you consistently leading with empathy and collecting perspectives from across the markets. The momentum and focus on meaningful impact in our initiatives is exactly what we need right now. Thank you again for everything you're bringing to the team."
+      </blockquote>
+      <div class="quote-attribution">
+        <div class="quote-name">Amy Lewis</div>
+        <div class="quote-role">Canada Design Market Lead, IBM</div>
+      </div>
+    </div>
+
+    <div class="quote-card">
+      <blockquote>
+        "Katie, I wanted to take a moment to recognize the exceptional work you're doing leading the Americas GEO, and the way you consistently support, contribute to, and collaborate across all our worldwide initiatives. Your partnership, clarity, and energy elevate everything we do. <em>The way you bring clarity, structure, and confidence into every conversation makes collaboration so much easier and more impactful.</em> Whether we're aligning as a design leadership team or speaking with leaders like Rahul, your ability to articulate our work, connect the dots, and create shared understanding truly elevates us. And of course, your leadership of the Career Progression initiative for CE Designers deserves special recognition. The pages you've created are thoughtful, rigorous, and incredibly valuable — <em>a long-term guide for the entire CE design community. You've built something with incalculable value that will support designers for years to come.</em> Thank you for the dedication, calm, and purpose you bring to every initiative. Your impact is lasting, and your way of navigating complexity with collaboration and clarity is inspiring. It's a true pleasure working with you. I deeply appreciate everything you do for the CE design community — honestly, I don't know what I would do without you."
+      </blockquote>
+      <div class="quote-attribution">
+        <div class="quote-name">Misti</div>
+        <div class="quote-role">EMEA Design &amp; Transformation Leader, IBM</div>
+      </div>
+    </div>
+
+  </section>
+
+</div><!-- /page --><script>
+  document.getElementById('nav-people').classList.add('active');
+
+  // 6 for 2026 carousel
+  (function() {
+    var track = document.getElementById('sixTrack');
+    var dots  = document.querySelectorAll('#sixDots .pw-dot');
+    var total = dots.length;
+    var cur   = 0;
+    function goTo(n) {
+      cur = (n + total) % total;
+      track.style.transform = 'translateX(-' + (cur * 100) + '%)';
+      dots.forEach(function(d, i) { d.classList.toggle('active', i === cur); });
+    }
+    document.getElementById('sixPrev').addEventListener('click', function() { goTo(cur - 1); });
+    document.getElementById('sixNext').addEventListener('click', function() { goTo(cur + 1); });
+    dots.forEach(function(d, i) { d.addEventListener('click', function() { goTo(i); }); });
+  })();
+
+  // People Wall carousel
+  (function() {
+    var track = document.getElementById('pwTrack');
+    var dots  = document.querySelectorAll('#pwDots .pw-dot');
+    var total = dots.length;
+    var cur   = 0;
+
+    function goTo(n) {
+      cur = (n + total) % total;
+      track.style.transform = 'translateX(-' + (cur * 100) + '%)';
+      dots.forEach(function(d, i) { d.classList.toggle('active', i === cur); });
+    }
+
+    document.getElementById('pwPrev').addEventListener('click', function() { goTo(cur - 1); });
+    document.getElementById('pwNext').addEventListener('click', function() { goTo(cur + 1); });
+    dots.forEach(function(d, i) { d.addEventListener('click', function() { goTo(i); }); });
+  })();
+</script>
+</body>
+</html>

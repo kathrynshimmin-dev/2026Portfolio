@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>CS 04 — AI for Social Impact · Design Director Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sedgwick+Ave&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #ffffff; --layer-01: #f4f4f4; --border-subtle: #e0e0e0;
+  --border-strong: #8d8d8d; --text-primary: #161616; --text-secondary: #525252;
+  --accent: #ec5d5e; --accent-secondary: #ff9592; --accent-tertiary: #ffd1d9; --accent-text: #ffffff;
+  --tag-bg: #ffe8e8; --tag-color: #c22828;
+  --font: 'IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif;
+  --s-02:.25rem;--s-03:.5rem;--s-04:.75rem;--s-05:1rem;
+  --s-06:1.5rem;--s-07:2rem;--s-08:2.5rem;--s-09:3rem;--s-10:4rem;--s-12:6rem;
+}
+html { font-family: var(--font); font-size: 16px; scroll-behavior: smooth; }
+body { background: var(--bg); color: var(--text-primary); line-height: 1.6; }
+.page { max-width: 1056px; margin: 0 auto; padding: 0 var(--s-07); }
+.nav-bar { background: var(--bg); border-bottom: 1px solid var(--border-subtle); padding: var(--s-04) var(--s-07); display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; }
+.nav-wordmark { font-size: .75rem; font-weight: 600; letter-spacing: .1em; color: var(--text-secondary); text-decoration: none; display:flex; flex-direction:column; gap:.1em; }
+.nav-wordmark:hover { color: var(--accent); }
+.nav-links { display: flex; flex-wrap: wrap; gap: var(--s-02); }
+.nav-links a { font-size: .75rem; color: var(--text-secondary); text-decoration: none; padding: var(--s-02) var(--s-04); border-bottom: 2px solid transparent; }
+.nav-links a:hover, .nav-links a.active { color: var(--accent); border-bottom-color: var(--accent); }
+.hero { padding: var(--s-10) 0 var(--s-09); border-bottom: 1px solid var(--border-subtle); }
+.hero-meta { display: flex; align-items: center; gap: var(--s-05); flex-wrap: wrap; margin-bottom: var(--s-06); }
+.tag { display: inline-block; padding: var(--s-02) var(--s-04); background: var(--tag-bg); color: var(--tag-color); font-size: .75rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; }
+.tag-accent { background: var(--accent); color: var(--accent-text); }
+.hero-eyebrow { font-size: .75rem; color: var(--text-secondary); letter-spacing: .08em; text-transform: uppercase; }
+.hero h1 { font-size: clamp(1.75rem,4vw,2.625rem); font-weight: 300; line-height: 1.2; max-width: 800px; margin-bottom: var(--s-06); }
+.hero h1 strong { font-weight: 600; color: var(--accent); }
+.hero-summary { font-size: 1.125rem; color: var(--text-secondary); max-width: 680px; line-height: 1.7; margin-bottom: var(--s-08); }
+.stat-row { display: grid; grid-template-columns: repeat(auto-fit,minmax(140px,1fr)); gap: 1px; background: var(--border-subtle); border: 1px solid var(--border-subtle); margin-top: var(--s-07); }
+.stat { background: var(--bg); padding: var(--s-07) var(--s-06); display: flex; flex-direction: column; gap: var(--s-02); }
+.stat-number { font-size: clamp(1.5rem,3vw,2.25rem); font-weight: 300; line-height: 1; color: var(--accent); }
+.stat-number strong { font-weight: 600; }
+.stat-label { font-size: .75rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: .06em; }
+.toc { display: flex; flex-wrap: wrap; border-bottom: 1px solid var(--border-subtle); margin-bottom: var(--s-09); background: var(--bg); }
+.toc a { padding: var(--s-04) var(--s-06); font-size: .75rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--text-secondary); text-decoration: none; border-bottom: 2px solid transparent; white-space: nowrap; }
+.toc a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+.content { padding-bottom: var(--s-12); }
+.section { display: grid; grid-template-columns: 220px 1fr; gap: 0 var(--s-09); padding: var(--s-09) 0; border-bottom: 1px solid var(--border-subtle); }
+.section:last-child { border-bottom: none; }
+.section-number { font-size: .75rem; font-weight: 600; color: var(--accent); text-transform: uppercase; letter-spacing: .1em; margin-bottom: var(--s-03); display: flex; align-items: center; gap: var(--s-03); }
+.section-number::before { content: ''; display: inline-block; width: 16px; height: 2px; background: var(--accent); }
+.section-title { font-size: 1.25rem; font-weight: 600; line-height: 1.3; }
+h2.bh { font-size: 1.25rem; font-weight: 600; margin-top: var(--s-07); margin-bottom: var(--s-04); }
+h2.bh:first-child { margin-top: 0; }
+p { font-size: .875rem; color: var(--text-secondary); margin-bottom: var(--s-05); line-height: 1.7; }
+p:last-child { margin-bottom: 0; }
+em { font-style: italic; }
+.callout { background: var(--layer-01); padding: var(--s-06) var(--s-07); margin: var(--s-06) 0; }
+.callout-label { font-size: .75rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--accent); margin-bottom: var(--s-04); }
+.callout p { font-family: 'Sedgwick Ave', cursive; font-size: 1.46rem; font-weight: 400; color: var(--text-primary); line-height: 1.6; margin: 0; }
+.callout p strong { font-weight: 600; }
+.callout ul { list-style: none; padding: 0; margin: var(--s-04) 0 0; }
+.callout ul li { font-size: 1rem; font-weight: 300; color: var(--text-primary); line-height: 1.7; padding: var(--s-02) 0 var(--s-02) var(--s-06); position: relative; }
+.callout ul li::before { content: ''; position: absolute; left: 0; top: .7em; width: 4px; height: 4px; background: var(--accent); }
+.card-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(180px,1fr)); gap: 1px; background: var(--border-subtle); border: 1px solid var(--border-subtle); margin: var(--s-06) 0; }
+.card { background: var(--bg); padding: var(--s-06); display: flex; flex-direction: column; gap: var(--s-03); border-top: 3px solid transparent; }
+.card:hover { border-top-color: var(--accent-secondary); }
+.card-title { font-size: 1rem; font-weight: 600; }
+.card p { font-size: .875rem; color: var(--text-secondary); margin: 0; }
+ul.cl { list-style: none; padding: 0; margin: var(--s-03) 0 var(--s-05); }
+ul.cl li { font-size: .875rem; color: var(--text-secondary); line-height: 1.7; padding: var(--s-03) 0 var(--s-03) var(--s-06); position: relative; }
+ul.cl li::before { content: ''; position: absolute; left: 0; top: .75em; width: 4px; height: 4px; background: var(--accent); }
+.phases { display: flex; flex-direction: column; margin: var(--s-06) 0; }
+.phase { display: grid; grid-template-columns: 90px 1fr; gap: 0 var(--s-06); padding: var(--s-06) 0; border-bottom: 1px solid var(--border-subtle); }
+.phase:last-child { border-bottom: none; }
+.phase-num { font-size: .75rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); padding-top: var(--s-02); }
+.phase h3 { font-size: 1rem; font-weight: 600; margin-bottom: var(--s-03); }
+.phase p { margin-bottom: var(--s-03); }
+.year-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-06); margin: var(--s-06) 0; }
+.year-block { padding: var(--s-06); background: var(--layer-01); }
+.year-block h3 { font-size: .75rem; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--accent); margin-bottom: var(--s-04); display: flex; align-items: center; gap: var(--s-03); }
+.year-block h3::before { content: ''; width: 16px; height: 2px; background: var(--accent); display: inline-block; }
+.tag-cluster { display: flex; flex-wrap: wrap; gap: var(--s-03); margin: var(--s-04) 0; }
+.theme-tag { font-size: .75rem; font-weight: 600; padding: var(--s-02) var(--s-05); border: 1px solid var(--accent-secondary); color: var(--accent); background: var(--bg); letter-spacing: .04em; }
+.outcome-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(160px,1fr)); gap: var(--s-05); margin: var(--s-06) 0; }
+.metric { padding: var(--s-06); background: var(--accent); color: var(--accent-text); display: flex; flex-direction: column; gap: var(--s-02); }
+.metric-value { font-size: clamp(1.25rem,3vw,1.75rem); font-weight: 300; line-height: 1; }
+.metric-value strong { font-weight: 600; }
+.metric-label { font-size: .75rem; text-transform: uppercase; letter-spacing: .06em; opacity: .85; }
+.metric-desc { font-size: .8125rem; opacity: .8; margin-top: var(--s-03); line-height: 1.5; }
+.metric-secondary { background: var(--accent-secondary); color: #161616; }
+.metric-secondary .metric-label { opacity: .7; }
+.metric-light { background: var(--layer-01); color: var(--text-primary); border: 1px solid var(--accent-secondary); }
+.metric-light .metric-value { color: var(--accent); }
+.metric-light .metric-label { color: var(--accent); opacity: 1; }
+.metric-light .metric-desc { color: var(--text-secondary); opacity: 1; }
+.ownership-table { width: 100%; border-collapse: collapse; margin: var(--s-06) 0; }
+.ownership-table th, .ownership-table td { padding: var(--s-04) var(--s-05); text-align: left; font-size: .875rem; border-bottom: 1px solid var(--border-subtle); }
+.ownership-table th { font-weight: 600; background: var(--layer-01); font-size: .75rem; text-transform: uppercase; letter-spacing: .06em; color: var(--accent); }
+.ownership-table td { color: var(--text-secondary); }
+.dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: var(--s-03); vertical-align: middle; }
+.dot-full { background: var(--accent); } .dot-shared { background: var(--accent-secondary); }
+.back-btn { display: inline-flex; align-items: center; gap: var(--s-03); font-size: .75rem; font-weight: 600; text-transform: uppercase; letter-spacing: .08em; color: var(--text-secondary); cursor: pointer; background: none; border: none; padding: var(--s-05) 0; text-decoration: none; }
+.back-btn:hover { color: var(--accent); }
+.back-btn svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2; }
+footer { border-top: 1px solid var(--border-subtle); padding: var(--s-07) 0; text-align: center; font-size: .75rem; color: var(--text-secondary); }
+footer a { color: var(--text-secondary); }
+@media (max-width: 768px) { .section, .year-grid { grid-template-columns: 1fr; } .page { padding: 0 var(--s-05); } .nav-bar { padding: var(--s-04) var(--s-05); flex-wrap: wrap; gap: var(--s-03); } }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav-bar">
+  <a class="nav-wordmark" href="index.html"><span style="display:block;">Katie Shimmin</span><em style="display:block;font-style:italic;font-weight:400;letter-spacing:0;text-transform:none;color:inherit;">Connecting vision to value through design, AI, &amp; human-centered innovation</em></a>
+  <div class="nav-links">
+    <a href="index.html">Portfolio</a>
+    <a href="cs1.html">CS 01</a>
+    <a href="cs2.html">CS 02</a>
+    <a href="cs3.html">CS 03</a>
+    <a href="cs4.html" id="nav-cs4">CS 04</a>
+    <a href="cs5.html">CS 05</a>
+    <a href="presence.html">Presence</a>
+    <a href="people.html">People</a>
+    <a href="vision.html">Vision</a>
+  </div>
+</nav>
+
+<div class="page">
+
+  <a class="back-btn" href="index.html">
+    <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+    All Case Studies
+  </a>
+
+  <header class="hero">
+    <div class="hero-meta">
+      <span class="tag tag-accent">Case Study 04</span>
+      <span class="tag">Ecosystem Design</span>
+      <span class="tag">AI Adoption</span>
+      <span class="hero-eyebrow">IBM Social Impact · 2022–2024</span>
+    </div>
+    <h1>From Pilot to Platform: <strong>Designing and scaling an AI innovation framework</strong> for the social sector.</h1>
+    <p class="hero-summary">Over two years, I designed and evolved a repeatable engagement framework that helped nonprofit organizations identify high-impact AI opportunities while creating measurable business value for IBM — generating over $750K in opportunity value and establishing strategic partnerships that created momentum for expansion into additional markets.</p>
+    <div class="stat-row">
+      <div class="stat"><div class="stat-number"><strong>$751K+</strong></div><div class="stat-label">Opportunity Value Generated</div></div>
+      <div class="stat"><div class="stat-number"><strong>36+</strong></div><div class="stat-label">AI Use Cases Identified</div></div>
+      <div class="stat"><div class="stat-number"><strong>10</strong></div><div class="stat-label">MVP Concepts Scoped</div></div>
+      <div class="stat"><div class="stat-number"><strong>5</strong></div><div class="stat-label">IBM Organizations Aligned</div></div>
+      <div class="stat"><div class="stat-number"><strong>2</strong></div><div class="stat-label">Strategic Partnerships</div></div>
+    </div>
+  </header>
+
+  <nav class="toc">
+    <a href="#cs4-s1">01&nbsp; Context</a>
+    <a href="#cs4-s2">02&nbsp; My Role</a>
+    <a href="#cs4-s3">03&nbsp; Strategic Framing</a>
+    <a href="#cs4-s4">04&nbsp; My Process</a>
+    <a href="#cs4-s5">05&nbsp; Outcomes</a>
+  </nav>
+
+  <main class="content">
+    <section class="section" id="cs4-s1">
+      <div><div class="section-number">01</div><div class="section-title">Context</div></div>
+      <div>
+        <h2 class="bh">The Challenge</h2>
+        <p>Many nonprofit organizations faced growing pressure to leverage data and AI but lacked the expertise, resources, and confidence to begin their adoption journey. They understood the potential — but not the path.</p>
+        <div class="callout"><div class="callout-label">The Dual Opportunity</div><p>IBM needed to expand AI adoption into underserved sectors. Nonprofits needed a structured path to translate mission challenges into AI opportunities. <strong>The goal was to design a model that created value for both sides simultaneously.</strong></p></div>
+        <h2 class="bh">Organizational Landscape</h2>
+        <div class="card-grid">
+          <div class="card"><div class="card-title">Nonprofit Leaders</div><p>Mission-driven executives seeking practical AI applications for their organizations.</p></div>
+          <div class="card"><div class="card-title">Funders &amp; Conveners</div><p>data.org, Echoing Green, and ecosystem partners shaping adoption pathways.</p></div>
+          <div class="card"><div class="card-title">IBM Business Units</div><p>5 IBM organizations contributing technical, design, and strategic resources.</p></div>
+          <div class="card"><div class="card-title">Executive Sponsors</div><p>Internal champions providing visibility and expansion support.</p></div>
+        </div>
+        <h2 class="bh">Key Constraints</h2>
+        <ul class="cl">
+          <li>Nonprofits with limited AI readiness and technical capacity</li>
+          <li>Need to create IBM business value alongside social impact</li>
+          <li>Multi-stakeholder coordination across IBM organizations and external partners</li>
+          <li>Program needed to prove itself before resources were committed to scale</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section" id="cs4-s2">
+      <div><div class="section-number">02</div><div class="section-title">My Role</div></div>
+      <div>
+        <h2 class="bh">Creator &amp; Strategic Lead — Multi-Year AI Adoption Framework</h2>
+        <p>I created and led the strategy for a multi-year AI-for-Social-Impact engagement model, owning the initiative from initial concept through two full cycles of execution and refinement.</p>
+        <table class="ownership-table"><thead><tr><th>Area</th><th>My Ownership</th></tr></thead><tbody>
+          <tr><td>Engagement Framework Design</td><td><span class="dot dot-full"></span>Full — created methodology from scratch</td></tr>
+          <tr><td>Executive Sponsor Alignment</td><td><span class="dot dot-full"></span>Full — built internal support across 5 IBM orgs</td></tr>
+          <tr><td>Workshop Facilitation &amp; Design</td><td><span class="dot dot-full"></span>Full — opportunity discovery and solution scoping</td></tr>
+          <tr><td>External Partnership Development</td><td><span class="dot dot-full"></span>Full — data.org, Echoing Green, ecosystem partners</td></tr>
+          <tr><td>Measurement &amp; Scale Strategy</td><td><span class="dot dot-full"></span>Full — Year 1 learnings applied to Year 2 model</td></tr>
+          <tr><td>Market Expansion Planning</td><td><span class="dot dot-shared"></span>Shared — with IBM leadership stakeholders</td></tr>
+        </tbody></table>
+      </div>
+    </section>
+
+    <section class="section" id="cs4-s3">
+      <div><div class="section-number">03</div><div class="section-title">Strategic Framing</div></div>
+      <div>
+        <h2 class="bh">A Two-Year Innovation Flywheel</h2>
+        <div class="year-grid">
+          <div class="year-block">
+            <h3>Year 1 — Prove the Model</h3>
+            <p style="font-size:.875rem;color:var(--text-secondary);line-height:1.7;">Validate whether a structured AI innovation framework could create value for both nonprofits and IBM. Success defined by pipeline creation, opportunity identification, partnership formation, and repeatability.</p>
+          </div>
+          <div class="year-block">
+            <h3>Year 2 — Expand and Mature</h3>
+            <p style="font-size:.875rem;color:var(--text-secondary);line-height:1.7;">Building on pilot success, evolve the framework to engage additional organizations, deepen collaboration, and strengthen the ecosystem. Shift from proving value to creating a sustainable, scalable motion.</p>
+          </div>
+        </div>
+        <h2 class="bh">Success Criteria</h2>
+        <div class="card-grid">
+          <div class="card"><div class="card-title">Pipeline Creation</div><p>Generate qualified IBM opportunities from nonprofit engagements.</p></div>
+          <div class="card"><div class="card-title">Use Case Discovery</div><p>Surface specific, implementable AI applications for each organization.</p></div>
+          <div class="card"><div class="card-title">Partnership Formation</div><p>Establish ecosystem relationships that amplify reach and credibility.</p></div>
+          <div class="card"><div class="card-title">Repeatability</div><p>Create a model that could be adopted by other IBM teams and markets.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="cs4-s4">
+      <div><div class="section-number">04</div><div class="section-title">My Process</div></div>
+      <div>
+        <div class="callout"><div class="callout-label">Design Approach</div><p>I treated this as an <strong>ecosystem design problem</strong> — not a workshop execution problem. The goal was to build a system that could bring together nonprofits, executives, technologists, funders, and designers around a shared goal, and improve with each iteration.</p></div>
+        <div class="phases">
+          <div class="phase"><div class="phase-num">Iteration 1</div><div>
+            <h3>Pilot &amp; Learn — Year 1</h3>
+            <p>Tested workshop structure, refined facilitation methods, understood nonprofit AI readiness, and measured business outcomes. Key learnings:</p>
+            <ul class="cl">
+              <li>Organizations engaged most when discussions centered on mission outcomes, not technology</li>
+              <li>Executive sponsors wanted clearer business measures</li>
+              <li>Funders wanted visibility into implementation readiness</li>
+              <li>Participants needed a structured path from ideas to actionable MVPs</li>
+            </ul>
+          </div></div>
+          <div class="phase"><div class="phase-num">Iteration 2</div><div>
+            <h3>Refine &amp; Scale — Year 2</h3>
+            <p>Applied Year 1 learnings: strengthened opportunity prioritization, improved solution-scoping activities, increased executive engagement, expanded partnership participation, and created a more repeatable facilitation framework.</p>
+          </div></div>
+        </div>
+        <h2 class="bh">Sectors Engaged</h2>
+        <div class="tag-cluster">
+          <span class="theme-tag">Housing</span>
+          <span class="theme-tag">Hunger</span>
+          <span class="theme-tag">Healthcare</span>
+          <span class="theme-tag">Community Services</span>
+          <span class="theme-tag">Education</span>
+          <span class="theme-tag">Economic Mobility</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="cs4-s5">
+      <div><div class="section-number">05</div><div class="section-title">Outcomes</div></div>
+      <div>
+        <h2 class="bh">Two-Year Business Impact</h2>
+        <div class="year-grid">
+          <div class="year-block">
+            <h3>Year 1 Results</h3>
+            <ul class="cl">
+              <li>60% of organizations generated ISC pipeline</li>
+              <li>$400,777 in opportunities identified</li>
+              <li>18 AI use cases discovered</li>
+              <li>5 opportunity statements developed</li>
+              <li>5 MVP concepts scoped</li>
+              <li>2 strategic partnerships established</li>
+              <li>Featured at internal Technology Town Hall</li>
+            </ul>
+          </div>
+          <div class="year-block">
+            <h3>Year 2 Results</h3>
+            <ul class="cl">
+              <li>$350,777 in additional opportunities identified</li>
+              <li>18 additional use cases discovered</li>
+              <li>Strategic partnerships expanded</li>
+              <li>Additional nonprofits engaged</li>
+              <li>Increased interest in replication across IBM locations</li>
+              <li>Atlanta workshop development initiated</li>
+            </ul>
+          </div>
+        </div>
+        <h2 class="bh">Combined Impact</h2>
+        <div class="outcome-grid">
+          <div class="metric"><div class="metric-value"><strong>$751K+</strong></div><div class="metric-label">Total Opportunity Value</div><div class="metric-desc">Across both years of the program.</div></div>
+          <div class="metric metric-secondary"><div class="metric-value"><strong>36+</strong></div><div class="metric-label">AI Use Cases Identified</div><div class="metric-desc">18 per year across housing, hunger, healthcare, and community services.</div></div>
+          <div class="metric metric-light"><div class="metric-value"><strong>10</strong></div><div class="metric-label">MVP Concepts Scoped</div><div class="metric-desc">Actionable implementation blueprints for nonprofit organizations.</div></div>
+          <div class="metric metric-light"><div class="metric-value"><strong>5</strong></div><div class="metric-label">IBM Organizations Aligned</div><div class="metric-desc">Cross-unit collaboration across two years.</div></div>
+          <div class="metric metric-light"><div class="metric-value"><strong>2</strong></div><div class="metric-label">Strategic Partnerships</div><div class="metric-desc">data.org and Echoing Green — strengthening funding pathways and ecosystem credibility.</div></div>
+        </div>
+        <div class="callout"><div class="callout-label">Design Director Reflection</div><p>The greatest success wasn't the workshop. It was the system behind it. By treating this as an ecosystem design problem, I created a repeatable model that brought together nonprofits, executives, technologists, funders, and designers around a shared goal. <strong>The first year proved the concept. The second year refined and expanded it.</strong></p></div>
+      </div>
+    </section>
+  </main>
+
+</div><!-- /page --><script>
+  document.getElementById('nav-cs4').classList.add('active');
+</script>
+</body>
+</html>
