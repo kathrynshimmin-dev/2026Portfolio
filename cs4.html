@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>CS 04 — AI for Social Impact · Design Director Portfolio</title>
+<title>CS 05 — AI for Social Impact · Design Director Portfolio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sedgwick+Ave&display=swap" rel="stylesheet">
@@ -61,7 +61,7 @@ em { font-style: italic; }
 .callout ul { list-style: none; padding: 0; margin: var(--s-04) 0 0; }
 .callout ul li { font-size: 1rem; font-weight: 300; color: var(--text-primary); line-height: 1.7; padding: var(--s-02) 0 var(--s-02) var(--s-06); position: relative; }
 .callout ul li::before { content: ''; position: absolute; left: 0; top: .7em; width: 4px; height: 4px; background: var(--accent); }
-.card-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(180px,1fr)); gap: 1px; background: var(--border-subtle); border: 1px solid var(--border-subtle); margin: var(--s-06) 0; }
+.card-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(180px,1fr)); gap: 1px; background: var(--bg); border: 1px solid var(--border-subtle); margin: var(--s-06) 0; }
 .card { background: var(--bg); padding: var(--s-06); display: flex; flex-direction: column; gap: var(--s-03); border-top: 3px solid transparent; }
 .card:hover { border-top-color: var(--accent-secondary); }
 .card-title { font-size: 1rem; font-weight: 600; }
@@ -105,6 +105,22 @@ ul.cl li::before { content: ''; position: absolute; left: 0; top: .75em; width: 
 footer { border-top: 1px solid var(--border-subtle); padding: var(--s-07) 0; text-align: center; font-size: .75rem; color: var(--text-secondary); }
 footer a { color: var(--text-secondary); }
 @media (max-width: 768px) { .section, .year-grid { grid-template-columns: 1fr; } .page { padding: 0 var(--s-05); } .nav-bar { padding: var(--s-04) var(--s-05); flex-wrap: wrap; gap: var(--s-03); } }
+/* ── Carbon UI Shell Left Panel ───────────────────────── */
+.cs-shell { display: flex; min-height: calc(100vh - 49px); }
+.cs-sidenav { width: 256px; flex-shrink: 0; background: #161616; position: sticky; top: 49px; height: calc(100vh - 49px); overflow-y: auto; overflow-x: hidden; z-index: 80; transition: transform .11s cubic-bezier(.2,0,1,.9); }
+.cs-sidenav-inner { padding: 1rem 0 2rem; }
+.cs-sidenav-heading { font-size: .6875rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: rgba(255,255,255,.4); padding: 1rem 1rem .5rem; line-height: 1; }
+.cs-sidenav a { display: flex; align-items: center; height: 2.5rem; padding: 0 1rem; font-size: .875rem; color: rgba(255,255,255,.7); text-decoration: none; white-space: nowrap; border-left: 4px solid transparent; transition: background .1s, color .1s, border-color .1s; line-height: 1; }
+.cs-sidenav a:hover { background: rgba(255,255,255,.08); color: #fff; }
+.cs-sidenav a.cs-nav-active { background: rgba(255,255,255,.08); color: #fff; font-weight: 600; border-left-color: var(--accent); }
+.cs-sidenav a .cs-nav-num { font-size: .6875rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.35); margin-right: .625rem; flex-shrink: 0; min-width: 2.25rem; }
+.cs-sidenav a.cs-nav-active .cs-nav-num { color: var(--accent); }
+.cs-main { flex: 1; min-width: 0; }
+.cs-toggle { display: none; align-items: center; gap: .5rem; background: none; border: none; cursor: pointer; font-size: .75rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--text-secondary); padding: var(--s-04) var(--s-07); border-bottom: 1px solid var(--border-subtle); width: 100%; }
+.cs-toggle svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2; flex-shrink: 0; }
+.cs-toggle:hover { color: var(--accent); }
+.cs-sidenav-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,.5); z-index: 79; }
+@media (max-width: 1056px) { .cs-sidenav { position: fixed; top: 49px; left: 0; height: calc(100vh - 49px); z-index: 200; transform: translateX(-100%); } .cs-sidenav.is-open { transform: translateX(0); } .cs-sidenav-overlay.is-open { display: block; } .cs-toggle { display: flex; } .cs-main { width: 100%; } }
 </style>
 </head>
 <body>
@@ -113,28 +129,32 @@ footer a { color: var(--text-secondary); }
 <nav class="nav-bar">
   <a class="nav-wordmark" href="index.html"><span style="display:block;">Katie Shimmin</span><em style="display:block;font-style:italic;font-weight:400;letter-spacing:0;text-transform:none;color:inherit;">Connecting vision to value through design, AI, &amp; human-centered innovation</em></a>
   <div class="nav-links">
-    <a href="index.html">Portfolio</a>
-    <a href="cs1.html">CS 01</a>
-    <a href="cs2.html">CS 02</a>
-    <a href="cs3.html">CS 03</a>
-    <a href="cs4.html" id="nav-cs4">CS 04</a>
-    <a href="cs5.html">CS 05</a>
+    <a href="cs5.html" id="nav-cs" class="active">Case Studies</a>
     <a href="presence.html">Presence</a>
     <a href="people.html">People</a>
     <a href="vision.html">Vision</a>
   </div>
 </nav>
 
-<div class="page">
-
-  <a class="back-btn" href="index.html">
-    <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
-    All Case Studies
-  </a>
+<button class="cs-toggle" id="cs-toggle" aria-expanded="false" aria-controls="cs-sidenav"><svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg> Case Studies</button>
+<div class="cs-sidenav-overlay" id="cs-overlay"></div>
+<div class="cs-shell">
+  <nav class="cs-sidenav" id="cs-sidenav" aria-label="Case studies">
+    <div class="cs-sidenav-inner">
+      <div class="cs-sidenav-heading">Case Studies</div>
+      <a href="cs5.html"><span class="cs-nav-num">CS 01</span>Home Fragrance Pop-Up</a>
+      <a href="cs1.html"><span class="cs-nav-num">CS 02</span>Account Planning</a>
+      <a href="cs2.html"><span class="cs-nav-num">CS 03</span>Scaling Innovation</a>
+      <a href="cs3.html"><span class="cs-nav-num">CS 04</span>Upskilling IBMers</a>
+      <a href="cs4.html" class="cs-nav-active"><span class="cs-nav-num">CS 05</span>AI for Social Impact</a>
+    </div>
+  </nav>
+  <div class="cs-main">
+  <div class="page">
 
   <header class="hero">
     <div class="hero-meta">
-      <span class="tag tag-accent">Case Study 04</span>
+      <span class="tag tag-accent">Case Study 05</span>
       <span class="tag">Ecosystem Design</span>
       <span class="tag">AI Adoption</span>
       <span class="hero-eyebrow">IBM Social Impact · 2022–2024</span>
@@ -296,8 +316,11 @@ footer a { color: var(--text-secondary); }
     </section>
   </main>
 
-</div><!-- /page --><script>
-  document.getElementById('nav-cs4').classList.add('active');
+</div><!-- /page -->
+  </div><!-- /cs-main -->
+</div><!-- /cs-shell -->
+<script>
+(function(){var t=document.getElementById('cs-toggle'),n=document.getElementById('cs-sidenav'),o=document.getElementById('cs-overlay');function op(){n.classList.add('is-open');o.classList.add('is-open');t.setAttribute('aria-expanded','true');}function cl(){n.classList.remove('is-open');o.classList.remove('is-open');t.setAttribute('aria-expanded','false');}t.addEventListener('click',function(){n.classList.contains('is-open')?cl():op();});o.addEventListener('click',cl);})();
 </script>
 </body>
 </html>
