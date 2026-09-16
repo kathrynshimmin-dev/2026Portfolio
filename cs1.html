@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>CS 02 — Technical Account Planning · Design Director Portfolio</title>
+<title>CS 02 — Technical Client Wins Framework · Design Director Portfolio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sedgwick+Ave&display=swap" rel="stylesheet">
@@ -111,7 +111,8 @@ em { font-style: italic; }
 .card-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(180px,1fr)); gap: 1px; background: var(--bg); border: 1px solid var(--border-subtle); margin: var(--s-06) 0; }
 .card { background: var(--bg); padding: var(--s-06); display: flex; flex-direction: column; gap: var(--s-03); border-top: 3px solid transparent; }
 .card:hover { border-top-color: var(--accent-secondary); }
-.card-title { font-size: 1rem; font-weight: 600; }
+.card-title { font-size: 1rem; font-weight: 600; display: flex; align-items: center; gap: var(--s-03); }
+.card-title svg { flex-shrink: 0; color: var(--accent); }
 .card p { font-size: .875rem; color: var(--text-secondary); margin: 0; }
 ul.cl { list-style: none; padding: 0; margin: var(--s-03) 0 var(--s-05); }
 ul.cl li { font-size: .875rem; color: var(--text-secondary); line-height: 1.7; padding: var(--s-03) 0 var(--s-03) var(--s-06); position: relative; }
@@ -259,7 +260,7 @@ footer a { color: var(--text-secondary); }
     <div class="cs-sidenav-inner">
       <div class="cs-sidenav-heading">Case Studies</div>
       <a href="cs5.html"><span class="cs-nav-num">CS 01</span>Home Fragrance Pop-Up</a>
-      <a href="cs1.html" class="cs-nav-active"><span class="cs-nav-num">CS 02</span>Account Planning</a>
+      <a href="cs1.html" class="cs-nav-active"><span class="cs-nav-num">CS 02</span>Client Wins Framework</a>
       <a href="cs2.html"><span class="cs-nav-num">CS 03</span>Scaling Innovation</a>
       <a href="cs3.html"><span class="cs-nav-num">CS 04</span>Upskilling IBMers</a>
       <a href="cs4.html"><span class="cs-nav-num">CS 05</span>AI for Social Impact</a>
@@ -274,10 +275,10 @@ footer a { color: var(--text-secondary); }
       <span class="tag tag-accent">Case Study 02</span>
       <span class="tag">Strategy &amp; Systems Design</span>
       <span class="tag">Enterprise Scale</span>
-      <span class="hero-eyebrow">IBM Financial Services Market · 2024–2025</span>
+      <span class="hero-eyebrow">IBM Financial Services Market · 2025–2026</span>
     </div>
-    <h1>What if account planning could actually <strong>move the needle?</strong> I built the system that proved it could — $50.6M in won revenue, 1,000+ opportunities, 63 accounts. One quarter.</h1>
-    <p class="hero-summary">Spoiler: this isn't a workshop story. It's the story of how I took a fragmented, inconsistent planning process and turned it into a repeatable operating model that account teams actually loved using — and that leadership couldn't stop talking about.</p>
+    <h1>What if we stopped selling what IBM has — and started planning around <strong>what clients actually need?</strong> I built the operating model that changed how IBM shows up.</h1>
+    <p class="hero-summary">For a lot of accounts, technical planning was inconsistent at best — nonexistent at worst. I built a repeatable operating model that changed that. One that keeps participants engaged and accountable, anchors every conversation in what the client has actually said they're focused on solving, and drives real results for the technical sales community. Yes, it took serious prep work — but that's the deal. What you put into these things is what you get out of them. The payoff? Two-hour planning calls that end with people saying "wow, that went fast — I'm leaving with more clarity and direction than when I came in."</p>
     <div class="stat-row">
       <div class="stat"><div class="stat-number"><strong>$50.6M</strong></div><div class="stat-label">Won Revenue — 1 Quarter</div></div>
       <div class="stat"><div class="stat-number"><strong>1,000+</strong></div><div class="stat-label">Opportunities Surfaced</div></div>
@@ -300,22 +301,22 @@ footer a { color: var(--text-secondary); }
       <div><div class="section-number">01</div><div class="section-title">Context</div></div>
       <div>
         <h2 class="bh">The Real Problem</h2>
-        <p>IBM's Financial Services Market teams were full of brilliant, technically deep account teams — but brilliant and consistent aren't the same thing. Opportunity discovery was hit-or-miss. Strategic initiatives lived in scattered docs, tribal knowledge, and varying formats. There was no shared picture of what was happening across accounts, let alone why.</p>
-        <p>The result? Great work happening in silos, with limited visibility for leadership and no repeatable way to connect client priorities to IBM opportunities at scale.</p>
+        <p>Financial Services is one of IBM's most critical markets, serving our largest clients and contributing significantly to business performance. Despite the importance of account planning, opportunity discovery varied widely from account to account. The lack of a shared view across accounts limited visibility into common priorities, whitespace opportunities, and portfolio-wide trends.</p>
         <div class="callout"><div class="callout-label">What I set out to do</div><p>Build a planning framework so good that teams would <strong>want</strong> to use it — one that aligned opportunities to client priorities, surfaced what was blocking progress, created clear ownership, and generated real pipeline. Consistently. At scale. Without adding a ton of overhead.</p></div>
         <h2 class="bh">Who Was in the Room</h2>
         <p>This wasn't a small lift. Pulling this off meant coordinating across seven distinct stakeholder groups — all with different priorities, workflows, and definitions of "done."</p>
         <div class="card-grid">
-          <div class="card"><div class="card-title">Account Technical Leaders</div><p>The heart of it. They owned the accounts and drove the strategy in every session.</p></div>
-          <div class="card"><div class="card-title">Client Engineering + Expert Labs</div><p>The builders. Brought technical depth and delivery credibility to every opportunity discussion.</p></div>
-          <div class="card"><div class="card-title">BTS + CSMs</div><p>The connectors. Kept product and customer realities grounded in every conversation.</p></div>
-          <div class="card"><div class="card-title">Red Hat + HashiCorp</div><p>The partners. Wove multi-product narratives into account stories that were bigger than IBM alone.</p></div>
+          <div class="card"><div class="card-title"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 32 32" fill="currentColor"><path d="M16 16a7 7 0 1 0 0-14 7 7 0 0 0 0 14zm0 2c-7.18 0-13 3.58-13 8v2h26v-2c0-4.42-5.82-8-13-8z"/></svg>Account Technical Leaders</div><p>The heart of it. They owned the accounts and drove the strategy in every session.</p></div>
+          <div class="card"><div class="card-title"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 32 32" fill="currentColor"><path d="M28 6H4a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h24a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2zm-14 2h4v4h-4zm-2 4H8V8h4zm-4 2h4v4H8zm2 10H6v-4h4zm4 0h-4v-4h4zm-2-6H8v-4h4zm10 6h-4v-4h4zm2-4h-4v-4h4zm-2-6h-4V8h4zm6 10h-4v-4h4zm0-6h-4v-4h4zm0-6h-4V8h4z"/></svg>Engineers</div><p>The builders. Brought technical depth and delivery credibility to every opportunity discussion.</p></div>
+          <div class="card"><div class="card-title"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 32 32" fill="currentColor"><path d="M26 4H6a2 2 0 0 0-2 2v20a2 2 0 0 0 2 2h20a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm-7 14h-6v-2h6zm4-4H9v-2h14zm0-4H9V8h14z"/></svg>Brand Sales</div><p>The connectors. Kept product and customer realities grounded in every conversation.</p></div>
+          
         </div>
         <h2 class="bh">The Constraints (They Were Real)</h2>
         <div class="two-col">
-          <div><h3>Year 1</h3><ul class="cl"><li>52 accounts to cover</li><li>A 2-month window to do it</li></ul></div>
-          <div><h3>Year 2</h3><ul class="cl"><li>Expanded to 63 accounts</li><li>Completed in a single quarter</li></ul></div>
+          <div><h3>Year 1</h3><ul class="cl"><li>All Financial Services Accounts (52)</li><li>A 2-month window to do it</li></ul></div>
+          <div><h3>Year 2</h3><ul class="cl"><li>Expanded to new IBM Financial Service accounts</li><li>Completed in a single quarter</li></ul></div>
         </div>
+        <p style="font-size:.875rem; color:var(--text-secondary); margin-bottom:var(--s-04);">Across both years, the same underlying constraints applied:</p>
         <ul class="cl"><li>Account maturity levels all over the map</li><li>Stakeholders scattered across geographies</li><li>Strategic initiative data that was... let's say, a work in progress</li><li>Teams already stretched thin — adoption had to feel easy, not like another mandate</li></ul>
       </div>
     </section>
@@ -324,7 +325,7 @@ footer a { color: var(--text-secondary); }
       <div><div class="section-number">02</div><div class="section-title">My Role</div></div>
       <div>
         <h2 class="bh">I Built It, Ran It, and Scaled It</h2>
-        <p>This was end-to-end ownership from day one — strategy, design, enablement, measurement, and everything in between. I started with a blank page and a hypothesis, and finished with a program running across 63 accounts, 14 enabled facilitators, and two new markets asking to adopt it.</p>
+        <p>What began as a single VP-level request evolved into a repeatable operating model adopted across IBM Financial Services, enabling 14 facilitators and generating interest from multiple markets looking to replicate the approach.</p>
         <table class="ownership-table"><thead><tr><th>What I Owned</th><th>How</th></tr></thead><tbody>
           <tr><td>Strategy Development &amp; Methodology</td><td><span class="dot dot-full"></span>Designed the entire approach, goals, and what success would actually look like</td></tr>
           <tr><td>Program &amp; Workshop Design</td><td><span class="dot dot-full"></span>Built the Mural framework, facilitation guides, and every planning artifact teams used</td></tr>
@@ -339,16 +340,17 @@ footer a { color: var(--text-secondary); }
       <div><div class="section-number">03</div><div class="section-title">Strategic Framing</div></div>
       <div>
         <h2 class="bh">The Shift That Changed Everything</h2>
-        <p>Most account planning starts with products. What can we sell? What's in the pipeline? I flipped that entirely.</p>
+        <p>Most account planning starts with products. What can we sell? What's in the pipeline? That was flipped entirely.</p>
         <div class="callout"><div class="callout-label">The big idea</div><p><strong>"Work Outside-In."</strong> Start every conversation with what the client is trying to accomplish — their strategy, their priorities, their definition of success. IBM's role comes second. Always.</p></div>
+        <img src="links/cs01/framework-image.png" alt="Client-centric planning framework" style="width:100%; margin-top:var(--s-06); display:block;" />
         <p>That one reframe changed the whole dynamic. Instead of <em>"Here's what IBM can offer,"</em> the conversation became <em>"Here's what matters most to you — and here's exactly how we fit."</em> Teams showed up differently. Clients engaged differently. Opportunities got better.</p>
         <h2 class="bh">What I Was Building Toward</h2>
         <p>I wasn't just designing sessions — I was designing a system with four specific outcomes that I held myself accountable to from day one:</p>
         <div class="card-grid">
-          <div class="card"><div class="card-title">Clean Initiative Data</div><p>Every account leaving with accurate, complete Strategic Initiative records. No more guessing what clients actually care about.</p></div>
+          <div class="card"><div class="card-title">Clean Initiative Data</div><p>Every account leaving with accurate, complete Strategic Initiative records. Get everyone on the same page as to what the client actually cares about.</p></div>
           <div class="card"><div class="card-title">Linked Opportunities</div><p>Every opportunity tied directly to a client initiative — so IBM could show up with relevance, not just presence.</p></div>
           <div class="card"><div class="card-title">Unblocked Pipeline</div><p>A clear picture of what's stuck and why — so teams could act, not speculate.</p></div>
-          <div class="card"><div class="card-title">Market-Level Intelligence</div><p>Patterns across 63 accounts that no single team could see on their own — but leadership absolutely needed.</p></div>
+          <div class="card"><div class="card-title">Market-Level Intelligence</div><p>Patterns across IBM Financial Services that no single team could see on their own — but leadership absolutely needed.</p></div>
         </div>
       </div>
     </section>
@@ -359,15 +361,15 @@ footer a { color: var(--text-secondary); }
         <div class="phases">
           <div class="phase"><div class="phase-num">Phase 1</div><div><h3>Design the Workshop</h3><p>I built a Mural-based workshop experience from scratch — structured enough to produce consistent outputs, flexible enough that every account felt like it was built for them. It covered client initiatives, opportunity gaps, deployment ideas, blockers, and who owns what next. Simple on the surface. Powerful underneath.</p></div></div>
           <div class="phase"><div class="phase-num">Phase 2</div><div><h3>Get Everyone Aligned Before the Room</h3><p>Great sessions don't happen by accident. I worked with ATLs ahead of each session to define what they wanted to walk away with, who needed to be in the room, and what success looked like for their specific account. Prep made all the difference.</p></div></div>
-          <div class="phase"><div class="phase-num">Phase 3</div><div><h3>Scale Without Losing Quality</h3><p>I couldn't personally run 63 sessions — so I built a facilitation system that could. I onboarded 14 strategy designers, created guides they could actually use, and put governance in place to keep quality consistent across every account. The goal was to make facilitators great, not just capable.</p></div></div>
+          <div class="phase"><div class="phase-num">Phase 3</div><div><h3>Scale Without Losing Quality</h3><p>I couldn't personally run 50+ sessions — so I built a facilitation system that could. I onboarded 14 strategy designers, created guides they could actually use, and put governance in place to keep quality consistent across every account. The goal was to make facilitators great, not just capable.</p><img src="links/cs01/Murals.png" alt="Mural facilitation framework" style="width:100%; margin-top:var(--s-06); display:block;" /></div></div>
           <div class="phase"><div class="phase-num">Phase 4</div><div>
-            <h3>Turn 63 Accounts Into One Big Picture</h3>
+            <h3>Turn IBM Financial Services Into One Big Picture</h3>
             <p>After sessions wrapped, I built a tagging strategy across all opportunity data and mapped 60+ client initiatives into 8 macro themes. Suddenly, patterns that were invisible at the account level became clear signals at the market level — and leadership had intelligence they'd never had before.</p>
             <div class="tag-cluster">
               <span class="theme-tag">AI &amp; Agentic Platforms</span><span class="theme-tag">Automation &amp; FinOps</span><span class="theme-tag">Data Modernization</span><span class="theme-tag">Risk, Security &amp; Compliance</span><span class="theme-tag">App &amp; Core Modernization</span><span class="theme-tag">Growth &amp; Innovation</span><span class="theme-tag">Observability &amp; AIOps</span><span class="theme-tag">Cloud &amp; SaaS Consolidation</span>
             </div>
           </div></div>
-          <div class="phase"><div class="phase-num">Phase 5</div><div><h3>Keep Getting Better</h3><p>I ran retrospectives after every cycle — with facilitators, account teams, and leadership. Not as a formality, but because I genuinely wanted to know what wasn't working. Every cycle, the model got sharper. That's the point.</p></div></div>
+          <div class="phase"><div class="phase-num">Phase 5</div><div><h3>Keep Getting Better</h3><p>I ran retrospectives after critical moments like the first session and after a full quarter of sessions — with facilitators, account teams, and leadership. Not as a formality, but because I genuinely wanted to know what wasn't working. Every cycle, the model got sharper. That's the point.</p></div></div>
         </div>
       </div>
     </section>
@@ -378,7 +380,7 @@ footer a { color: var(--text-secondary); }
         <h2 class="bh">The Numbers Speak for Themselves</h2>
         <div class="outcome-grid">
           <div class="metric"><div class="metric-value"><strong>$50.6M</strong></div><div class="metric-label">Won Revenue</div><div class="metric-desc">Across just 3 tracked accounts — in the same quarter the sessions were held. That's speed and quality.</div></div>
-          <div class="metric metric-secondary"><div class="metric-value"><strong>1,000+</strong></div><div class="metric-label">Opportunities Surfaced</div><div class="metric-desc">Across 63 accounts in a single quarter. Opportunities that simply didn't exist in the system before.</div></div>
+          <div class="metric metric-secondary"><div class="metric-value"><strong>1,000+</strong></div><div class="metric-label">Opportunities Surfaced</div><div class="metric-desc">Across IBM Financial Services in a single quarter. Opportunities that simply didn't exist in the system before.</div></div>
           <div class="metric metric-light"><div class="metric-value"><strong>88%</strong></div><div class="metric-label">of FSM Covered</div><div class="metric-desc">The framework reached 88% of all Financial Services Market accounts. Not a pilot — a movement.</div></div>
           <div class="metric metric-light"><div class="metric-value"><strong>2</strong></div><div class="metric-label">New Markets Adopted It</div><div class="metric-desc">Other markets saw what was happening and wanted in. That's the best kind of validation.</div></div>
         </div>

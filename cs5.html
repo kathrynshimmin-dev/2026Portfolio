@@ -16,7 +16,7 @@
   --tag-bg: #ffe8e8; --tag-color: #c22828;
   --font: 'IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif;
   --s-02:.25rem;--s-03:.5rem;--s-04:.75rem;--s-05:1rem;
-  --s-06:1.5rem;--s-07:2rem;--s-08:2.5rem;--s-09:3rem;--s-10:4rem;--s-12:6rem;
+  --s-06:1.5rem;--s-07:2rem;--s-08:2.5rem;--s-09:3rem;--s-10:4rem;--s-11:5rem;--s-12:6rem;
 }
 html { font-family: var(--font); font-size: 16px; scroll-behavior: smooth; }
 body { background: var(--bg); color: var(--text-primary); line-height: 1.6; }
@@ -49,7 +49,7 @@ body { background: var(--bg); color: var(--text-primary); line-height: 1.6; }
 .section-number { font-size: .75rem; font-weight: 600; color: var(--accent); text-transform: uppercase; letter-spacing: .1em; margin-bottom: var(--s-03); display: flex; align-items: center; gap: var(--s-03); }
 .section-number::before { content: ''; display: inline-block; width: 16px; height: 2px; background: var(--accent); }
 .section-title { font-size: 1.25rem; font-weight: 600; line-height: 1.3; }
-h2.bh { font-size: 1.25rem; font-weight: 600; margin-top: var(--s-07); margin-bottom: var(--s-04); }
+h2.bh { font-size: 1.25rem; font-weight: 600; margin-top: var(--s-11); margin-bottom: var(--s-04); }
 h2.bh:first-child { margin-top: 0; }
 p { font-size: .875rem; color: var(--text-secondary); margin-bottom: var(--s-05); line-height: 1.7; }
 p:last-child { margin-bottom: 0; }
@@ -61,7 +61,8 @@ em { font-style: italic; }
 .card-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(180px,1fr)); gap: 1px; background: var(--bg); border: 1px solid var(--border-subtle); margin: var(--s-06) 0; }
 .card { background: var(--bg); padding: var(--s-06); display: flex; flex-direction: column; gap: var(--s-03); border-top: 3px solid transparent; }
 .card:hover { border-top-color: var(--accent-secondary); }
-.card-title { font-size: 1rem; font-weight: 600; }
+.card-title { font-size: 1rem; font-weight: 600; display: flex; align-items: flex-start; gap: .375rem; }
+.card-title svg { width: 14px; height: 14px; stroke: var(--text-primary); fill: none; stroke-width: 1.75; flex-shrink: 0; margin-top: .2rem; align-self: flex-start; }
 .card p { font-size: .875rem; color: var(--text-secondary); margin: 0; }
 ul.cl { list-style: none; padding: 0; margin: var(--s-03) 0 var(--s-05); }
 ul.cl li { font-size: .875rem; color: var(--text-secondary); line-height: 1.7; padding: var(--s-03) 0 var(--s-03) var(--s-06); position: relative; }
@@ -85,6 +86,21 @@ footer { border-top: 1px solid var(--border-subtle); padding: var(--s-07) 0; tex
 footer a { color: var(--text-secondary); }
 
 /* IMAGE PLACEHOLDERS */
+/* PHASE 3 PHOTO GRID + CAROUSEL */
+.ph3-photo-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 3px; margin: var(--s-06) 0 0; }
+.ph3-photo-grid img { width: 100%; height: 160px; object-fit: cover; display: block; }
+.ph3-carousel { margin-top: var(--s-04); overflow: hidden; }
+.ph3-track { display: flex; transition: transform .35s ease; }
+.ph3-track figure { flex-shrink: 0; width: 100%; margin: 0; }
+.ph3-track figure img { width: 100%; height: 420px; object-fit: cover; display: block; }
+.ph3-track figcaption { font-size: .75rem; color: var(--text-secondary); padding: var(--s-03) var(--s-04); background: var(--layer-01); font-style: italic; }
+.ph3-controls { display: flex; align-items: center; justify-content: center; gap: var(--s-04); margin-top: var(--s-03); }
+.ph3-btn { background: none; border: 1px solid var(--border-subtle); color: var(--text-secondary); width: 32px; height: 32px; cursor: pointer; font-size: .875rem; display: flex; align-items: center; justify-content: center; }
+.ph3-btn:hover { border-color: var(--accent); color: var(--accent); }
+.ph3-dots { display: flex; gap: var(--s-03); flex-wrap: wrap; justify-content: center; }
+.ph3-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--border-strong); cursor: pointer; flex-shrink: 0; }
+.ph3-dot.active { background: var(--accent); }
+@media (max-width: 860px) { .ph3-photo-grid { grid-template-columns: repeat(2,1fr); } .ph3-track figure img { height: 260px; } }
 .img-placeholder { background: #ffffff; border: 1px dashed var(--border-strong); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: var(--s-03); color: var(--border-strong); font-size: .7rem; text-transform: uppercase; letter-spacing: .06em; width: 100%; }
 .img-placeholder svg { width: 32px; height: 32px; stroke: var(--accent-secondary); fill: none; stroke-width: 1.2; }
 .img-placeholder.hero-img { height: 400px; }
@@ -162,7 +178,7 @@ footer a { color: var(--text-secondary); }
     <div class="cs-sidenav-inner">
       <div class="cs-sidenav-heading">Case Studies</div>
       <a href="cs5.html" class="cs-nav-active"><span class="cs-nav-num">CS 01</span>Home Fragrance Pop-Up</a>
-      <a href="cs1.html"><span class="cs-nav-num">CS 02</span>Account Planning</a>
+      <a href="cs1.html"><span class="cs-nav-num">CS 02</span>Client Wins Framework</a>
       <a href="cs2.html"><span class="cs-nav-num">CS 03</span>Scaling Innovation</a>
       <a href="cs3.html"><span class="cs-nav-num">CS 04</span>Upskilling IBMers</a>
       <a href="cs4.html"><span class="cs-nav-num">CS 05</span>AI for Social Impact</a>
@@ -206,16 +222,6 @@ footer a { color: var(--text-secondary); }
       <div><div class="section-number">01</div><div class="section-title">Context</div></div>
       <div>
 
-        <div class="origin-band">
-          <div class="origin-icon">
-            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
-          </div>
-          <div>
-            <div class="origin-eyebrow">Where This Came From</div>
-            <p class="origin-text">This work grew directly out of a bigger vision provocation: <em>"What if digital commerce becomes the preferred purchasing channel, resulting in consumers expecting anytime, anywhere shopping experiences, forcing us to reimagine how our brands engage, convert, and serve customers online?"</em> The pop-up was one answer to that question — a physical proof point that built brand conviction and drove the online experience conversation forward. <a href="vision.html">See the full vision framework →</a></p>
-          </div>
-        </div>
-
         <h2 class="bh">The Business Problem</h2>
         <p>Retail sales were down. Millennials — the growth audience Newell Brands needed — were shopping in ways the existing home fragrance experience wasn't built for. They valued <em>experiences over things</em>. They expected brands to earn their attention, not just occupy shelf space. A traditional candle display wasn't going to cut it anymore.</p>
 
@@ -226,10 +232,12 @@ footer a { color: var(--text-secondary); }
 
         <h2 class="bh">Who Was Involved</h2>
         <div class="card-grid">
-          <div class="card"><div class="card-title">Innovation Managers</div><p>Brought strategic framing and cross-brand context to the challenge.</p></div>
-          <div class="card"><div class="card-title">Brand Marketing</div><p>Owned the Yankee Candle brand voice and target audience brief.</p></div>
-          <div class="card"><div class="card-title">Internal Retail Team</div><p>Provided operational knowledge of retail environment constraints.</p></div>
-          <div class="card"><div class="card-title">Industrial Design</div><p>Shaped the physical environment and installation design.</p></div>
+          <div class="card"><div class="card-title"><svg viewBox="0 0 24 24"><circle cx="9" cy="7" r="4"/><path d="M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/><circle cx="19" cy="7" r="2"/><path d="M23 21v-1a3 3 0 0 0-3-3h-1"/></svg>Innovation Managers</div><p>Brought strategic framing and cross-brand context to the challenge.</p></div>
+          <div class="card"><div class="card-title"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20v-1a8 8 0 0 1 16 0v1"/></svg>Brand Marketing</div><p>Owned the Yankee Candle brand voice and target audience brief.</p></div>
+          <div class="card"><div class="card-title"><svg viewBox="0 0 24 24"><circle cx="9" cy="7" r="4"/><path d="M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/><circle cx="19" cy="7" r="2"/><path d="M23 21v-1a3 3 0 0 0-3-3h-1"/></svg>Yankee Candle Retail &amp; Visual Merchandising</div><p>Provided operational knowledge of retail environment constraints.</p></div>
+          <div class="card"><div class="card-title"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20v-1a8 8 0 0 1 16 0v1"/></svg>Industrial Designers</div><p>Shaped the physical environment and installation design.</p></div>
+          <div class="card"><div class="card-title"><svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="1"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg>External Agency: Stark</div><p>Executed the physical build-out of the pop-up experience.</p></div>
+          <div class="card"><div class="card-title"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>Project Sponsor: President of Newell Brands</div><p>Executive sponsor who championed and funded the initiative.</p></div>
         </div>
 
       </div>
@@ -243,6 +251,12 @@ footer a { color: var(--text-secondary); }
         <p>I served as the visual lead on this project — an active, embedded participant in the creative process who set the design direction and provided the guardrails that kept the experience coherent from concept to build-out.</p>
         <p>The physical execution was brought to life by agencies hired to construct and produce the pop-up. My role was to direct them: translating the creative vision into concrete design guidelines, reviewing work against the brief, and ensuring every decision stayed true to the brand story we were trying to tell.</p>
         <p>Being an active participant throughout — not just a reviewer at key gates — meant design intent didn't get lost in handoffs. I was in the room where the concept was shaped, and then directing the hands that built it.</p>
+        <div class="img-grid-2" style="margin-top:var(--s-06); align-items:stretch;">
+          <div style="position:relative; overflow:hidden;">
+            <img src="links/cs05/myrole/role-a.jpg" alt="My Role — Candle Power" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;display:block;">
+          </div>
+          <div><img src="links/cs05/myrole/role-b.jpg" alt="My Role — Candle Power" style="width:100%;height:auto;display:block;"></div>
+        </div>
       </div>
     </section>
 
@@ -275,32 +289,18 @@ footer a { color: var(--text-secondary); }
 
         <h2 class="bh">Phase 1 — Empathy: A Trend Trek Through NYC</h2>
         <p>Before designing anything, we went out into the city. Our team conducted a trend trek through New York, observing and documenting retail experiences, cultural signals, and the environments people actually chose to spend time in. We were looking for what made people stop, linger, and share.</p>
+        <ul class="cl">
+          <li>18 participants organized into four collaborative teams</li>
+          <li>35+ stores, restaurants, pop-ups, and service experiences</li>
+          <li>3 future-state 5E Customer Experience Maps to guide strategic experience design opportunities</li>
+        </ul>
 
         <!-- Image grid: trend trek photos -->
         <div class="img-grid-3">
-          <div>
-            <!-- <img src="images/trend-trek-01.jpg" alt="Trend Trek NYC"> -->
-            <div class="img-placeholder third-img">
-              <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-              <span>Trend Trek Photo</span>
-            </div>
-          </div>
-          <div>
-            <!-- <img src="images/trend-trek-02.jpg" alt="Trend Trek NYC"> -->
-            <div class="img-placeholder third-img">
-              <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-              <span>Trend Trek Photo</span>
-            </div>
-          </div>
-          <div>
-            <!-- <img src="images/trend-trek-03.jpg" alt="Trend Trek NYC"> -->
-            <div class="img-placeholder third-img">
-              <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-              <span>Trend Trek Photo</span>
-            </div>
-          </div>
+          <div><img src="links/cs05/ph1/ph1a.png" alt="Trend Trek NYC — Phase 1" style="width:100%;height:auto;display:block;"></div>
+          <div><img src="links/cs05/ph1/ph1b.png" alt="Trend Trek NYC — Phase 1" style="width:100%;height:auto;display:block;"></div>
+          <div><img src="links/cs05/ph1/ph1c.png" alt="Trend Trek NYC — Phase 1" style="width:100%;height:auto;display:block;"></div>
         </div>
-        <p class="img-swap-note">Replace placeholders with your trend trek photos — swap the div.img-placeholder with &lt;img src="..."&gt;</p>
 
         <h2 class="bh">Phase 2 — Ideation: The 5E Framework</h2>
         <p>We structured our ideation around the <strong>5E Framework</strong> — a journey model that considers every phase of the consumer experience, from the moment they discover the pop-up to long after they've left it. This discipline kept us from designing a room and reminded us we were designing an <em>arc</em>. Engage was a deep focus area.</p>
@@ -334,65 +334,52 @@ footer a { color: var(--text-secondary); }
         </div>
 
         <!-- Ideation image -->
-        <div class="img-grid-2">
-          <div>
-            <!-- <img src="images/ideation-01.jpg" alt="Ideation Workshop"> -->
-            <div class="img-placeholder half-img">
-              <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-              <span>Ideation / Sketches</span>
-            </div>
-          </div>
-          <div>
-            <!-- <img src="images/ideation-02.jpg" alt="5E Framework Work"> -->
-            <div class="img-placeholder half-img">
-              <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-              <span>Framework / Concepts</span>
-            </div>
-          </div>
-        </div>
+        <img src="links/cs05/ph2/ph2-b.jpg" alt="Phase 2 — Ideation" style="width:100%;height:auto;display:block;margin:var(--s-06) 0;">
 
         <h2 class="bh">Phase 3 — The Launched Experience: Candle Power</h2>
         <p>The result was <strong>Candle Power</strong> — a surrealist-inspired NYC pop-up featuring immersive graphics and interactive installations built around Yankee Candle's signature fragrances. Each space was designed to show the power of scent to transform and transport. Not just pleasant. Transportive.</p>
 
-        <!-- Hero experience image -->
-        <!-- <img src="images/candle-power-hero.jpg" alt="Candle Power Pop-Up Experience" style="width:100%;height:420px;object-fit:cover;margin:var(--s-06) 0;"> -->
-        <div class="img-placeholder hero-img" style="margin:var(--s-06) 0;">
-          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-          <span>Candle Power — Hero Experience Image</span>
+        <!-- Photo grid — thumbnail strip -->
+        <div class="ph3-photo-grid">
+          <img src="links/cs05/ph3/Grid/1.jpg" alt="Candle Power Pop-Up">
+          <img src="links/cs05/ph3/Grid/2.jpg" alt="Candle Power Pop-Up">
+          <img src="links/cs05/ph3/Grid/3.jpg" alt="Candle Power Pop-Up">
+          <img src="links/cs05/ph3/Grid/4.jpg" alt="Candle Power Pop-Up">
         </div>
 
-        <!-- Experience detail grid -->
-        <div class="img-grid-4">
-          <div>
-            <!-- <img src="images/cp-detail-01.jpg" alt="Installation Detail"> -->
-            <div class="img-placeholder third-img">
-              <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-              <span>Installation</span>
-            </div>
+        <!-- Carousel -->
+        <div class="ph3-carousel">
+          <div class="ph3-track" id="ph3-track">
+            <figure><img src="links/cs05/ph3/1.jpg" alt="Candle Power Pop-Up 1"></figure>
+            <figure><img src="links/cs05/ph3/1500px_YankCand_262.jpg" alt="Candle Power Pop-Up 2"></figure>
+            <figure><img src="links/cs05/ph3/1500px_YankCand_288.jpg" alt="Candle Power Pop-Up 3"></figure>
+            <figure><img src="links/cs05/ph3/2.jpg" alt="Candle Power Pop-Up 4"></figure>
+            <figure><img src="links/cs05/ph3/3.jpg" alt="Candle Power Pop-Up 5"><figcaption>Hundreds of draped candle wicks in the doorway unveiled the pop-up experience</figcaption></figure>
+            <figure><img src="links/cs05/ph3/4.jpg" alt="Candle Power Pop-Up 6"></figure>
+            <figure><img src="links/cs05/ph3/800px_apricotRose2.jpg" alt="Candle Power Pop-Up 7"></figure>
+            <figure><img src="links/cs05/ph3/11.png" alt="Candle Power Pop-Up 8"></figure>
+            <figure><img src="links/cs05/ph3/collage2.png" alt="Candle Power Pop-Up 9"></figure>
+            <figure><img src="links/cs05/ph3/collage3.png" alt="Candle Power Pop-Up 10"></figure>
+            <figure><img src="links/cs05/collage4.png" alt="Candle Power Pop-Up 11"></figure>
           </div>
-          <div>
-            <!-- <img src="images/cp-detail-02.jpg" alt="Graphics Detail"> -->
-            <div class="img-placeholder third-img">
-              <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-              <span>Graphics</span>
+          <div class="ph3-controls">
+            <button class="ph3-btn" onclick="ph3Prev()" aria-label="Previous">&#8592;</button>
+            <div class="ph3-dots">
+              <span class="ph3-dot active" onclick="ph3Go(0)"></span>
+              <span class="ph3-dot" onclick="ph3Go(1)"></span>
+              <span class="ph3-dot" onclick="ph3Go(2)"></span>
+              <span class="ph3-dot" onclick="ph3Go(3)"></span>
+              <span class="ph3-dot" onclick="ph3Go(4)"></span>
+              <span class="ph3-dot" onclick="ph3Go(5)"></span>
+              <span class="ph3-dot" onclick="ph3Go(6)"></span>
+              <span class="ph3-dot" onclick="ph3Go(7)"></span>
+              <span class="ph3-dot" onclick="ph3Go(8)"></span>
+              <span class="ph3-dot" onclick="ph3Go(9)"></span>
+              <span class="ph3-dot" onclick="ph3Go(10)"></span>
             </div>
-          </div>
-          <div>
-            <!-- <img src="images/cp-detail-03.jpg" alt="Fragrance Discovery"> -->
-            <div class="img-placeholder third-img">
-              <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-              <span>Experience</span>
-            </div>
-          </div>
-          <div>
-            <!-- <img src="images/cp-detail-04.jpg" alt="Consumer Moments"> -->
-            <div class="img-placeholder third-img">
-              <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-              <span>Consumer Moments</span>
-            </div>
+            <button class="ph3-btn" onclick="ph3Next()" aria-label="Next">&#8594;</button>
           </div>
         </div>
-        <p class="img-swap-note">Replace each placeholder with &lt;img src="your-photo.jpg" alt="..."&gt; inside the existing wrapper div</p>
 
       </div>
     </section>
@@ -420,16 +407,13 @@ footer a { color: var(--text-secondary); }
             <div class="metric-desc">The work was featured in a WGSN trend report — validating the concept as a cultural signal, not just a brand activation.</div>
           </div>
           <div class="metric metric-light">
-            <div class="metric-value"><strong>+1 Store</strong></div>
-            <div class="metric-label">Expanded to MA</div>
-            <div class="metric-desc">The most successful aspects were incorporated into another test store in Massachusetts — proving scalability.</div>
-          </div>
-          <div class="metric metric-light">
             <div class="metric-value"><strong>Invited Back</strong></div>
-            <div class="metric-label">Mass Retail Reimagination</div>
-            <div class="metric-desc">The work earned a seat at the next table: invited to reimagine the mass retail store experience. The best outcome is the next assignment.</div>
+            <div class="metric-label">Expanded &amp; Reimagined</div>
+            <div class="metric-desc">The most successful elements were incorporated into a second test store in Massachusetts — then the work earned a seat at the next table: invited to reimagine the mass retail experience entirely. The best outcome is the next assignment.</div>
           </div>
         </div>
+
+        <img src="links/cs05/Outcomes/outcomes1.png" alt="Candle Power Outcomes" style="width:100%;height:auto;display:block;margin-top:var(--s-07);">
 
       </div>
     </section>
@@ -441,6 +425,13 @@ footer a { color: var(--text-secondary); }
 </div><!-- /cs-shell -->
 <script>
 (function(){var t=document.getElementById('cs-toggle'),n=document.getElementById('cs-sidenav'),o=document.getElementById('cs-overlay');function op(){n.classList.add('is-open');o.classList.add('is-open');t.setAttribute('aria-expanded','true');}function cl(){n.classList.remove('is-open');o.classList.remove('is-open');t.setAttribute('aria-expanded','false');}t.addEventListener('click',function(){n.classList.contains('is-open')?cl():op();});o.addEventListener('click',cl);})();
+// Phase 3 carousel
+var _ph3i=0;
+var _ph3n=document.querySelectorAll('#ph3-track figure').length;
+function _ph3Update(){document.getElementById('ph3-track').style.transform='translateX(-'+(_ph3i*100)+'%)';document.querySelectorAll('.ph3-dot').forEach(function(d,i){d.classList.toggle('active',i===_ph3i);});}
+function ph3Next(){_ph3i=(_ph3i+1)%_ph3n;_ph3Update();}
+function ph3Prev(){_ph3i=(_ph3i-1+_ph3n)%_ph3n;_ph3Update();}
+function ph3Go(i){_ph3i=i;_ph3Update();}
 </script>
 </body>
 </html>
