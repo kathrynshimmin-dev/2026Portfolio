@@ -95,12 +95,9 @@ footer a { color: var(--text-secondary); }
 /* JOURNEY STEPS */
 .journey { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px,1fr)); gap: 1px; background: var(--border-subtle); border: 1px solid var(--border-subtle); margin: var(--s-06) 0; counter-reset: journey; }
 .journey-step { background: var(--bg); padding: var(--s-06) var(--s-05); display: flex; flex-direction: column; gap: var(--s-03); position: relative; }
-.journey-step:nth-child(3) { background: var(--accent); color: var(--accent-text); }
 .journey-num { font-size: .7rem; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--accent); }
-.journey-step:nth-child(3) .journey-num { color: rgba(255,255,255,.7); }
 .journey-title { font-size: .9375rem; font-weight: 600; }
 .journey-desc { font-size: .8rem; line-height: 1.6; color: var(--text-secondary); margin: 0; }
-.journey-step:nth-child(3) .journey-desc { color: rgba(255,255,255,.8); }
 
 /* CAROUSEL */
 .carousel { margin: var(--s-06) 0 0; overflow: hidden; }
@@ -192,8 +189,8 @@ footer a { color: var(--text-secondary); }
       <span class="tag">Publication Design</span>
       <span class="hero-eyebrow">Newell Brands · Color Material Finish · Grand Rapids, MI</span>
     </div>
-    <h1>What if you could make executives <strong>feel the value of color</strong> before they ever read a slide?</h1>
-    <p class="hero-summary">CMF — Color, Material, Finish — is one of the most business-critical yet misunderstood disciplines in industrial design. A small, specialized team forecasts market trends and makes products more desirable through the choices most people never consciously notice. This exhibit and accompanying publication made that invisible work impossible to ignore.</p>
+    <h1>Some business cases are best made by <strong>walking people through one.</strong></h1>
+    <p class="hero-summary">CMF (Color, Material, Fashion) is one of the most business-critical yet misunderstood disciplines in industrial design. A small, specialized team forecasts market trends and makes products more desirable through the choices most people never consciously notice. This exhibit and accompanying publication made that invisible work impossible to ignore.</p>
     <div class="stat-row">
       <div class="stat"><div class="stat-number"><strong>AIGA</strong></div><div class="stat-label">West Michigan Archives</div></div>
       <div class="stat"><div class="stat-number"><strong>Physical</strong></div><div class="stat-label">Immersive Walk-Through Exhibit</div></div>
@@ -220,22 +217,29 @@ footer a { color: var(--text-secondary); }
       <div>
 
         <h2 class="bh">The Business Problem</h2>
-        <p>Inside Newell Brands' industrial design organization sat a small, highly specialized team focused on Color, Material, and Finish. CMF is the discipline that makes products more desirable — the exact shade of blue on a water bottle, the tactile finish of a camping stove, the material quality that signals premium without saying a word. These choices directly influence purchasing decisions and competitive positioning.</p>
-        <p>Yet the people who most needed to champion and invest in this work — executive leadership and brand marketing — didn't fully understand it. The business case was invisible because the craft itself was invisible.</p>
+        <p>Inside Newell Brands' industrial design organization sat a small, highly specialized team focused on Color, Material, and Finish. CMF is the discipline that makes products more desirable: the exact shade of blue on a water bottle, the tactile finish of a camping stove, the material quality that signals premium without saying a word. These choices directly influence purchasing decisions and competitive positioning.</p>
+        <p>Yet the people who most needed to champion and invest in this work, executive leadership and brand marketing, didn't fully understand it. The business case was invisible because the craft itself was invisible.</p>
 
         <div class="callout">
           <div class="callout-label">The Design Challenge</div>
-          <p>How might we <strong>help the company understand the impact of CMF on the business?</strong> The best way is to walk them through it — literally.</p>
+          <p>How might we <strong>help the company understand the impact of CMF on the business?</strong> The best way is to walk them through it. Literally.</p>
         </div>
 
         <h2 class="bh">Who Was Involved</h2>
         <div class="card-grid">
+          <div class="card" style="border-top-color: var(--accent);">
+            <div class="card-title">
+              <svg viewBox="0 0 24 24"><circle cx="9" cy="7" r="4"/><path d="M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/><circle cx="19" cy="7" r="2"/><path d="M23 21v-1a3 3 0 0 0-3-3h-1"/></svg>
+              Innovation Strategy Team
+            </div>
+            <p>My team. We owned the research, ideation, and vision for the exhibit and were responsible for translating the CMF process into a compelling experience strategy.</p>
+          </div>
           <div class="card">
             <div class="card-title">
               <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20v-1a8 8 0 0 1 16 0v1"/></svg>
               CMF Design Team
             </div>
-            <p>The expert practitioners whose work was being showcased — trend forecasters, color specialists, material researchers.</p>
+            <p>The expert practitioners whose work was being showcased: trend forecasters, color specialists, material researchers.</p>
           </div>
           <div class="card">
             <div class="card-title">
@@ -249,21 +253,20 @@ footer a { color: var(--text-secondary); }
               <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
               Executive Leadership
             </div>
-            <p>The primary audience — senior leaders who needed to understand CMF's strategic value to the business.</p>
+            <p>The primary audience. Senior leaders who needed to understand CMF's strategic value to the business.</p>
           </div>
           <div class="card">
             <div class="card-title">
               <svg viewBox="0 0 24 24"><circle cx="9" cy="7" r="4"/><path d="M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/><circle cx="19" cy="7" r="2"/><path d="M23 21v-1a3 3 0 0 0-3-3h-1"/></svg>
               Brand Marketing
             </div>
-            <p>Secondary audience — brand teams whose product decisions are directly influenced by CMF direction.</p>
+            <p>Secondary audience. Brand teams whose product decisions are directly influenced by CMF direction.</p>
           </div>
         </div>
 
-        <!-- Hero image placeholder — swap with exhibit overview photo -->
-        <div class="img-placeholder hero-ph" style="margin: var(--s-06) 0;">
-          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-          Exhibit Overview · Swap image
+        <div class="img-grid-2" style="margin-top: var(--s-06);">
+          <img src="links/cs06/setup.png" alt="Exhibit setup" style="width:100%;height:420px;object-fit:cover;display:block;">
+          <img src="links/cs06/Vertical.jpg" alt="Exhibit vertical view" style="width:100%;height:420px;object-fit:cover;display:block;">
         </div>
 
       </div>
@@ -274,13 +277,13 @@ footer a { color: var(--text-secondary); }
       <div><div class="section-number">02</div><div class="section-title">My Role</div></div>
       <div>
         <h2 class="bh">Creative Director</h2>
-        <p>I led the creative direction for the entire project — both the physical exhibit and the companion publication. That meant researching the CMF discipline alongside the professional team to deeply understand their process, then translating that understanding into a visual and spatial language that would communicate it to a non-specialist audience.</p>
+        <p>I led the creative direction for the entire project, covering both the physical exhibit and the companion publication. That meant researching the CMF discipline alongside the professional team to deeply understand their process, then translating that understanding into a visual and spatial language that would communicate it to a non-specialist audience.</p>
         <p>My responsibilities spanned two tracks in parallel:</p>
 
         <div class="card-grid">
           <div class="card">
             <div class="card-title">Research &amp; Discovery</div>
-            <p>Embedded with the CMF team to understand their process end-to-end — from trend forecasting through material selection to product application.</p>
+            <p>Embedded with the CMF team to understand their full process, from trend forecasting through material selection to product application.</p>
           </div>
           <div class="card">
             <div class="card-title">Exhibit Direction</div>
@@ -296,16 +299,7 @@ footer a { color: var(--text-secondary); }
           </div>
         </div>
 
-        <div class="img-grid-2" style="margin-top: var(--s-06);">
-          <div class="img-placeholder half-ph">
-            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-            Role photo A · Swap image
-          </div>
-          <div class="img-placeholder half-ph">
-            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-            Role photo B · Swap image
-          </div>
-        </div>
+        <img src="links/cs06/trendwall.png" alt="Trend wall" class="img-full" style="margin-top: var(--s-06);">
 
       </div>
     </section>
@@ -315,20 +309,19 @@ footer a { color: var(--text-secondary); }
       <div><div class="section-number">03</div><div class="section-title">Strategic Framing</div></div>
       <div>
         <h2 class="bh">Small Investment. Big Impact.</h2>
-        <p>The CMF team's work touched every product in Newell Brands' portfolio — yet it operated with modest resources relative to its influence. Color, material, and finish choices are among the most powerful drivers of perceived quality, brand differentiation, and purchase intent. A consumer doesn't think "I chose this water bottle because of its color palette." They just reach for it.</p>
+        <p>The CMF team's work touched every product in Newell Brands' portfolio, yet it operated with modest resources relative to its influence. Color, material, and finish choices are among the most powerful drivers of perceived quality, brand differentiation, and purchase intent. A consumer doesn't think "I chose this water bottle because of its color palette." They just reach for it.</p>
         <p>Making that value legible to decision-makers required a different strategy than a presentation deck. It required <em>experience</em>. The exhibit needed to do what CMF itself does: make something undeniably desirable through the choices most people never consciously analyze.</p>
 
         <div class="callout">
           <div class="callout-label">The Strategic Bet</div>
-          <p>Don't explain CMF. <strong>Make them feel it.</strong> An immersive exhibit walk-through, reinforced by a companion publication — both designed to embody the very principles they describe.</p>
+          <p>Don't explain CMF. <strong>Make them feel it.</strong> An immersive exhibit walk-through, reinforced by a companion publication, both designed to embody the very principles they describe.</p>
         </div>
 
         <h2 class="bh">What Success Looked Like</h2>
         <div class="card-grid">
           <div class="card"><div class="card-title">Executive Comprehension</div><p>Leadership leaves understanding not just what CMF is, but why it matters to their competitive position.</p></div>
           <div class="card"><div class="card-title">Earned Credibility</div><p>The CMF team is seen as strategic forecasters, not just aesthetic decision-makers.</p></div>
-          <div class="card"><div class="card-title">Sustained Conversation</div><p>The printed publication extends the story beyond the exhibit — something to take, reference, and share.</p></div>
-          <div class="card"><div class="card-title">Cultural Recognition</div><p>Work of sufficient quality to merit preservation in the design community's own archives.</p></div>
+          <div class="card"><div class="card-title">Sustained Conversation</div><p>The printed publication extends the story beyond the exhibit. Something to take, reference, and share.</p></div>
         </div>
       </div>
     </section>
@@ -339,24 +332,24 @@ footer a { color: var(--text-secondary); }
       <div>
 
         <h2 class="bh">A Walk Through the CMF Process</h2>
-        <p>The exhibit was designed as a sequential journey — visitors physically moved through the CMF process from start to finish. The spatial sequence was the story. Each zone corresponded to a stage in how CMF work actually happens, so by the time visitors arrived at the product showcases, they had earned that context.</p>
+        <p>The exhibit was designed as a sequential journey. Visitors physically moved through the CMF process from start to finish. The spatial sequence was the story. Each zone corresponded to a stage in how CMF work actually happens, so by the time visitors arrived at the product showcases, they had earned that context.</p>
 
         <!-- Journey steps -->
         <div class="journey">
           <div class="journey-step">
             <div class="journey-num">01 — Enter</div>
             <div class="journey-title">Trend Tunnel</div>
-            <p class="journey-desc">Visitors walk through an immersive tunnel wrapping them in trend categories — the macro signals that CMF teams track to forecast the future.</p>
+            <p class="journey-desc">Visitors walk through an immersive tunnel wrapping them in trend categories, the macro signals that CMF teams track to forecast the future.</p>
           </div>
           <div class="journey-step">
             <div class="journey-num">02 — Turn</div>
             <div class="journey-title">Design Solutions</div>
-            <p class="journey-desc">Rounding the corner reveals how CMF defines design solutions — the translation from trend synthesis to material direction.</p>
+            <p class="journey-desc">Rounding the corner reveals how CMF defines design solutions, translating trend synthesis into material direction.</p>
           </div>
           <div class="journey-step">
             <div class="journey-num">03 — Explore</div>
             <div class="journey-title">Color + Pattern</div>
-            <p class="journey-desc">Visitors pass through color selection, pattern creation, and product application — the hands-on craft behind CMF decisions.</p>
+            <p class="journey-desc">Visitors pass through color selection, pattern creation, and product application: the hands-on craft behind CMF decisions.</p>
           </div>
           <div class="journey-step">
             <div class="journey-num">04 — Arrive</div>
@@ -365,86 +358,37 @@ footer a { color: var(--text-secondary); }
           </div>
         </div>
 
-        <!-- Full-width exhibit image placeholder -->
-        <div class="img-placeholder hero-ph" style="margin: var(--s-06) 0;">
-          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-          Trend Tunnel · Swap image
-        </div>
-        <p class="img-caption">The trend tunnel — visitors enter surrounded by the macro signals that drive CMF forecasting</p>
-
-        <h2 class="bh">The Gallery</h2>
-
-        <!-- Photo strip -->
-        <div class="photo-strip">
-          <div class="img-placeholder sq-ph">
-            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-            Exhibit 1
-          </div>
-          <div class="img-placeholder sq-ph">
-            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-            Exhibit 2
-          </div>
-          <div class="img-placeholder sq-ph">
-            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-            Exhibit 3
-          </div>
-          <div class="img-placeholder sq-ph">
-            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-            Exhibit 4
-          </div>
-        </div>
-
-        <!-- Carousel -->
-        <div class="carousel">
-          <div class="carousel-track" id="cs6-track">
+        <div class="carousel" style="margin: var(--s-06) 0 0;">
+          <div class="carousel-track" id="cs6-tunnel-track">
             <figure>
-              <div class="img-placeholder" style="height:460px;">
-                <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-                Color selection zone · Swap image
-              </div>
-              <figcaption>Color selection — hundreds of curated swatches organized by trend category</figcaption>
+              <img src="links/cs06/exhibit1.png" alt="Trend tunnel" style="width:100%;height:460px;object-fit:cover;display:block;">
+              <figcaption>The trend tunnel, where visitors enter surrounded by the macro signals that drive CMF forecasting</figcaption>
             </figure>
             <figure>
-              <div class="img-placeholder" style="height:460px;">
-                <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-                Pattern creation · Swap image
-              </div>
-              <figcaption>Pattern creation — original surface patterns developed by the CMF team</figcaption>
-            </figure>
-            <figure>
-              <div class="img-placeholder" style="height:460px;">
-                <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-                Coleman showcase · Swap image
-              </div>
-              <figcaption>Coleman outdoor products case study — showing how CMF decisions were made for the product line</figcaption>
-            </figure>
-            <figure>
-              <div class="img-placeholder" style="height:460px;">
-                <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-                Contigo showcase · Swap image
-              </div>
-              <figcaption>Contigo water bottles — CMF selection breakdown from trend to final product</figcaption>
-            </figure>
-            <figure>
-              <div class="img-placeholder" style="height:460px;">
-                <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-                Full exhibit view · Swap image
-              </div>
-              <figcaption>Full exhibit view — visitors experience the complete CMF journey</figcaption>
+              <img src="links/cs06/trendwall.png" alt="Trend wall" style="width:100%;height:460px;object-fit:cover;display:block;">
+              <figcaption>The trend wall: macro signals organized by category</figcaption>
             </figure>
           </div>
           <div class="carousel-controls">
-            <button class="carousel-btn" onclick="cs6Prev()" aria-label="Previous">&#8592;</button>
+            <button class="carousel-btn" onclick="cs6TunnelPrev()" aria-label="Previous">&#8592;</button>
             <div class="carousel-dots">
-              <span class="carousel-dot active" onclick="cs6Go(0)"></span>
-              <span class="carousel-dot" onclick="cs6Go(1)"></span>
-              <span class="carousel-dot" onclick="cs6Go(2)"></span>
-              <span class="carousel-dot" onclick="cs6Go(3)"></span>
-              <span class="carousel-dot" onclick="cs6Go(4)"></span>
+              <span class="carousel-dot active" onclick="cs6TunnelGo(0)"></span>
+              <span class="carousel-dot" onclick="cs6TunnelGo(1)"></span>
             </div>
-            <button class="carousel-btn" onclick="cs6Next()" aria-label="Next">&#8594;</button>
+            <button class="carousel-btn" onclick="cs6TunnelNext()" aria-label="Next">&#8594;</button>
           </div>
         </div>
+
+        <h2 class="bh">The Gallery</h2>
+
+        <div class="img-grid-3" style="margin: var(--s-06) 0 0;">
+          <img src="links/cs06/exhibit0.png" alt="Exhibit 1" style="width:100%;height:220px;object-fit:cover;display:block;">
+          <img src="links/cs06/exhibit2.png" alt="Exhibit 2" style="width:100%;height:220px;object-fit:cover;display:block;">
+          <img src="links/cs06/Exhibit3.png" alt="Exhibit 3" style="width:100%;height:220px;object-fit:cover;display:block;">
+        </div>
+        <img src="links/cs06/Exhibit4.png" alt="Exhibit 4" class="img-full" style="margin-top: var(--s-05);">
+
+        <img src="links/cs06/Deliver.png" alt="Color selection zone" class="img-full" style="margin-top: var(--s-06);">
 
       </div>
     </section>
@@ -455,45 +399,27 @@ footer a { color: var(--text-secondary); }
       <div>
 
         <h2 class="bh">A Book That Embodies Its Subject</h2>
-        <p>The companion publication wasn't a leave-behind brochure — it was a design object in its own right. The strategy was to make the book <em>demonstrate</em> the CMF principle it was communicating: that deliberate choices about color, material, and finish create emotional impact.</p>
+        <p>The companion publication wasn't a leave-behind brochure. It was a design object in its own right. The strategy was to make the book <em>demonstrate</em> the CMF principle it was communicating: that deliberate choices about color, material, and finish create emotional impact.</p>
 
         <div class="callout">
           <div class="callout-label">The Design Concept</div>
-          <p>The outside cover is <strong>black and white</strong>. Understated. Unassuming. Open it, and the interior erupts — pops of color, layered patterns, transparent finished materials throughout. The reveal <em>is</em> the message.</p>
+          <p>The outside cover is <strong>black and white</strong>. Understated. Unassuming. Open it, and the interior erupts with pops of color, layered patterns, and transparent finished materials throughout. The reveal <em>is</em> the message.</p>
         </div>
 
-        <ul class="cl">
-          <li>Cover: restrained black-and-white to set up the reveal</li>
-          <li>Interior pages: strategic pops of color that mirror the exhibit's energy</li>
-          <li>Paper and material selection chosen to reinforce the concept — texture, weight, and finish all deliberate</li>
-          <li>Transparent material inserts to demonstrate finish as a design tool</li>
-          <li>Pattern pages that carry the surface design work from the exhibit into print</li>
-        </ul>
-
         <div class="img-grid-3" style="margin-top: var(--s-06);">
-          <div class="img-placeholder third-ph">
-            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-            Book cover · Swap image
-          </div>
-          <div class="img-placeholder third-ph">
-            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-            Interior spread · Swap image
-          </div>
-          <div class="img-placeholder third-ph">
-            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-            Material detail · Swap image
-          </div>
+          <img src="links/cs06/CMF_Book_0.jpg" alt="CMF book cover" style="width:100%;height:200px;object-fit:cover;display:block;">
+          <img src="links/cs06/CMF_Book_10_2.jpg" alt="CMF book interior spread" style="width:100%;height:200px;object-fit:cover;display:block;">
+          <img src="links/cs06/Book2.png" alt="Publication book 2" style="width:100%;height:200px;object-fit:cover;display:block;">
         </div>
 
         <div class="img-grid-2" style="margin-top: var(--s-05);">
-          <div class="img-placeholder half-ph">
-            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-            Color pages · Swap image
-          </div>
-          <div class="img-placeholder half-ph">
-            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-            Pattern spread · Swap image
-          </div>
+          <img src="links/cs06/inside.png" alt="Publication interior detail" style="width:100%;height:260px;object-fit:cover;display:block;">
+          <img src="links/cs06/cover.png" alt="Publication cover" style="width:100%;height:260px;object-fit:cover;display:block;">
+        </div>
+
+        <div class="img-grid-2" style="margin-top: var(--s-05);">
+          <img src="links/cs06/2019_CMF_Book_030.jpg" alt="2019 CMF book pages" style="width:100%;height:260px;object-fit:cover;display:block;">
+          <img src="links/cs06/Book1.png" alt="Publication book 1" style="width:100%;height:260px;object-fit:cover;display:block;">
         </div>
 
       </div>
@@ -509,29 +435,13 @@ footer a { color: var(--text-secondary); }
           <div class="metric">
             <div class="metric-value"><strong>AIGA</strong></div>
             <div class="metric-label">West Michigan Archives</div>
-            <div class="metric-desc">The physical exhibit and accompanying publication were accepted into the AIGA West Michigan Archives — recognized as design work of lasting cultural and professional significance.</div>
-          </div>
-          <div class="metric metric-secondary">
-            <div class="metric-value"><strong>CPG Impact</strong></div>
-            <div class="metric-label">Strategy Recognition</div>
-            <div class="metric-desc">The storytelling experience design was recognized for its impact on CPG brand strategy — demonstrating how immersive, experience-led communication changes executive decision-making.</div>
+            <div class="metric-desc">The physical exhibit and accompanying publication were accepted into the AIGA West Michigan Archives, recognized as design work of lasting cultural and professional significance.</div>
           </div>
           <div class="metric metric-light">
             <div class="metric-value"><strong>Small Team</strong></div>
             <div class="metric-label">Elevated Visibility</div>
-            <div class="metric-desc">A small investment in the CMF team's visibility created a disproportionate return — executive leadership and brand marketing came away with a new understanding of CMF's strategic role in the business.</div>
+            <div class="metric-desc">A small investment in the CMF team's visibility created a disproportionate return. Executive leadership and brand marketing came away with a new understanding of CMF's strategic role in the business.</div>
           </div>
-          <div class="metric metric-light">
-            <div class="metric-value"><strong>Dual Format</strong></div>
-            <div class="metric-label">Exhibit + Publication</div>
-            <div class="metric-desc">The exhibit lived in a room. The book traveled with the people who visited it — extending the conversation from one event to an ongoing reference for how CMF creates competitive advantage.</div>
-          </div>
-        </div>
-
-        <!-- Outcomes image placeholder -->
-        <div class="img-placeholder hero-ph" style="margin-top: var(--s-07);">
-          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-          Outcomes / AIGA recognition · Swap image
         </div>
 
       </div>
@@ -544,13 +454,13 @@ footer a { color: var(--text-secondary); }
 </div><!-- /cs-shell -->
 <script>
 (function(){var t=document.getElementById('cs-toggle'),n=document.getElementById('cs-sidenav'),o=document.getElementById('cs-overlay');function op(){n.classList.add('is-open');o.classList.add('is-open');t.setAttribute('aria-expanded','true');}function cl(){n.classList.remove('is-open');o.classList.remove('is-open');t.setAttribute('aria-expanded','false');}t.addEventListener('click',function(){n.classList.contains('is-open')?cl():op();});o.addEventListener('click',cl);})();
-// CS6 carousel
-var _cs6i=0;
-var _cs6n=document.querySelectorAll('#cs6-track figure').length;
-function _cs6Update(){document.getElementById('cs6-track').style.transform='translateX(-'+(_cs6i*100)+'%)';document.querySelectorAll('.carousel-dot').forEach(function(d,i){d.classList.toggle('active',i===_cs6i);});}
-function cs6Next(){_cs6i=(_cs6i+1)%_cs6n;_cs6Update();}
-function cs6Prev(){_cs6i=(_cs6i-1+_cs6n)%_cs6n;_cs6Update();}
-function cs6Go(i){_cs6i=i;_cs6Update();}
+// CS6 tunnel carousel
+var _cs6ti=0;
+var _cs6tn=2;
+function _cs6TunnelUpdate(){document.getElementById('cs6-tunnel-track').style.transform='translateX(-'+(_cs6ti*100)+'%)';document.querySelectorAll('#cs6-tunnel-track~.carousel-controls .carousel-dot').forEach(function(d,i){d.classList.toggle('active',i===_cs6ti);});}
+function cs6TunnelNext(){_cs6ti=(_cs6ti+1)%_cs6tn;_cs6TunnelUpdate();}
+function cs6TunnelPrev(){_cs6ti=(_cs6ti-1+_cs6tn)%_cs6tn;_cs6TunnelUpdate();}
+function cs6TunnelGo(i){_cs6ti=i;_cs6TunnelUpdate();}
 </script>
 </body>
 </html>
