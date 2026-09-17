@@ -261,7 +261,7 @@ const doc = new Document({
         numbering: { reference: "bullet-list", level: 0 },
         spacing: { before: 40, after: 40 },
         children: [
-          new TextRun({ text: "Created a CMF (Color, Material, Finish) business-impact exhibit and publication accepted into the ", size: 22, font: "Arial", color: BLACK }),
+          new TextRun({ text: "Created a CMF (Color, Material, Fashion) business-impact exhibit and publication accepted into the ", size: 22, font: "Arial", color: BLACK }),
           new TextRun({ text: "AIGA West Michigan Archives", bold: true, size: 22, font: "Arial", color: BLACK }),
           new TextRun({ text: ".", size: 22, font: "Arial", color: BLACK })
         ]
