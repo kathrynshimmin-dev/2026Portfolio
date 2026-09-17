@@ -158,6 +158,11 @@ ul.cl li::before { content: ''; position: absolute; left: 0; top: .75em; width: 
 .quote-mark { position: absolute; left: var(--s-06); top: var(--s-05); font-size: 3rem; font-weight: 300; line-height: 1; color: var(--accent-secondary); }
 .quote-block blockquote { font-size: 1rem; font-style: italic; font-weight: 300; color: var(--text-primary); line-height: 1.7; margin: 0 0 var(--s-04); }
 .quote-attr { font-size: .75rem; color: var(--accent); font-weight: 600; text-transform: uppercase; letter-spacing: .06em; }
+.quote-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--border-subtle); border: 1px solid var(--border-subtle); margin: var(--s-07) 0; }
+.quote-grid-item { background: var(--bg); padding: var(--s-06); display: flex; flex-direction: column; gap: var(--s-04); }
+.quote-grid-item blockquote { font-size: .9rem; font-style: italic; font-weight: 300; color: var(--text-primary); line-height: 1.7; margin: 0; flex: 1; }
+.quote-grid-item blockquote::before { content: '\201C'; font-size: 2rem; font-weight: 300; line-height: .8; color: var(--accent); display: block; margin-bottom: var(--s-03); }
+.quote-grid-attr { font-size: .7rem; font-weight: 600; text-transform: uppercase; letter-spacing: .08em; color: var(--accent); }
 .back-btn { display: inline-flex; align-items: center; gap: var(--s-03); font-size: .75rem; font-weight: 600; text-transform: uppercase; letter-spacing: .08em; color: var(--text-secondary); cursor: pointer; background: none; border: none; padding: var(--s-05) 0; text-decoration: none; }
 .back-btn:hover { color: var(--accent); }
 .back-btn svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2; }
@@ -275,8 +280,8 @@ footer a { color: var(--text-secondary); }
       <span class="tag tag-accent">Case Study 02</span>
       <span class="tag">Strategy &amp; Systems Design</span>
       <span class="tag">Enterprise Scale</span>
-      <span class="hero-eyebrow">IBM Financial Services Market · 2025–2026</span>
     </div>
+    <div class="hero-eyebrow" style="margin-bottom:var(--s-06);">IBM Financial Services Market · 2025–2026</div>
     <h1>What if we stopped selling what IBM has — and started planning around <strong>what clients actually need?</strong> I built the operating model that changed how IBM shows up.</h1>
     <p class="hero-summary">For a lot of accounts, technical planning was inconsistent at best — nonexistent at worst. I built a repeatable operating model that changed that. One that keeps participants engaged and accountable, anchors every conversation in what the client has actually said they're focused on solving, and drives real results for the technical sales community. Yes, it took serious prep work — but that's the deal. What you put into these things is what you get out of them. The payoff? Two-hour planning calls that end with people saying "wow, that went fast — I'm leaving with more clarity and direction than when I came in."</p>
     <div class="stat-row">
@@ -347,8 +352,7 @@ footer a { color: var(--text-secondary); }
         <h2 class="bh">What I Was Building Toward</h2>
         <p>I wasn't just designing sessions — I was designing a system with four specific outcomes that I held myself accountable to from day one:</p>
         <div class="card-grid">
-          <div class="card"><div class="card-title">Clean Initiative Data</div><p>Every account leaving with accurate, complete Strategic Initiative records. Get everyone on the same page as to what the client actually cares about.</p></div>
-          <div class="card"><div class="card-title">Linked Opportunities</div><p>Every opportunity tied directly to a client initiative — so IBM could show up with relevance, not just presence.</p></div>
+          <div class="card"><div class="card-title">Clear Initiatives &amp; Linked Opportunities</div><p>Every account leaving with accurate, complete Strategic Initiative records — with every opportunity tied directly to a client initiative. Get everyone on the same page as to what the client actually cares about.</p></div>
           <div class="card"><div class="card-title">Unblocked Pipeline</div><p>A clear picture of what's stuck and why — so teams could act, not speculate.</p></div>
           <div class="card"><div class="card-title">Market-Level Intelligence</div><p>Patterns across IBM Financial Services that no single team could see on their own — but leadership absolutely needed.</p></div>
         </div>
@@ -360,7 +364,17 @@ footer a { color: var(--text-secondary); }
       <div>
         <div class="phases">
           <div class="phase"><div class="phase-num">Phase 1</div><div><h3>Design the Workshop</h3><p>I built a Mural-based workshop experience from scratch — structured enough to produce consistent outputs, flexible enough that every account felt like it was built for them. It covered client initiatives, opportunity gaps, deployment ideas, blockers, and who owns what next. Simple on the surface. Powerful underneath.</p></div></div>
-          <div class="phase"><div class="phase-num">Phase 2</div><div><h3>Get Everyone Aligned Before the Room</h3><p>Great sessions don't happen by accident. I worked with ATLs ahead of each session to define what they wanted to walk away with, who needed to be in the room, and what success looked like for their specific account. Prep made all the difference.</p></div></div>
+          <div class="phase"><div class="phase-num">Phase 2</div><div><h3>Get Everyone Aligned Before the Room</h3><p>Great sessions don't happen by accident. I worked with ATLs ahead of each session to define what they wanted to walk away with, who needed to be in the room, and what success looked like for their specific account. Prep made all the difference.</p>
+            <img src="links/cs01/snapshot.png" alt="Session snapshot" style="width:100%; margin-top:var(--s-06); display:block;" />
+            <div class="quote-grid">
+              <div class="quote-grid-item"><blockquote>An incredibly efficient way for our team to develop relevant sales opportunities for Allstate</blockquote><div class="quote-grid-attr">ATL of Allstate</div></div>
+              <div class="quote-grid-item"><blockquote>We not only ideated on new opportunities, we crafted a more refined approach to work with our client</blockquote><div class="quote-grid-attr">ATL of Citi Bank</div></div>
+              <div class="quote-grid-item"><blockquote>The value/feasibility boards are really where it pulled us all together allowing us to focus on the low hanging fruit that is the most impactful to our clients.</blockquote><div class="quote-grid-attr">ATL of Chubb &amp; UBS</div></div>
+              <div class="quote-grid-item"><blockquote>Planning extremely helpful this year. It afforded me the opportunity to think critically about my client's stated priorities and peel back the layers to uncover more opportunities for IBM</blockquote><div class="quote-grid-attr">ATL of Progressive</div></div>
+              <div class="quote-grid-item"><blockquote>A refreshing two-hour session that helped synthesize innovative and complex ideas into clear, actionable items to follow up on throughout the year</blockquote><div class="quote-grid-attr">ATL of Principal Financial</div></div>
+              <div class="quote-grid-item"><blockquote>Besides identifying opportunities, helped seller and BTS to think beyond their products and portfolio and be creative with solution offerings</blockquote><div class="quote-grid-attr">ATL of Prudential</div></div>
+            </div>
+          </div></div>
           <div class="phase"><div class="phase-num">Phase 3</div><div><h3>Scale Without Losing Quality</h3><p>I couldn't personally run 50+ sessions — so I built a facilitation system that could. I onboarded 14 strategy designers, created guides they could actually use, and put governance in place to keep quality consistent across every account. The goal was to make facilitators great, not just capable.</p><img src="links/cs01/Murals.png" alt="Mural facilitation framework" style="width:100%; margin-top:var(--s-06); display:block;" /></div></div>
           <div class="phase"><div class="phase-num">Phase 4</div><div>
             <h3>Turn IBM Financial Services Into One Big Picture</h3>
@@ -369,7 +383,7 @@ footer a { color: var(--text-secondary); }
               <span class="theme-tag">AI &amp; Agentic Platforms</span><span class="theme-tag">Automation &amp; FinOps</span><span class="theme-tag">Data Modernization</span><span class="theme-tag">Risk, Security &amp; Compliance</span><span class="theme-tag">App &amp; Core Modernization</span><span class="theme-tag">Growth &amp; Innovation</span><span class="theme-tag">Observability &amp; AIOps</span><span class="theme-tag">Cloud &amp; SaaS Consolidation</span>
             </div>
           </div></div>
-          <div class="phase"><div class="phase-num">Phase 5</div><div><h3>Keep Getting Better</h3><p>I ran retrospectives after critical moments like the first session and after a full quarter of sessions — with facilitators, account teams, and leadership. Not as a formality, but because I genuinely wanted to know what wasn't working. Every cycle, the model got sharper. That's the point.</p></div></div>
+          <div class="phase"><div class="phase-num">Phase 5</div><div><h3>Keep Getting Better</h3><p>I ran retrospectives after key milestones: the first session, new program additions, and each quarter— with facilitators, account teams, and leadership. Not as a formality, but because I genuinely wanted to know what wasn't working. Every cycle, the model got sharper. That's the point.</p></div></div>
         </div>
       </div>
     </section>
@@ -384,9 +398,9 @@ footer a { color: var(--text-secondary); }
           <div class="metric metric-light"><div class="metric-value"><strong>88%</strong></div><div class="metric-label">of FSM Covered</div><div class="metric-desc">The framework reached 88% of all Financial Services Market accounts. Not a pilot — a movement.</div></div>
           <div class="metric metric-light"><div class="metric-value"><strong>2</strong></div><div class="metric-label">New Markets Adopted It</div><div class="metric-desc">Other markets saw what was happening and wanted in. That's the best kind of validation.</div></div>
         </div>
-        <h2 class="bh">What People Said</h2>
-        <div class="quote-block"><div class="quote-mark">&ldquo;</div><blockquote>"Katie, your Deployment Clinic Template was very effective with the CVS team in Public Market and we are now leveraging it for other accounts. Thank you for your guidance, leadership, and even attending where you can to provide your input. We appreciate you."</blockquote><div class="quote-attr">Andy Quintana — Principal ATL Manager, November 2025</div></div>
-        <div class="quote-block"><div class="quote-mark">&ldquo;</div><blockquote>"Thank you for the opportunity to experience how a high performing team comes together to focus and deliver great results. This was an excellent session which all teams should be adopting."</blockquote><div class="quote-attr">Kathryn McAvoy — ATL Manager</div></div>        <div class="quote-block"><div class="quote-mark">&ldquo;</div><blockquote>"I wanted to express my sincere thanks for the fantastic job you did on the technical account plan session for our FSM clients. Your infusion of design methodology to technical account planning was truly impressive. The positive feedback from our ATLs and extended account team members highlights your hard work and creativity."</blockquote><div class="quote-attr">Vice President, ATLs &amp; Client Engineering</div></div>
+        <h2 class="bh">What the leaders said:</h2>
+        <div class="quote-block"><div class="quote-mark">&ldquo;</div><blockquote>"Katie, your Deployment Clinic Template was very effective with the CVS team in Public Market and we are now leveraging it for other accounts. Thank you for your guidance, leadership, and even attending where you can to provide your input. We appreciate you."</blockquote><div class="quote-attr">Principal ATL Manager, Public Market</div></div>
+        <div class="quote-block"><div class="quote-mark">&ldquo;</div><blockquote>"I wanted to express my sincere thanks for the fantastic job you did on the technical account plan session for our FSM clients. Your infusion of design methodology to technical account planning was truly impressive. The positive feedback from our ATLs and extended account team members highlights your hard work and creativity."</blockquote><div class="quote-attr">Vice President, FSM Techhnology Sales</div></div>
       </div>
     </section>
   </main>
